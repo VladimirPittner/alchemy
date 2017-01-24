@@ -1,0 +1,734 @@
+// ---------------------------------------------
+// CONFIGURATION
+// ---------------------------------------------
+
+// CONTENTS
+// Main
+// Typography
+// Icons
+// Grid
+// Buttons
+// Form components
+// Tables
+// Cards
+// Lists
+// Tabs
+// Modals
+// Various
+// Pages
+
+// ----------------------------
+// MAIN
+
+  $default-bgc: $color-white !default;
+  $default-c:   $color-grey-800 !default;
+  $default-ff:  $font-family-opensans !default;
+  $default-fs:  $font-size-root !default;
+  $default-lh:  _get-rem($line-height-normal) !default;
+
+  //---------------
+  // selection
+
+    $selection-bgc:     $color-theme-500!default;
+    $selection-c:       $color-white !default;
+
+// ----------------------------
+// TYPOGRAPHY
+
+  //---------------
+  // GENERAL
+
+    $text--default-mv:  _get-rem($space-text) !default;
+    $headline--default-mv:  _get-rem($space-headlines) 0 _get-rem($space-text) !default;
+
+  //---------------
+  // HEADINGS
+
+    $h1-m:      $headline--default-mv !default;
+    $h1-ff:     $ff-baskerville !default;
+    $h1-fs:     _get-rem($font-size-xl) !default;
+    $h1-fw:     $fw-bold !default;
+    $h1-lh:     $lh-relative-s !default;
+    $h1-tt:     null !default;
+    $h1-ltrsp:  null !default;
+
+    $h1-fs-s:   _get-rem($font-size-l) !default;
+
+
+    $h2-m:      $headline--default-mv !default;
+    $h2-ff:     $ff-baskerville !default;
+    $h2-fs:     _get-rem($font-size-l) !default;
+    $h2-fw:     $fw-regular !default;
+    $h2-lh:     $lh-relative-m !default;
+    $h2-tt:     null !default;
+    $h2-ltrsp:  null !default;
+
+    $h2-fs-s:   _get-rem($font-size-m) !default;
+
+
+    $h3-m:      $headline--default-mv !default;
+    $h3-ff:     $font-family-opensans !default;
+    $h3-fs:     _get-rem($font-size-m) !default;
+    $h3-fw:     $fw-bold !default;
+    $h3-lh:     $lh-relative-s !default;
+    $h3-tt:     null !default;
+    $h3-ltrsp:  null !default;
+
+    $h3-fs-s:   _get-rem($font-size-s) !default;
+
+
+    $h4-m:      $headline--default-mv !default;
+    $h4-ff:     $font-family-opensans !default;
+    $h4-fs:     _get-rem($font-size-xs) !default;
+    $h4-fw:     $fw-bold !default;
+    $h4-lh:     $lh-relative-s !default;
+    $h4-tt:     uppercase !default;
+    $h4-ltrsp:  1px !default;
+
+    $h5-m:      $headline--default-mv !default;
+    $h5-ff:     $ff-baskerville !default;
+    $h5-fs:     _get-rem($font-size-xs) !default;
+    $h5-fw:     $fw-bold !default;
+    $h5-lh:     $lh-relative-s !default;
+    $h5-tt:     null !default;
+    $h5-ltrsp:  null !default;
+
+  //---------------
+  // TEXT
+
+    $text-large-fs: _get-rem($font-size-m) !default;
+    $text-large-lh: $lh-relative-m !default;
+    $text-large-fw: null !default;
+    $text-large-fs-s: _get-rem($font-size-s) !default;
+
+
+    $text-small-fs: _get-rem($font-size-xxs) !default;
+    $text-small-lh: $lh-relative-m !default;
+    $text-small-fw: null !default;
+
+    $text-desc-c:   $color-grey-600 !default;
+    $text-desc-fw:  $fw-light !default;
+
+    $link-c:        $color-theme-500!default;
+    $link-hover-c:  $color-theme-400 !default;
+    $link-t:        $ease-400 !default;
+
+    $hr-m:          $space-vertical2x 0 !default;
+    $hr-bgc:        $color-grey-300 !default;
+
+  //---------------
+  // lists
+
+    $list-expanded-mb: 0.5em !default
+
+    $inline-list-margin:                      0.5em 0 !default;
+    $inline-list-margin-vertical:             0.3em !default;
+    $inline-list-margin-horizontal:           0.5em !default;
+    $inline-list-expanded-margin-horizontal:  1.5em !default;
+
+    $dl__dt-fw: $fw-bold !default;
+    $dl__dd-mb: $text--default-mv !default;
+
+    $dl--inline__dt-mr: 5px !default;
+
+    $list--iconlist__icon-mr: 15px !default;
+
+  //---------------
+  // utility
+
+    $text-color-theme-500:           $color-theme-500!default;
+    $text-color-theme-400:       $color-theme-400 !default;
+    $text-color-theme-100:       $color-theme-100 !default;
+
+    $text-color-black:            $color-black !default;
+    $text-color-grey:             $color-grey-500 !default;
+    $text-color-grey-800:         $color-grey-800 !default;
+    $text-color-semiblack:        $color-semiblack !default;
+
+    $text-color-white:            $color-white !default;
+    $text-color-semiwhite:        $color-semiwhite !default;
+
+    $text-color-error:            $color-error-500 !default;
+
+// ----------------------------
+// ICONS
+
+  //---------------
+  // icons
+
+    $icon-xl: $icon-48 !default;
+    $icon-l: $icon-32 !default;
+    $icon-m: $icon-24 !default;
+    $icon-s: $icon-16 !default;
+
+    $icon-ease: $ease-400 !default;
+
+  //---------------
+  // images
+
+    $image-border-radius: $border-radius-main !default;
+
+// ----------------------------
+// GRID
+
+  //---------------
+  // wrappers
+
+    $wrapper-main-width:      $page-viewport !default;
+    $wrapper-main-width-xl:   $page-viewport-xl !default;
+    $wrapper-main-padding:    $page-side-padding !default;
+    $wrapper-main-padding-xl: $page-side-padding-xl !default;
+    $wrapper-main-padding-m:  $page-side-padding-m !default;
+    $wrapper-main-padding-s:  $page-side-padding-s !default;
+
+    $wrapper-full-padding:    $page-side-padding !default;
+    $wrapper-full-padding-xl: $page-side-padding-xl !default;
+    $wrapper-full-padding-m:  $page-side-padding-m !default;
+    $wrapper-full-padding-s:  $page-side-padding-s !default;
+
+    $default-margin-vertical: $space-vertical2x !default;
+    $vspace-margin: $space-vertical !default;
+
+  //---------------
+  // breakpoints
+
+    $media-w-xl:  1280px !default;
+    $media-w-l:   1279px !default;
+    $media-w-m:   959px !default;
+    $media-w-s:   639px !default;
+    $media-w-xs:  479px !default;
+
+  //---------------
+  // grid 12
+
+    $grid12-gutter:     $space-horizontal !default;
+    $grid12-gutter-xl:  $space-horizontal-xl !default;
+    $grid12-gutter-m:   $space-horizontal-m !default;
+    $grid12-gutter-s:   $space-horizontal-s !default;
+
+    $grid12-margin-vertical:  $space-vertical !default;
+    $grid12-col-margin-vertical:  $space-vertical / 2 !default;
+
+// ----------------------------
+// BUTTONS
+
+  //---------------
+  // button default styles
+
+    $btn-size:              40px !default;
+    $btn-padding:           9px 20px !default;
+    $btn-h-padding:         20px !default;
+    $btn-bg-color:          $color-white !default;
+    $btn-border:            1px solid $color-white !default;
+    $btn-border-radius:     $border-radius-main !default;
+    $btn-box-shadow:        $shadow-direct-1, $shadow-ambient-1 !default;
+    $btn-font-size:         $font-size-xxs !default;
+    $btn-font-weight:       600 !default;
+    $btn-text-color:        $color-theme-500!default;
+    $btn-ease:              $ease-400 !default;
+    $btn-text-transform:    uppercase !default;
+    $btn-text-letter-space: 1px !default;
+
+    $btn-hover-bg-color:      $color-white !default;
+    $btn-hover-border:        1px solid $color-white  !default;
+    $btn-hover-box-shadow:    $shadow-direct-2, $shadow-ambient-2 !default;
+    $btn-hover-text-color:    $color-theme-400 !default;
+
+    $btn-active-bg-color:      null !default;
+    $btn-active-border:        null !default;
+    $btn-active-box-shadow:    $shadow-direct-1, $shadow-ambient-0 !default;
+    $btn-active-text-color:    $color-theme-400 !default;
+    $btn-active-ease:          $ease-100 !default;
+
+    $btn-disabled-bg-color:      $color-grey-100 !default;
+    $btn-disabled-border:        1px solid $color-grey-100 !default;
+    $btn-disabled-box-shadow:    none !default;
+    $btn-disabled-text-color:    $color-theme-200 !default;
+
+    $btn-in-group-border:               1px solid $color-grey-200 !default;
+    $btn-in-group-hover-border:         1px solid $color-grey-200 !default;
+    $btn-in-group-active-border:        null !default;
+    $btn-in-group-disabled-border:      1px solid $color-grey-100 !default;
+
+  //---------------
+  // button sizing
+
+    $btn-large-size:    56px !default;
+    $btn-l-padding:     17px 24px !default;
+    $btn-h-l-padding:   24px !default;
+    $btn-l-font-size:   $font-size-s !default;
+    $btn-l-icon-margin: 12px !default;
+
+    $btn-small-size:    32px !default;
+    $btn-s-padding:     5px 20px !default;
+    $btn-h-s-padding:   20px !default;
+    $btn-s-font-size:   $font-size-xxs !default;
+
+  //---------------
+  // button colors
+
+    $btn-primary-bg-color:      $color-theme-500 !default;
+    $btn-primary-border:        1px solid $color-theme-500 !default;
+    $btn-primary-box-shadow:    null !default;
+    $btn-primary-text-color:    $color-white !default;
+
+    $btn-primary-hover-bg-color:      $color-theme-400 !default;
+    $btn-primary-hover-border:        1px solid $color-theme-400 !default;
+    $btn-primary-hover-box-shadow:    null !default;
+    $btn-primary-hover-text-color:    $color-white !default;
+
+    $btn-primary-active-bg-color:      null !default;
+    $btn-primary-active-border:        null !default;
+    $btn-primary-active-box-shadow:    null !default;
+    $btn-primary-active-text-color:    $color-white !default;
+
+    $btn-primary-disabled-bg-color:      $color-theme-200 !default;
+    $btn-primary-disabled-border:        1px solid $color-theme-300 !default;
+    $btn-primary-disabled-box-shadow:    null !default;
+    $btn-primary-disabled-text-color:    $color-white !default;
+
+    $btn-primary-in-group-border:               1px solid $color-theme-600 !default;
+    $btn-primary-in-group-hover-border:         1px solid $color-theme-600 !default;
+    $btn-primary-in-group-active-border:        null !default;
+    $btn-primary-in-group-disabled-border:      $btn-primary-disabled-border !default;
+
+    $btn-link-bg-color:      transparent !default;
+    $btn-link-border:        1px solid transparent !default;
+    $btn-link-box-shadow:    none !default;
+    $btn-link-text-color:    $color-theme-500!default;
+
+    $btn-link-hover-bg-color:      transparent !default;
+    $btn-link-hover-border:        1px solid transparent !default;
+    $btn-link-hover-box-shadow:    none !default;
+    $btn-link-hover-text-color:    $color-theme-400 !default;
+
+    $btn-link-active-bg-color:      null !default;
+    $btn-link-active-border:        null !default;
+    $btn-link-active-box-shadow:    none !default;
+    $btn-link-active-text-color:    null !default;
+
+    $btn-link-disabled-bg-color:      transparent !default;
+    $btn-link-disabled-border:        1px solid transparent !default;
+    $btn-link-disabled-box-shadow:    none !default;
+    $btn-link-disabled-text-color:    $color-theme-100 !default;
+
+  //---------------
+  // button layouts
+
+    $btnline-btn-margin:  10px !default;
+    $btnblock-btn-margin: 10px !default;
+
+  //---------------
+  // button icons
+
+    $btn-icon-margin:   10px;
+    $btn-icon-padding:  40px;
+    $btn-icon-position: 10px;
+
+  //---------------
+  // button groups and bars
+
+    $btn-group-divider: 1px solid  !default;
+
+    $btn-group-box-shadow: $btn-box-shadow !default;
+    $btn-group-disabled-box-shadow: $btn-disabled-box-shadow !default;
+
+    $btn-group-hover-box-shadow: $btn-hover-box-shadow !default;
+
+    $btnbar-btngroup-margin: 10px !default;
+
+  //---------------
+  // button split and dropdown
+
+    $btn-split-control-width: 60px !default;
+
+// ----------------------------
+// FORM COMPONENTS
+
+  //---------------
+  // input styles
+
+    $input-height:          40px !default;
+    $input-padding:         7px 11px !default;
+    $input-bg-color:        $color-white !default;
+    $input-border:          1px solid $color-grey-300 !default;
+    $input-border-radius:   $border-radius-main !default;
+    $input-box-shadow:      null !default;
+    $input-font-family:     $font-family-opensans !default;
+    $input-font-size:       $font-size-xxs !default;
+    $input-line-height:     24px !default;
+    $input-text-color:      $color-grey-800 !default;
+    $input-ease:            $ease-300 !default;
+
+    $input-focus-bg-color:    null !default;
+    $input-focus-border:      null  !default;
+    $input-focus-box-shadow:  $shadow-direct-1, $shadow-ambient-1 !default;
+    $input-focus-text-color:  null !default;
+
+    $input-disabled-bg-color:    null !default;
+    $input-disabled-border:      1px solid $color-grey-200 !default;
+    $input-disabled-box-shadow:  none !default;
+    $input-disabled-text-color:  null !default;
+
+    $input-readonly-bg-color:    null !default;
+    $input-readonly-border:      1px solid $color-grey-300 !default;
+    $input-readonly-box-shadow:  none !default;
+    $input-readonly-text-color:  $color-grey-600 !default;
+
+    $input-error-bg-color:       $color-error-50 !default;
+    $input-error-border:         1px solid $color-error-100 !default;
+    $input-error-box-shadow:     null !default;
+    $input-error-text-color:     $color-error-500 !default;
+
+    $input-l-height:    56px !default;
+    $input-l-padding:   15px 15px !default;
+    $input-l-font-size: $font-size-s !default;
+
+    $input-s-height:    32px !default;
+    $input-s-padding:   3px 11px !default;
+    $input-s-font-size: $font-size-xxs !default;
+
+  //---------------
+  // checkbox / radio styles
+
+    $checkbox-margin:         13px !default;
+
+    $checkbox-custom-top:            4px !default;
+    $checkbox-custom-large-top:      5px !default;
+    $checkbox-custom-size:           16px !default;
+    $checkbox-custom-bg-color:       $color-white !default;
+    $checkbox-custom-border:         $input-border !default;
+    $checkbox-custom-border-radius:  $border-radius-main !default;
+    $checkbox-custom-box-shadow:     null !default;
+    $checkbox-custom-ease:           $input-ease !default;
+
+    $checkbox-custom-focus-bg-color:       null !default;
+    $checkbox-custom-focus-border:         $input-focus-border !default;
+    $checkbox-custom-focus-box-shadow:     $input-focus-box-shadow !default;
+
+    $checkbox-custom-disabled-bg-color:    null !default;
+    $checkbox-custom-disabled-border:      $input-disabled-border !default;
+    $checkbox-custom-disabled-box-shadow:  $input-disabled-box-shadow !default;
+
+    $checkbox-custom-readonly-bg-color:    null !default;
+    $checkbox-custom-readonly-border:      $input-readonly-border !default;
+    $checkbox-custom-readonly-box-shadow:  $input-readonly-box-shadow !default;
+
+    $checkbox-custom-error-bg-color:    null !default;
+    $checkbox-custom-error-border:      $input-error-border !default;
+    $checkbox-custom-error-box-shadow:  $input-error-box-shadow !default;
+
+    $checkbox-mark-bg-color:            $input-text-color !default;
+    $checkbox-mark-disabled-bg-color:   $input-disabled-text-color !default;
+    $checkbox-mark-readonly-bg-color:   $input-readonly-text-color !default;
+    $checkbox-mark-error-bg-color:      $input-error-text-color !default;
+
+    $checkbox-label-margin:           25px !default;
+    $checkbox-label-padding:          null !default;
+    $checkbox-label-font-family:      $input-font-family !default;
+    $checkbox-label-font-size:        $input-font-size !default;
+    $checkbox-label-text-color:       $input-text-color !default;
+
+    $checkbox-label-disabled-text-color:  $input-disabled-text-color !default;
+    $checkbox-label-readonly-text-color:  $input-readonly-text-color !default;
+    $checkbox-label-error-text-color:     $input-error-text-color !default;
+
+    $checkbox-custom-large-size:              22px !default;
+    $checkbox-label-large-margin:             31px !default;
+    $checkbox-label-large-padding:            4px 0 !default;
+    $checkbox-label-large-font-size:          $input-l-font-size !default;
+
+    $checkbox-custom-small-size:              14px !default;
+    $checkbox-label-small-margin:             21px !default;
+    $checkbox-label-small-padding:            null !default;
+    $checkbox-label-small-font-size:          $input-s-font-size !default;
+
+  //---------------
+  // dropdown list
+
+    $dropdown-list-padding:           4px 0 !default;
+    $dropdown-list-margin-top:        -1px !default;
+    $dropdown-list-bg-color:          $color-white !default;
+    $dropdown-list-border:            1px solid $color-grey-300 !default;
+    $dropdown-list-border-radius:     0 0 $border-radius-main $border-radius-main !default;
+    $dropdown-list-box-shadow:        $shadow-direct-1, $shadow-ambient-1 !default;
+    $dropdown-list-z-index:           $z-index-default !default;
+    $dropdown-list-ease:              $ease-out-200 !default;
+    $dropdown-list-ease-back:         $ease-out-100 !default;
+    $dropdown-list-ease-delayed:      $ease-100-delayed !default;
+
+    $dropdown-list-dropup-border-radius: $border-radius-main $border-radius-main 0 0 !default;
+
+    $dropdown-list-item-padding:          4px 20px !default;
+    $dropdown-list-item-text-color:       $color-black !default;
+    $dropdown-list-item-ease:             $ease-400 !default;
+    $dropdown-list-item-hover-bg-color:   null !default;
+    $dropdown-list-item-hover-text-color: $color-theme-500!default;
+
+  //---------------
+  // select
+
+    $select-control-height:         $input-height !default;
+    $select-control-padding:        $input-padding !default;
+    $select-control-bg-color:       $input-bg-color !default;
+    $select-control-border:         $input-border !default;
+    $select-control-border-radius:  $input-border-radius !default;
+    $select-control-box-shadow:     $input-box-shadow !default;
+    $select-control-font-family:    $input-font-family !default;
+    $select-control-font-size:      $input-font-size !default;
+    $select-control-line-height:    $input-line-height !default;
+    $select-control-text-color:     $input-text-color !default;
+    $select-control-ease:           $input-ease !default;
+
+    $select-control-focus-bg-color:    $input-focus-bg-color !default;
+    $select-control-focus-border:      $input-focus-border !default;
+    $select-control-focus-box-shadow:  $input-focus-box-shadow !default;
+    $select-control-focus-text-color:  $input-focus-text-color !default;
+
+    $select-control-open-border-radius:        $input-border-radius $input-border-radius 0 0 !default;
+    $select-control-open-dropup-border-radius: 0 0 $input-border-radius $input-border-radius !default;
+
+    $select-control-disabled-bg-color:    $input-disabled-bg-color !default;
+    $select-control-disabled-border:      $input-disabled-border !default;
+    $select-control-disabled-box-shadow:  $input-disabled-box-shadow !default;
+    $select-control-disabled-text-color:  $input-disabled-text-color !default;
+
+    $select-control-readonly-bg-color:    $input-readonly-bg-color !default;
+    $select-control-readonly-border:      $input-readonly-border !default;
+    $select-control-readonly-box-shadow:  $input-readonly-box-shadow !default;
+    $select-control-readonly-text-color:  $input-readonly-text-color !default;
+
+    $select-control-error-bg-color:       $input-error-bg-color !default;
+    $select-control-error-border:         $input-error-border !default;
+    $select-control-error-box-shadow:     $input-error-box-shadow !default;
+    $select-control-error-text-color:     $input-error-text-color !default;
+
+    $select-control-l-height:    $input-l-height !default;
+    $select-control-l-padding:   $input-l-padding !default;
+    $select-control-l-font-size: $input-l-font-size !default;
+
+    $select-control-s-height:    $input-s-height !default;
+    $select-control-s-padding:   $input-s-padding !default;
+    $select-control-s-font-size: $input-s-font-size !default;
+
+    $select-dropdown-padding:             $dropdown-list-padding !default;
+    $select-dropdown-margin-top:          $dropdown-list-margin-top !default;
+    $select-dropdown-z-index:             $dropdown-list-z-index !default;
+    $select-dropdown-bg-color:            $dropdown-list-bg-color !default;
+    $select-dropdown-border:              $dropdown-list-border !default;
+    $select-dropdown-border-radius:       $dropdown-list-border-radius !default;
+    $select-dropdown-box-shadow:          $dropdown-list-box-shadow !default;
+    $select-dropdown-ease-back:           $dropdown-list-ease-back !default;
+    $select-dropdown-ease-delayed:        $dropdown-list-ease-delayed !default;
+    $select-dropdown-ease:                $dropdown-list-ease !default;
+
+    $select-dropdown-dropup-border-radius: $dropdown-list-dropup-border-radius !default;
+
+    $select-dropdown-divider-bg-color: $color-grey-300 !default;
+
+    $select-dropdown-item-padding:          $dropdown-list-item-padding !default;
+    $select-dropdown-item-text-color:       $dropdown-list-item-text-color !default;
+    $select-dropdown-item-ease:             $dropdown-list-item-ease !default;
+    $select-dropdown-item-hover-bg-color:   $dropdown-list-item-hover-bg-color !default;
+    $select-dropdown-item-hover-text-color: $dropdown-list-item-hover-text-color !default;
+
+    $select-notify-bgc: $color-grey-100 !default;
+    $select-notify-border: 1px solid $color-grey-200 !default;
+
+  //---------------
+  // input with inner addon
+
+    $input-addon-height:            $input-height - 2 !default;
+    $input-addon-padding:           $input-padding !default;
+    $input-addon-font-size:         $input-font-size !default;
+    $input-addon-line-height:       $input-line-height !default;
+    $input-addon-text-color:        $color-grey-500 !default;
+    $input-addon-ease:              $input-ease !default;
+    $input-addon-font-weight:       600 !default;
+    $input-addon-icon-fs:           20px !default;
+
+
+    $input-addon-disabled-text-color: $input-disabled-text-color !default;
+    $input-addon-error-text-color:    $input-error-text-color !default;
+
+    $input-large-addon-height:        $input-l-height - 2 !default;
+    $input-large-addon-padding:       $input-l-padding !default;
+    $input-large-addon-fs:            $input-l-font-size !default;
+    $input-large-addon-icon-fs:       $icon-32 !default;
+
+    $input-small-addon-height:        $input-s-height - 2 !default;
+    $input-small-addon-padding:       $input-s-padding !default;
+    $input-small-addon-fs:            $input-s-font-size !default;
+    $input-small-addon-icon-fs:       $icon-16 !default;
+
+  //---------------
+  // autocomplete list
+
+    $autocomplete-list-padding: $dropdown-list-padding !default
+    $autocomplete-list-z-index: $dropdown-list-z-index !default;
+    $autocomplete-list-bg-color: $dropdown-list-bg-color !default;
+    $autocomplete-list-border-radius: $dropdown-list-border-radius !default;
+    $autocomplete-list-box-shadow: $dropdown-list-box-shadow !default;
+    $autocomplete-list-item-padding: $dropdown-list-item-padding !default;
+    $autocomplete-list-item-text-color: $dropdown-list-item-text-color !default;
+    $autocomplete-list-item-ease: $dropdown-list-item-ease !default;
+    $autocomplete-list-item-hover-text-color: $dropdown-list-item-hover-text-color !default;
+    $autocomplete-list-item-hover-bg-color: $dropdown-list-item-hover-bg-color !default;
+
+    $autocomplete-more-color: $color-theme-500 !default;
+    $autocomplete-group-margin: $space-horizontal !default;
+    $autocomplete-group-color: $color-grey-500 !default;
+
+  //---------------
+  // form labels
+
+    $form-label-margin-vertical:  4px !default;
+    $form-label-padding:          10px 0 !default;
+    $form-label-text-color:       $color-grey-800 !default;
+    $form-label-font-size:        $font-size-root !default;
+    $form-label-font-family:      $font-family-opensans !default;
+
+    $form-label-error-text-color: $color-error-500 !default;
+
+    $form-label-l-padding:        18px 0 !default;
+    $form-label-l-font-size:      $font-size-s !default;
+
+    $form-label-s-padding:        6px 0 !default;
+    $form-label-s-font-size:      $font-size-xxs !default;
+
+  //---------------
+  // form helps errors
+
+    $form-error-margin: 6px 0 6px 0;
+    $form-error-top: 6px;
+    $form-error-text-color: $color-error-500 !default;
+    $form-error-font-size: $font-size-xxs !default;
+    $form-error-line-height: 1.4em !default;
+    $form-help-text-color: $color-grey-500 !default;
+
+    $form-error-checkbox-vertical-offset: 0 !default;
+    $form-error-checkbox-horizontal-offset: 25px !default;
+
+  //---------------
+  // form layouts
+
+    $fieldset-border: 1px solid $color-grey-400 !default;
+
+    $form-gutter:     $space-horizontal !default;
+    $form-gutter-xl:  $space-horizontal-xl !default;
+    $form-gutter-m:   $space-horizontal-m !default;
+    $form-gutter-s:   $space-horizontal-s !default;
+
+    $form-control-vertical-margin: $space-vertical !default;
+    $form-control-block-vertical-margin: 5px !default;
+
+// ----------------------------
+// TABLES
+
+  $table-bg-color: $color-white !default;
+  $table-margin: $space-vertical !default;
+
+  $table-cell-padding: 10px 15px !default;
+  $table-cell-border: 1px solid $color-grey-300 !default;
+  $table-cell-vertical-align: top !default;
+
+  $table-cell-odd-bg-color: $color-grey-100 !default;
+
+  $table-head-cell-border: 2px solid $color-grey-300 !default;
+
+// ----------------------------
+// CARDS
+
+  $card-background: $color-white !default;
+  $card-border: 1px solid $color-grey-300 !default;
+  $card-border-radius: $border-radius-main !default;
+  $card-box-shadow: $shadow-ambient-1, $shadow-direct-1!default;
+
+  $card_content-padding: $space-box !default;
+  $card_content-border: $card-border !default;
+
+  $card_header-padding: $space-box $space-box !default;
+  $card_header-bgc: $color-grey-100 !default;
+  $card_header-border: $card-border !default;
+
+  $card_header_section-v-padding: $space-box !default;
+  $card_header_section-h-padding: $space-box/2 !default;
+
+  $card_footer-padding: $space-box/2 $space-box !default;
+  $card_footer-border: $card-border !default;
+
+// ----------------------------
+// LISTS
+
+  $list-bg-color: $color-white !default;
+  $list-border: 1px solid $color-grey-300 !default;
+
+  // LIST ITEM
+
+    $list_item-v-padding: 15px !default;
+    $list_item-h-padding: $space-box !default;
+    $list-condensed_item-v-padding: 7px!default;
+    $list_item-border: 1px solid $color-grey-300 !default;
+    $list_item-ease: $ease-200 !default;
+
+    $list_item-hover-bg-color: $color-grey-50 !default;
+    $list_item-hover-border: 1px solid $color-grey-300 !default;
+    $list-hover-text-color: null !default;
+
+    $list_item-selected-bg-color: $color-grey-100 !default;
+    $list_item-selected-border: 1px solid $color-grey-300 !default;
+    $list-selected-text-color: null !default;
+
+    $list_item-selected-hover-bg-color: $color-grey-200 !default;
+    $list_item-selected-hover-border: 1px solid $color-grey-300 !default;
+    $list-selected-hover-text-color: null !default;
+
+  // ITEM SECTION
+
+    $list_item_section-image-size: 48px !default;
+
+// ----------------------------
+// TABS
+
+  $tabs-link-padding: 15px 20px 13px !default;
+  $tabs-link-text-color: $color-grey-900 !default;
+  $tabs-link-ease: $ease-400 !default;
+  $tabs-link-border-width: 2px !default;
+  $tabs-link-hover-text-color: $color-theme-500 !default;
+  $tabs-link-disabled-text-color: $color-grey-500 !default;
+  $tabs-link-hover-border-color:$color-theme-500 !default;
+  $tabs-link-fs: $font-size-xxs !default;
+  $tabs-link-fw: 600 !default;
+
+// ----------------------------
+// MODALS
+
+  $modal-overlay-bg-color: $color-semiblack !default;
+  $modal-overlay-z-index: $z-index-overlay !default;
+  $modal-overlay-e: $ease-400 !default;
+
+  $modal-width: 480px !default;
+  $modal-large-width: 640px !default;
+
+  $modal-bg-color: $color-white !default;
+  $modal-border: 1px solid $color-grey-200 !default;
+  $modal-border-radius: $border-radius-main !default;
+  $modal-box-shadow: $shadow-ambient-3, $shadow-direct-2 !default;
+
+  $modal_header-padding: 10px 25px !default;
+  $modal_header-height: 60px !default;
+  $modal_header-bg-color: $color-grey-50;
+  $modal_header-border: 1px solid $color-grey-300;
+
+  $modal_content-padding: 25px !default;
+  $modal_content-bg-color: $color-white;
+
+  $modal_footer-padding: 15px 25px 15px !default;
+  $modal_footer-bg-color: $color-white;
+  $modal_footer-border: 1px solid $color-grey-300;
+
+// ----------------------------
+// VARIOUS
+
+// ----------------------------
+// PAGES

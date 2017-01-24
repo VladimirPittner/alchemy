@@ -1,0 +1,43 @@
+extends layouts/_default
+
+block content
+  .intro-templates
+    header.intro-templates_header
+      .wrapper-main
+        h1.text-upper.text-color-white.text-nospace= projectName
+        span.text-small.text-color-semiwhite-050 last update: #{new Date().toDateString()}
+    article.intro-templates_content
+      .wrapper-main
+        h2.text-upper Content
+        ul.intro-templates_list
+          li.intro-templates_item
+            a.js-toggle(data-target='parent', data-toggle-icon='chevronup')
+              h3
+                i.icon.js-icon chevrondown
+                span.text-space-fix Styleguide
+            ul.intro-templates_sublist
+              each category in l_sitemap
+                each page in category.topics
+                  li.intro-templates_subitem
+                    i.text-space-fix.icon.text-color-semiblack chevronright
+                    if page.sub == undefined
+                      a.text-space-fix(href='/styleguide/docs/' + page.hlink, target='_blank')= page.title
+                    else
+                      a.text-space-fix(href='/styleguide/docs/' + page.sub[0].hlink, target='_blank')= page.title
+
+          each item in sitemap
+            li.intro-templates_item
+              a.js-toggle(data-target='parent', data-toggle-icon='chevronup')
+                h3
+                  i.icon.js-icon chevrondown
+                  span.text-space-fix #{item.title}
+              if item.contents
+                ul.intro-templates_sublist
+                  each subitem in item.contents
+                    li.intro-templates_subitem
+                      i.text-space-fix.icon.text-color-semiblack chevronright
+                      a.text-space-fix(href=subitem.href, target='_blank', class=subitem.old?'text-color-dovred-600':'', title=subitem.old?'old version !!!':undefined)= subitem.title
+                      if subitem.desc
+                        span.tooltip-icon.js-tooltip(title=subitem.desc) ?
+
+

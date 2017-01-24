@@ -1,0 +1,510 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.lists', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_lists.scss'], contents)
+
+    +p-big Documentation for list component and its items. Lists present multiple line items in a vertical arrangement as a single continuous element.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- LISTS
+  +content-section(contents[0])
+
+    +p List is basic container for list items and can be created by using class <code class='l-code-inline'>.list</code> on <code class='l-code-inline'>&lt;ul&gt;</code> element. Bordered list can be created by using additional class <code class='l-code-inline'>.list-bordered</code> and clean list with additional class <code class='l-code-inline'>.list-clean</code>.
+
+    +note
+      +p You do not have to use <code class='l-code-inline'>&lt;ul&gt;</code> element but HTML structure have to be same.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-5.col-m-12
+            h4 Basic list
+
+            ul.list
+              li.list_item Laborum laboris amet minim.
+              li.list_item Quis adipisicing eu consectetur.
+              li.list_item Et anim sit do nisi.
+              li.list_item Deserunt id consectetur esse in.
+
+          .col.col-l-5.ofst-l-1.col-m-12.ofst-m-0
+            h4 Bordered list
+
+            ul.list.list-bordered
+              li.list_item Laborum laboris amet minim.
+              li.list_item Quis adipisicing eu consectetur.
+              li.list_item Et anim sit do nisi.
+              li.list_item Deserunt id consectetur esse in.
+
+        .row
+          .col.col-l-5.col-m-12
+            h4 Clean list
+
+            ul.list.list-clean
+              li.list_item Laborum laboris amet minim.
+              li.list_item Quis adipisicing eu consectetur.
+              li.list_item Et anim sit do nisi.
+              li.list_item Deserunt id consectetur esse in.
+
+          .col.col-l-5.ofst-l-1.col-m-12.ofst-m-0
+            h4 Condensed list
+
+            ul.list.list-condensed
+              li.list_item Laborum laboris amet minim.
+              li.list_item Quis adipisicing eu consectetur.
+              li.list_item Et anim sit do nisi.
+              li.list_item Deserunt id consectetur esse in.
+      +demo-code
+        :code
+          <!-- basic list -->
+          <ul class="list">
+            <li class="list_item">... </li>
+            ...
+          </ul>
+
+          <!-- bordered list -->
+          <ul class="list">
+            <li class="list_item">... </li>
+            ...
+          </ul>
+
+          <!-- clean list -->
+          <ul class="list">
+            <li class="list_item">... </li>
+            ...
+          </ul>
+
+          <!-- condensed list -->
+          <ul class="list">
+            <li class="list_item">... </li>
+            ...
+          </ul>
+    //- end: demo
+
+  //- end: section
+
+  //- ITEMS
+  +content-section(contents[1])
+
+    +p Items are core elements of lists. The most basic list item contains only text and can be created by wrapping text into element with class <code class='l-code-inline'>.list_item</code>.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-5.col-m-12
+            ul.list
+              li.list_item Laborum laboris amet minim.
+              li.list_item Quis adipisicing eu consectetur.
+              li.list_item Et anim sit do nisi.
+              li.list_item Deserunt id consectetur esse in.
+      +demo-code
+        :code
+          <ul class="list">
+            <li class="list_item">Laborum laboris amet minim. </li>
+            <li class="list_item">Quis adipisicing eu consectetur.</li>
+            <li class="list_item">Et anim sit do nisi.</li>
+            <li class="list_item">Deserunt id consectetur esse in.</li>
+          </ul>
+    //- end: demo
+
+    +content-sub-section('Item content')
+
+      +p Content of item can be any UI element, thus is easy to create items with headlines and texts, or buttons and form components as shown in example below.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              h4 Item content example
+              ul.list
+                li.list_item
+                  dl.text-nospace
+                    dt Commodo dolore
+                    dd Eu qui ut laborum
+                li.list_item
+                  dl.text-nospace
+                    dt Veniam veniam
+                    dd Veniam sit eu.
+            .col.col-l-5.ofst-l-1.col-m-12.ofst-m-0
+              h4 Item content example 2
+              ul.list
+                li.list_item
+                  p.text-nospace <strong>Exercitation Ut</strong> eu nostrud voluptate commodo exercitation in amet voluptate proident <strong>reprehenderit</strong>.
+                li.list_item
+                  p.text-nospace Sint aute labore mollit sunt aliqua sed ut minim <strong>laborum adipisicing</strong>.
+          .row.row-space
+            .col.col-l-5.col-m-12
+              h4 Item content example 3
+              ul.list
+                li.list_item
+                  p.no-mrg Sint aute labore mollit sunt aliqua sed ut minim <strong>laborum adipisicing</strong>.
+                li.list_item
+                  p.no-mrg <strong>Exercitation Ut</strong> eu nostrud voluptate commodo exercitation in amet voluptate proident <strong>reprehenderit</strong>.
+                li.list_item
+                  button.btn.btn-full(type='button') Load more
+        +demo-code
+          :code
+            <!-- content example 1 -->
+            <ul class="list">
+              <li class="list_item">
+                <dl class="text-nospace">
+                  <dt>Commodo dolore</dt>
+                  <dd>Eu qui ut laborum</dd>
+                </dl>
+              </li>
+              <li class="list_item">
+                <dl class="text-nospace">
+                  <dt>Veniam veniam</dt>
+                  <dd>Veniam sit eu.</dd>
+                </dl>
+              </li>
+            </ul>
+
+            <!-- content example 2 -->
+            <ul class="list">
+              <li class="list_item">
+                <p class="text-nospace">...</p>
+              </li>
+              <li class="list_item">
+                <p class="text-nospace">...</p>
+              </li>
+            </ul>
+
+            <!-- content example 3 -->
+            <ul class="list">
+              <li class="list_item">
+                <p class="no-mrg">...</p>
+              </li>
+              <li class="list_item">
+                <p class="no-mrg">...</p>
+              </li>
+              <li class="list_item">
+                <button class="btn btn-full" type="button">Load more</button>
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Item clickable')
+
+      +p In case that item is clickable, you can add styles for interaction as selected or hover with additional class <code class='l-code-inline'>.list_item-clickable</code>.
+
+      +note
+        +p Clickable items can have states: <code class='l-code-inline'>.selected</code> and <code class='l-code-inline'>.disabled</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              ul.list
+                li.list_item.list_item-clickable
+                  dl.text-nospace
+                    dt Commodo dolore
+                    dd Eu qui ut laborum
+                li.list_item.list_item-clickable.selected
+                  dl.text-nospace
+                    dt Selected
+                    dd Veniam sit
+                li.list_item.list_item-clickable
+                  dl.text-nospace
+                    dt LEiusmod in nulla tempor
+                    dd Veniam sit
+                li.list_item.list_item-clickable.disabled
+                  dl.text-nospace
+                    dt Disabled
+                    dd Veniam sit
+
+        +demo-code
+          :code
+            <ul class="list">
+              <li class="list_item list_item-clickable">
+                ...
+              </li>
+              <li class="list_item list_item-clickable selected">
+                ...
+              </li>
+              <li class="list_item list_item-clickable disabled">
+                ...
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section
+
+  //- ITEM SECTIONS
+  +content-section(contents[2], true)
+
+    +p List items can be also split into (or more specific they can contain) more sections. For primary content of list you would use <code class='l-code-inline'>.list_item_section-primary</code> on section element. For other types of sections the class depends on type.
+
+    +content-sub-section('Section secondary')
+
+      +p In case you want to use secondary content on the right side of the list item you can use section <code class='l-code-inline'>.list_section-secondary</code> as shown in example below.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              ul.list
+                li.list_item.list_item-stack-s
+                  .list_item_section-primary
+                    p.text-nospace Veniam ea minim labore consectetur dolor.
+                  .list_item_section-secondary
+                    p.text-desc.text-nospace Commodo qui
+                li.list_item.list_item-stack-s
+                  .list_item_section-primary
+                    p.text-nospace Id consectetur et.
+                  .list_item_section-secondary
+                    p.text-desc.text-nospace Dolor cupidatat
+        +demo-code
+          :code
+            <ul class="list">
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-secondary">
+                  ...
+                </div>
+              </li>
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-secondary">
+                  ...
+                </div>
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Section image')
+
+      +p In case you want to use small image in list item, you can use section <code class='l-code-inline'>.list_item_section-image</code> as shown in example below.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              ul.list
+                li.list_item.list_item-stack-xs
+                  .list_item_section-image
+                    img.img-fluid.img-rounded(src='/images/150x150.gif')
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Commodo dolore
+                      dd Eu qui ut laborum
+                li.list_item.list_item-stack-xs
+                  .list_item_section-image
+                    img.img-fluid.img-rounded(src='/images/150x150.gif')
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Ut velit incididunt
+                      dd Dolore aliqua
+        +demo-code
+          :code
+            <ul class="list">
+
+              <li class="list_item">
+                <div class="list_item_section-image">
+                  image
+                </div>
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+              </li>
+
+              <li class="list_item">
+                <div class="list_item_section-image">
+                  image
+                </div>
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Section action')
+
+      +p In case you want to use some action button in list item, you can use section <code class='l-code-inline'>.list_item_section-action</code> as shown in example below.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              ul.list
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Commodo dolore
+                      dd Eu qui ut laborum
+                  .list_item_section-action
+                    button.btn(type='button') Action
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Ut velit incididunt
+                      dd Dolore aliqua
+                  .list_item_section-action
+                    button.btn(type='button') Action
+        +demo-code
+          :code
+            <ul class="list">
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-action">
+                  <button class="btn" type="button">Action</button>
+                </div>
+              </li>
+
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-action">
+                  ...
+                </div>
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Section alignment')
+
+      +p Content of list items is verticaly aligned to middle. In case you need to align it to top or bottom you can use additional classes like <code class='l-code-inline'>.list_item_section-va-top</code> or <code class='l-code-inline'>.list_item_section-va-bottom</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              h4 Vertical alignment top
+              ul.list
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    h4.text-nospace Lorem ipsum
+                    dl.text-nospace
+                      dt Commodo dolore
+                      dd Eu qui ut laborum
+                  .list_item_section-action.list_item_section-va-top
+                    button.btn(type='button') Action
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    h4.text-nospace Lorem ipsum
+                    dl.text-nospace
+                      dt Ut velit incididunt
+                      dd Dolore aliqua
+                  .list_item_section-action.list_item_section-va-top
+                    button.btn(type='button') Action
+
+            .col.col-l-5.ofst-l-1.col-m-12.ofst-m-0
+              h4 Vertical alignment bottom
+              ul.list
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    h4.text-nospace Lorem ipsum
+                    dl.text-nospace
+                      dt Commodo dolore
+                      dd Eu qui ut laborum
+                  .list_item_section-action.list_item_section-va-bottom
+                    button.btn(type='button') Action
+                li.list_item.list_item-stack-xs
+                  .list_item_section-primary
+                    h4.text-nospace Lorem ipsum
+                    dl.text-nospace
+                      dt Ut velit incididunt
+                      dd Dolore aliqua
+                  .list_item_section-action.list_item_section-va-bottom
+                    button.btn(type='button') Action
+        +demo-code
+          :code
+            <!-- alignment top -->
+            <ul class="list">
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-action list_item_section-va-top">
+                  ...
+                </div>
+              </li>
+              ...
+            </ul>
+
+            <!-- alignment bottom -->
+            <ul class="list">
+              <li class="list_item">
+                <div class="list_item_section-primary">
+                  ...
+                </div>
+                <div class="list_item_section-action list_item_section-va-bottom">
+                  ...
+                </div>
+              </li>
+              ...
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('List item responsiveness')
+
+      +p It might happen you will need to stack list item section. In that case you can use additional class on <code class='l-code-inline'>.list_item</code> element like <code class='l-code-inline'>.list_item-stack-[xs/s/m/l]</code> as shown in example below.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-5.col-m-12
+              p Text with move under the image for screen resolution lower than 480px
+              ul.list
+                li.list_item.list_item-stack-xs
+                  .list_item_section-image
+                    img.img-fluid.img-rounded(src='/images/150x150.gif')
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Commodo dolore
+                      dd Eu qui ut laborum
+                li.list_item.list_item-stack-xs
+                  .list_item_section-image
+                    img.img-fluid.img-rounded(src='/images/150x150.gif')
+                  .list_item_section-primary
+                    dl.text-nospace
+                      dt Ut velit incididunt
+                      dd Dolore aliqua
+        +demo-code
+          :code
+            <ul class="list">
+              <li class="list_item list_item-stack-xs">
+                <div class="list_item_section-image">...</div>
+                <div class="list_item_section-primary">...</div>
+              </li>
+              <li class="list_item list_item-stack-xs">
+                <div class="list_item_section-image">...</div>
+                <div class="list_item_section-primary">...</div>
+              </li>
+            </ul>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section

@@ -1,0 +1,167 @@
+// ---------------------------------------------
+// LISTS
+// ---------------------------------------------
+
+// CONTENTS
+// Lists
+// Items
+// Item sections
+
+// ----------------------------
+// LISTS
+
+  .list {
+    @extend %list-unstyled;
+    background-color: $list-bg-color;
+
+    .card_content > & {
+      border-radius: $card-border-radius;
+    }
+  }
+
+  .list-bordered {
+    border: $list-border;
+  }
+
+  .list-clean .list_item {
+    border: 0;
+  }
+
+  .list-condensed .list_item {
+    padding: $list-condensed_item-v-padding $list_item-h-padding;
+  }
+
+// ----------------------------
+// ITEMS
+
+  .list_item {
+    width: 100%;
+    padding: $list_item-v-padding $list_item-h-padding;
+    display: table;
+    border-top: $list_item-border;
+    border-bottom: none;
+    vertical-align: middle;
+    transition: border $list_item-ease;
+
+    &:first-child { border-top: none;}
+  }
+
+  // CLICKABLE
+
+    .list_item-clickable {
+      cursor: pointer;
+      transition: border $list_item-ease, background $list_item-ease, color $list_item-ease;
+
+      &:hover {
+        background-color: $list_item-hover-bg-color;
+        border-top: $list_item-hover-border;
+        border-bottom: none;
+        color: $list-hover-text-color;
+
+        &:first-child { border-top: none;}
+
+        & + .list_item {
+          border-top: $list_item-hover-border;
+        }
+      }
+
+      &.selected {
+        background-color: $list_item-selected-bg-color;
+        border-top: $list_item-selected-border;
+        border-bottom: none;
+        color: $list-selected-text-color;
+
+        &:first-child { border-top: none;}
+
+        & + .list_item {
+          border-top: $list_item-selected-border;
+        }
+
+        &:hover {
+          background-color: $list_item-selected-hover-bg-color;
+          border-top: $list_item-selected-hover-border;
+          border-bottom: none;
+          color: $list-selected-hover-text-color;
+        }
+      }
+
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+
+// ----------------------------
+// ITEM SECTIONS
+
+  %list_item_section {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .list_item_section-primary {
+    @extend %list_item_section;
+  }
+
+  .list_item_section-secondary {
+    @extend %list_item_section;
+
+    padding-left: $list_item-h-padding;
+    text-align: right;
+  }
+
+  .list_item_section-image {
+    @extend %list_item_section;
+
+    width: $list_item_section-image-size + $list_item-h-padding;
+    height: $list_item_section-image-size;
+    padding-right: $list_item-h-padding;
+  }
+
+  .list_item_section-action {
+    @extend %list_item_section;
+
+    padding-left: $list_item-h-padding;
+    text-align: right;
+  }
+
+  .list_item_section-va-top {
+    vertical-align: top;
+  }
+
+  .list_item_section-va-bottom {
+    vertical-align: bottom;
+  }
+
+  // RESPONSIVNESS
+
+  @mixin list_item-stack($postfix: '') {
+    .list_item-stack#{$postfix} {
+      display: block;
+      %list_item_section {
+        display: block;
+        text-align: left;
+        padding-left: 0;
+        margin-bottom: $list-condensed_item-v-padding;
+
+        &:last-child {margin-bottom: 0;}
+      }
+    }
+  }
+
+  @include media-w-l {
+    @include list_item-stack('-l');
+  }
+
+  @include media-w-m {
+    @include list_item-stack('-m');
+  }
+
+  @include media-w-s {
+    @include list_item-stack('-s');
+  }
+
+  @include media-w-xs {
+    @include list_item-stack('-xs');
+  }
+

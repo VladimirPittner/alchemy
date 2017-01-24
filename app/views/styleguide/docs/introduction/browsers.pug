@@ -1,0 +1,102 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('introduction.browserSupport', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(false, contents)
+
+    +p-big All major browsers and platforms are supported, with their latest, stable releases. As for Internet Explorer, version 10-11 and Microsoft Edge are supported.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- DESKTOP
+  +content-section(contents[0])
+
+    +p The latest versions of most desktop browsers are supported.
+
+    +note
+      +p Browsers are tested only on latest versions of platforms.
+
+    +table
+      thead
+        tr
+          th
+          th Windows
+          th Mac OS
+      tbody
+        tr
+          th Chrome
+          td: +success Supported
+          td: +success Supported
+        tr
+          th Firefox
+          td: +success Supported
+          td: +success Supported
+        tr
+          th Opera
+          td: +success Supported
+          td: +success Supported
+        tr
+          th Internet Explorer
+          td: +success Supported, IE10+
+          td N/A
+        tr
+          th Microsoft Edge
+          td: +success Supported
+          td N/A
+        tr
+          th Safari
+          td: +success Supported
+          td: +error Not supported
+
+  //- end: section
+
+  //- MOBILE
+  +content-section(contents[1], true)
+
+    +p The latest versions of each major platform’s default browsers are supported.
+
+    +table
+      thead
+        tr
+          th
+          th Android
+          th iOS
+          th Windows 10 Mobile
+        tr
+          th Chrome
+          td: +success Supported
+          td: +success Supported
+          td N/A
+        tr
+          th Firefox
+          td: +success Supported
+          td: +success Supported
+          td N/A
+        tr
+          th Android / WebView
+          td: +success  Supported, Android 4.4+
+          td N/A
+          td N/A
+        tr
+          th iOS Safari
+          td N/A
+          td: +success Supported
+          td N/A
+        tr
+          th Microsoft Edge
+          td N/A
+          td N/A
+          td: +success Supported
+
+
+  //- end: section

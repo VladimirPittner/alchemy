@@ -1,0 +1,270 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('javascripts.toggle', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/toggle.js'], contents)
+
+    +p-big Documentation for toggle javascript module.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TOGGLE
+  +content-section(contents[0])
+
+    +p Toggle javascript handles basic toggle function of 'default/active' states. It can be used for example to show/hide elements (with proper css), but it is also used for example in dropdown buttons. It toggles <code class='l-code-inline'>.active</code> class on target element and also on itself.
+
+    +content-sub-section('Basic usage')
+
+      +p The most basic usage setup is to use class <code class='l-code-inline'>.js-toggle</code>, on element that should trigger toggle function and set target with data attribute <code class='l-code-inline'>data-target</code>.
+
+      +note
+        +p In case you can not use attribute data-target because of conflict with other modules you can also use <code class='l-code-inline'>data-toggle-target</code>.
+
+      +demo
+        +demo-example
+            code#toggleme.l-code-inline.l-debug-active target element state:
+            button.btn.js-toggle(type='button', data-target='#toggleme') Toggle
+
+        +demo-code
+          :code
+            <!-- target -->
+            <div id="toggleme">affected element</div>
+
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="#toggleme">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target parent')
+
+      +p In the example below is shown how to target parent element.
+
+      +demo
+        +demo-example
+          div
+            code.l-code-inline.l-debug-active-parent target element state:
+            button.btn.js-toggle(type='button', data-target='parent') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>
+              <div>affected element</div>
+
+              <!-- toggle -->
+              <button class="btn js-toggle" type="button" data-target="parent">Toggle</button>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Target parent - 2 hops')
+
+      +p In the example below is shown how to target parent's parent element.
+
+      +demo
+        +demo-example
+          div
+            div
+              code.l-code-inline.l-debug-active-parent target element state:
+              button.btn.js-toggle(type='button', data-target='parent', data-parent-hop='2') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>
+              <div>
+                <div>affected element</div>
+
+                <!-- toggle -->
+                <button class="btn js-toggle" type="button" data-target="parent">Toggle</button>
+              </div>
+            </div>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target next')
+
+      +p In the example below is shown how to target element next to toggle element.
+
+      +demo
+        +demo-example
+          button.btn.js-toggle(type='button', data-target='next') Toggle
+          code.l-code-inline.l-debug-active target element state:
+        +demo-code
+          :code
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="next">Toggle</button>
+
+            <!-- target -->
+            <div>affected element</div>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target previous')
+
+      +p In the example below is shown how to target element previous to toggle element.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn.js-toggle(type='button', data-target='previous') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="previous">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Dropdown')
+
+      +p In the example below is shown how dropdown like behavior of toggle.
+
+      +note
+        +p Click anywhere in document will toggle off active state.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn.js-toggle(type='button', data-target='previous', data-toggle='dropdown') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="previous">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Toggle icon')
+
+      +p In the example below is shown how to toggle icon on toggle element.
+
+      +warning
+        +p Do not forget to use <code class='l-code-inline'>.js-icon</code> class on icon element.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn.js-toggle(type='button', data-target='previous', data-toggle-icon='close')
+            | Toggle
+            i.icon.icon-right.icon-s.js-icon check
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="previous" data-toggle-icon="close"> Toggle
+              <i class="icon icon-right icon-s js-icon">check</i>
+            </button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Toggle text')
+
+      +p In the example below is shown how to toggle text on toggle element.
+
+      +warning
+        +p Use only if toggle element contains only text.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn.js-toggle(type='button', data-target='previous', data-toggle-text='toggle off') Toggle on
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn js-toggle" type="button" data-target="previous" data-toggle-text="toggle off">Toggle on</button>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section
+
+  //- OPTIONS
+  +content-section(contents[1])
+
+    p Options can be passed via data attributes. Append the option name to <code class='l-code-inline'>data-</code>, as in <code class='l-code-inline'>data-target=""</code>.
+
+    +table
+      thead
+        tr
+          th Name
+          th Type
+          th Default
+          th Description
+      tbody
+        tr
+          td target
+          td <code class='l-code-inline'>string/'parent'/'next'/'previous'</code>
+          td <code class='l-code-inline'>null</code>
+          td
+            | Select target
+            br
+            <strong>String</strong>: any jQuery selector as for example <code class='l-code-inline'>#id</code>, <code class='l-code-inline'>.class</code> ...
+            br
+            <strong>parent:</strong> targets parent element
+            br
+            <strong>next:</strong> targets next element
+            br
+            <strong>previous:</strong> targets previous element
+        tr
+          td parent-hop
+          td <code class='l-code-inline'>number</code>
+          td <code class='l-code-inline'>0</code>
+          td In case you need to get parent's parent, or even upper you can specify count of hops. <br><strong>Use in combination with</strong> <code class='l-code-inline'>data-target="parent"</code>.
+        tr
+          td toggle
+          td <code class='l-code-inline'>'dropdown'</code>
+          td <code class='l-code-inline'>null</code>
+          td Set the behaviour of toggle as if it was dropdown (remove active state if clicked somewhere else than dropdown element).
+        tr
+          td toggle-icon
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td Use this attribute if your toggle element contains icon (important use <code class='l-code-inline'>.js-icon</code> on icon element) and you want to change it while active.
+        tr
+          td toggle-text
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td Use this attribute if you want to change text in toggle element while it is active.
+
+
+  //- end: section
+
+  //- EVENTS
+  +content-section(contents[2], true)
+
+    +table
+      thead
+        tr
+          th Event Type
+          th Element
+          th Description
+      tbody
+        tr
+          td toggle-click
+          td <code class='l-code-inline'>document</code>
+          td This event fires whenever a toggle element is clicked.
+
+  //- end: section

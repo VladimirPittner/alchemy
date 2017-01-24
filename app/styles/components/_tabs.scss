@@ -1,0 +1,53 @@
+// ---------------------------------------------
+// TABS
+// ---------------------------------------------
+
+// CONTENTS
+// Tabs
+
+// ----------------------------
+// TABS
+
+  .tabs {
+    @include clearfix;
+    @extend %list-unstyled;
+    position: relative;
+  }
+
+  .tabs_tab {
+    float: left;
+  }
+
+  .tabs_link {
+    padding: $tabs-link-padding;
+    display: block;
+    border-bottom: $tabs-link-border-width solid transparent;
+    color: $tabs-link-text-color;
+    @include font-size($tabs-link-fs);
+    font-weight: $tabs-link-fw;
+    line-height: 20px;
+    text-transform: uppercase;
+    transition: border $tabs-link-ease, color $tabs-link-ease, opacity $tabs-link-ease;
+
+    &:hover, .active > & {
+      color: $tabs-link-hover-text-color;
+      border-bottom-color: transparent;
+    }
+
+    .active > &{
+      border-bottom-color: $tabs-link-hover-border-color;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      color: $tabs-link-disabled-text-color;
+      pointer-events: none;
+    }
+  }
+
+  .tabs_pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }

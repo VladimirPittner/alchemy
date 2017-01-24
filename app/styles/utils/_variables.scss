@@ -1,0 +1,168 @@
+// ---------------------------------------------
+// VARIABLES FOR ENVIRONTMENT
+// ---------------------------------------------
+
+// CONTENTS
+// Colors
+// Typography
+// Icons
+// Grid & layout
+// Shadows
+// Various
+// Z-index
+// Easings
+
+// ----------------------------
+// COLORS
+
+  $color-theme-500: #12B886 !default;
+  $color-theme-100: #c3fae8 !default;
+  $color-theme-200: #96f2d7 !default;
+  $color-theme-300: #63e6be !default;
+  $color-theme-400: #20c997 !default;
+  $color-theme-600: #0ca678 !default;
+  $color-theme-700: #099268 !default;
+  $color-theme-800: #087f5b !default;
+
+  $color-grey-500:  #adb5bd !default;
+  $color-grey-50:   #f8f9fa !default;
+  $color-grey-100:  #f1f3f5 !default;
+  $color-grey-200:  #e9ecef !default;
+  $color-grey-300:  #dee2e6 !default; // input border color
+  $color-grey-400:  #ced4da !default;
+  $color-grey-600:  #868e96 !default;
+  $color-grey-700:  #495057 !default;
+  $color-grey-800:  #343a40 !default;
+  $color-grey-900:  #212529 !default;
+
+  $color-white:     #fff !default;
+  $color-black:     #000 !default;
+
+  $color-error-500: #fa5252 !default;
+  $color-error-50:  #fff5f5 !default;
+  $color-error-100: #ffe3e3 !default;
+  $color-error-300: #ff6b6b !default;
+
+  $color-semiwhite: rgba(255,255,255,0.5) !default;
+
+  $color-semiblack: rgba(0,0,0,0.5) !default;
+
+// ----------------------------
+// TYPOGRAPHY
+
+  //---------------
+  // font
+
+    $font-size-root: 16px !default;
+
+    $font-size-xxl: 60px !default;
+    $font-size-xl: 48px !default;
+    $font-size-l: 30px !default;
+    $font-size-m: 24px !default;
+    $font-size-s: 18px !default;
+    $font-size-xs: 16px !default;
+    $font-size-xxs: 13px !default;
+
+    $ff-baskerville: 'Libre Baskerville', serif !default;
+    $font-family-opensans: 'Open Sans', sans-serif !default;
+
+    $fw-light:    300 !default;
+    $fw-regular:  400 !default;
+    $fw-semibold: 600 !default;
+    $fw-bold:     700 !default;
+
+  //---------------
+  // lineheights
+
+    $line-height-normal: 26px !default;
+
+    $lh-relative-s: 1.2em !default;
+    $lh-relative-m: 1.4em !default;
+
+  //---------------
+  // text margins
+
+    $space-text: 20px !default;
+    $space-headlines: 40px !default;
+
+    $text-margin-l: 27px !default;
+    $text-margin-m: 30px !default;
+    $text-margin-s: 20px !default;
+
+// ----------------------------
+// ICONS
+
+  $icon-48: 48px !default;
+  $icon-32: 32px !default;
+  $icon-24: 24px !default;
+  $icon-16: 16px !default;
+
+// ----------------------------
+// GRID & LAYOUT
+
+  $page-viewport: 960px !default;
+  $page-viewport-xl: 1080px !default;
+
+  $page-side-padding: 10px !default;
+  $page-side-padding-xl: 15px !default;
+  $page-side-padding-m: 40px !default;
+  $page-side-padding-s: 20px !default;
+
+  $space-horizontal: 10px !default;
+  $space-horizontal-xl: 15px !default;
+  $space-horizontal-m: 10px !default;
+  $space-horizontal-s: 5px !default;
+
+  $space-vertical: 20px !default;
+  $space-vertical2x: 40px !default;
+
+  $space-box: 20px !default;
+  $space-box-thin: 15px 20px !default;
+
+// ----------------------------
+// SHADOWS
+
+  $shadow-ambient-0: 0 2px 4px 0 rgba(0,0,0,0.02) !default;
+  $shadow-ambient-1: 0 2px 4px 0 rgba(0,0,0,0.07) !default;
+  $shadow-ambient-2: 0 3px 8px 0 rgba(0,0,0,0.11) !default;
+  $shadow-ambient-3: 0 4px 13px 0 rgba(0,0,0,0.15) !default;
+  $shadow-ambient-4: 0 15px 36px 0 rgba(0,0,0,0.15) !default;
+  $shadow-ambient-5: 0 20px 43px 0 rgba(0,0,0,0.17) !default;
+  $shadow-ambient-6: 0 30px 53px 0 rgba(0,0,0,0.18) !default;
+
+  $shadow-direct-0: 0 1px 2px 0 rgba(0,0,0,0.0) !default;
+  $shadow-direct-1: 0 1px 2px 0 rgba(0,0,0,0.14) !default;
+  $shadow-direct-2: 0 3px 7px 0 rgba(0,0,0,0.16) !default;
+  $shadow-direct-3: 0 5px 1px 0 rgba(0,0,0,0.18) !default;
+  $shadow-direct-4: 0 8px 11px 0 rgba(0,0,0,0.22) !default;
+  $shadow-direct-5: 0 12px 22px 0 rgba(0,0,0,0.20) !default;
+  $shadow-direct-6: 0 20px 18px 0 rgba(0,0,0,0.18) !default;
+
+// ----------------------------
+// VARIOUS
+
+  $border-radius-main: 3px !default;
+
+// ---------------------------------------------
+// Z-INDEX
+
+  $z-index-default: 100 !default;
+  $z-index-topbar: 200 !default;
+  $z-index-overlay: 500 !default;
+
+// ---------------------------------------------
+// EASINGS
+
+  $ease-50: 0.05s ease 0s !default;
+  $ease-100: 0.1s ease 0s !default;
+  $ease-out-100: 0.1s ease-out 0s !default;
+  $ease-200: 0.2s ease 0s !default;
+  $ease-out-200: 0.2s ease-out 0s !default;
+  $ease-300: 0.3s ease 0s !default;
+  $ease-400: 0.4s ease 0s !default;
+  $ease-200-delayed: 0.2s ease-out 0.2s !default;
+  $ease-100-delayed: 0.1s ease-out 0.1s !default;
+  $ease-600: 0.6s ease 0s !default;
+
+  $slow-end-anim: cubic-bezier(0.250, 0.250, 0.000, 0.995) !default;
+

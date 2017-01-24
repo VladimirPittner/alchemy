@@ -1,0 +1,121 @@
+// ---------------------------------------------
+// GRID
+// ---------------------------------------------
+
+// CONTENTS
+// Wrappers
+// Grid 12
+// Utilities
+
+// ----------------------------
+// WRAPPERS
+
+  .wrapper-main {
+    width: 100%;
+    max-width: $wrapper-main-width;
+    margin: 0 auto;
+    padding: 0 $wrapper-main-padding;
+
+    @include media-w-xl {
+      max-width: $wrapper-main-width-xl;
+      padding: 0 $wrapper-main-padding-xl;
+    }
+
+    @include media-w-m {
+      padding: 0 $wrapper-main-padding-m;
+    }
+
+    @include media-w-s {
+      padding: 0 $wrapper-main-padding-s;
+    }
+
+  }
+
+  .wrapper-full {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $wrapper-full-padding;
+
+    @include media-w-xl {
+      padding: 0 $wrapper-full-padding-xl;
+    }
+
+    @include media-w-m {
+      padding: 0 $wrapper-full-padding-m;
+    }
+
+    @include media-w-s {
+      padding: 0 $wrapper-full-padding-s;
+    }
+  }
+
+// ----------------------------
+// GRID 12
+
+  @include grid-base(12, $grid12-gutter, $grid12-margin-vertical);
+  @include grid-columns(12, 12, 'l', $grid12-margin-vertical);
+  @include grid-offsets(12, 12, 'l');
+
+  @include media-w-xl {
+    @include grid-gutters(12, $grid12-gutter-xl);
+    @include grid-columns(12, 12, 'xl', $grid12-margin-vertical);
+    @include grid-offsets(12, 12, 'xl');
+  }
+
+  @include media-w-m {
+    @include grid-columns(12, 12, 'm', $grid12-margin-vertical);
+    @include grid-offsets(12, 12, 'm');
+  }
+
+  @include media-w-s {
+    @include grid-gutters(12, $grid12-gutter-s);
+    @include grid-columns(12, 12, 's', $grid12-margin-vertical);
+    @include grid-offsets(12, 12, 's');
+  }
+
+  @include media-w-xs {
+    @include grid-columns(12, 12, 'xs', $grid12-margin-vertical);
+    @include grid-offsets(12, 12, 'xs');
+  }
+
+// ---------------------------------------------
+// UTILITIES
+
+  // show hide utilities
+
+  @include media-w-xl {
+    .hide-xl {  display: none !important;}
+  }
+  @include media-w-xl-only {
+    .hide-xl-only {  display: none !important;}
+  }
+
+  @include media-w-l {
+    .hide-l {   display: none !important;}
+  }
+  @include media-w-l-only {
+    .hide-l-only {   display: none !important;}
+  }
+
+  @include media-w-m {
+    .hide-m {   display: none !important;}
+  }
+  @include media-w-m-only {
+    .hide-m-only {   display: none !important;}
+  }
+
+  @include media-w-s {
+    .hide-s {   display: none !important;}
+  }
+  @include media-w-s-only {
+    .hide-s-only {   display: none !important;}
+  }
+
+  @include media-w-xs {
+    .hide-xs {  display: none !important;}
+  }
+  @include media-w-xs-only {
+    .hide-xs-only {  display: none !important;}
+  }
+
+

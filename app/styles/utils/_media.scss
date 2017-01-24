@@ -1,0 +1,49 @@
+// ---------------------------------------------
+// MEDIA
+// ---------------------------------------------
+
+// CONTENTS
+// Media Queries
+
+// ----------------------------
+// MEDIA QUERIES
+
+  @mixin media-w-xl() {
+    @media screen and (min-width: $media-w-xl) { @content }
+  }
+
+  @mixin media-w-xl-only() {
+    @media screen and (min-width: $media-w-xl) { @content }
+  }
+
+  @mixin media-w-l() {
+    @media screen and (max-width: $media-w-l) { @content }
+  }
+
+  @mixin media-w-l-only() {
+    @media screen and (min-width: $media-w-m + 1) and (max-width: $media-w-l) { @content }
+  }
+
+  @mixin media-w-m() {
+    @media screen and (max-width: $media-w-m) { @content }
+  }
+
+  @mixin media-w-m-only() {
+    @media screen and (min-width: $media-w-s + 1) and (max-width: $media-w-m) { @content }
+  }
+
+  @mixin media-w-s() {
+    @media screen and (max-width: $media-w-s) { @content }
+  }
+
+  @mixin media-w-s-only() {
+    @media screen and (min-width: $media-w-xs + 1) and (max-width: $media-w-s) { @content }
+  }
+
+  @mixin media-w-xs() {
+    @media screen and (max-width: $media-w-xs) { @content }
+  }
+
+  @mixin media-w-xs-only() {
+    @media screen and (max-width: $media-w-xs) { @content }
+  }

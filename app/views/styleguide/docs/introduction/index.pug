@@ -1,0 +1,114 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('introduction.getStarted', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block append content
+
+  .l-wrap-main
+
+    .l-h-intro
+      | Welcome to <strong>styleguide</strong> for <span>#{projectName}</span>.
+      br
+      small Or ready to use <strong>framework</strong>.
+
+    +h2 Content
+
+    +p Content of this styleguide is divided into four main categories: <strong>introduction</strong>, <strong>foundation</strong>, <strong>components</strong> and <strong>javascripts</strong>. These categories then contain modules. In foundation category you can find modules with preview of color palette, basic styling of typography, icons and main grid functionality. In components category you can find modules containing components as buttons, form components, tables, etc.
+
+    +note
+      +p Navigation between these categories and modules can be found at left side of page (hamburger menu for small screens).
+
+    +h3(class='no-mrg-bottom') Modules
+
+    .row
+
+      .col.col-l-7.col-s-12
+        +p Modules are separate sub pages that contain documentation for groups of similar components. Such as buttons module contain documentation for all variations and extends of buttons. Each module can contain sections and each section can contain subsection. List of sections can be found under main info (or in right sidebar for large screens).
+
+      .col.col-l-4.ofst-l-1.col-m-5.ofst-m-0.col-s-12
+        +figure
+          +img('figure')(src='/images/content/getstarted/contents.jpg', alt='Contents')
+          +figcaption Preview of sections list.
+
+    +h2 Documentation
+
+    .row
+
+      .col.col-l-4.col-m-12
+
+        +p(class='no-mrg-top') In addition to text in documentation, there are few components as <strong>example, note, warning or dependency</strong> for better explanation and illustration of styleguide components.
+
+      .col.col-l-7.ofst-l-1.col-m-12.ofst-m-0.col-m-space
+
+        +h3(class='no-mrg') Note
+
+        .row
+          .col.col-l-6.col-xs-12
+
+            +p Note is component used for additional informations or documentation.
+
+          .col.col-l-6.col-xs-12
+
+            +figure
+              +img('figure')(src='/images/content/getstarted/note.jpg', alt='Note')
+              +figcaption Preview of note.
+
+
+        +h3(class='no-mrg-bottom') Warning
+
+        .row
+          .col.col-l-6.col-xs-12
+
+            +p Warning is component used for showing importent informations or documentation.
+
+          .col.col-l-6.col-xs-12
+
+            +figure
+              +img('figure')(src='/images/content/getstarted/warning.jpg', alt='Warning')
+              +figcaption Preview of warning.
+
+        +h3(class='no-mrg-bottom') Dependency
+
+        .row
+          .col.col-l-6.col-xs-12
+
+            +p Dependency component is used in case that component require additional files or tools.
+
+          .col.col-l-6.col-xs-12
+
+            +figure
+              +img('figure')(src='/images/content/getstarted/dependency.jpg', alt='Dependency')
+              +figcaption Preview of dependency.
+
+    +h3 Example container
+
+    +p Example container serves to illustrate visual form or functionality of documented components including sample code. To show/hide sample code just click on code icon at top right corner.
+
+    .row
+      .col.col-l-5.col-m-7.col-s-12
+
+        +figure
+          +img('figure')(src='/images/content/getstarted/example.jpg', alt='Example')
+          +figcaption Preview of example container.
+
+      .col.col-l-4.ofst-l-3.col-m-5.ofst-m-0.col-s-12
+
+        +figure
+          +img('figure')(src='/images/content/getstarted/code.jpg', alt='Code icon')
+          +figcaption Preview of toggle code.
+
+    .row
+      .col.col-l-5.col-m-7.col-s-12
+
+        +figure
+          +img('figure')(src='/images/content/getstarted/example2.jpg', alt='Example with code')
+          +figcaption Preview of example with code.
+
+    +h2 Ready to use framework
+
+    +p After installation of Alchemy, it is also possible to use it as it is without further changes, with all components documented in styleguide.

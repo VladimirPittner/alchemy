@@ -1,0 +1,24 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('foundations.colorPalete', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/utils/_variables.scss'], contents)
+
+    +p-big Preview of primary, accent and supplementary colors and their variations used in project.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  +color-palette(l_colors)
+
+
+

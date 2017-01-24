@@ -1,0 +1,79 @@
+// ---------------------------------------------
+// INTRO - PAGE
+// ---------------------------------------------
+
+// CONTENTS
+// Intro
+
+// ----------------------------
+// INTRO
+
+  $intro-templates_header-bg:  $color-theme-500;
+  $intro-templates_item-border: 1px solid $color-grey-300;
+
+  .intro-templates_header {
+    padding: 20px 0;
+    background-color: $intro-templates_header-bg;
+    h1 {
+      font-size: 24px;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1;
+    }
+    span { color: rgba(255,255,255,0.5)}
+  }
+
+  .intro-templates_content {
+    padding: 20px 0;
+    h2 {
+      margin: 20px 0;
+      color: $intro-templates_header-bg;
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h3 {
+      margin: 20px 0;
+      font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+
+  .intro-templates_list,
+  .intro-templates_sublist {
+    @extend %list-unstyled;
+  }
+
+.intro-templates_list {
+    margin-top: 30px;
+  }
+
+  .intro-templates_sublist {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    display: none;
+    .intro-templates_item.active & {
+      display: block;
+    }
+  }
+
+  .intro-templates_item {
+    border-bottom: $intro-templates_item-border;
+    h3 {
+      color: $color-grey-500;
+      vertical-align: middle;
+      .icon {
+        margin-left: 10px;
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .intro-templates_subitem {
+    margin: 2px 0;
+    font-size: 14px;
+  }
+

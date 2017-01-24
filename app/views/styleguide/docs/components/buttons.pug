@@ -1,0 +1,621 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.buttons', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_buttons.scss'], contents)
+
+    +p-big Documentation of buttons and button variations including icons in buttons and responsive behavior of buttons. There are also explained button layouts, groups and bars and extended functionality for button as dropdown or split dropdown.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- BUTTONS
+  +content-section(contents[0])
+
+    +p Buttons can be created by using class <code class='l-code-inline'>.btn</code> on any element but it is recommended to use <code class='l-code-inline'>&lt;a&gt;</code>, <code class='l-code-inline'>&lt;button&gt;</code> or <code class='l-code-inline'>&lt;input&gt;</code>.
+
+    +demo
+      +demo-example
+        .btn-line.btn-line-stack-xs
+          a.btn Default
+          button.btn(type='button') Default
+          input.btn(type='submit', value='Default')
+          div.btn Default
+
+      +demo-code
+        :code
+          <a class="btn">Button</a>
+          <button type="button" class="btn">Button</button>
+          <input value="Button" class="btn" type="submit">
+          <div class="btn">Button</div>
+    //- end: demo
+
+    +content-sub-section('Types')
+
+      +p There are four types of button shape, default, square, rounded and circle. You can set shape of button by using class <code class='l-code-inline'>.btn-[square/rounded/circle]</code>.
+
+      +demo
+        +demo-example
+          .btn-line.btn-line-stack-s
+            button.btn(type='button') Default
+            button.btn.btn-square(type='button') Square
+            button.btn.btn-rounded(type='button') Rounded
+            button.btn.btn-circle(type='button')
+              i.icon.icon-m close
+
+
+        +demo-code
+          :code
+            <button class="btn" type="button">Default</button>
+            <button class="btn btn-square" type="button">Square</button>
+            <button class="btn btn-rounded" type="button">Rounded</button>
+            <button class="btn btn-circle" type="button">
+              <i class="icon icon-m">close</i>
+            </button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('States')
+
+      +p There are four button states: normal, hover (shows on mousehover), active (onclick), disabled.
+
+      +warning
+        +p To disable button created with <code class='l-code-inline'>&lt;a&gt;</code> tag you have to use class <code class='l-code-inline'>.disabled</code>.
+
+      +demo
+        +demo-example
+          .btn-line.btn-line-stack-xs
+            button.btn(type='button') Normal
+            button.btn.active(type='button') Active
+            button.btn(type='button', disabled) Disabled
+
+        +demo-code
+          :code
+            <button type="button" class="btn">Normal</button>
+            <button type="button" class="btn active">Active</button>
+            <button type="button" disabled="" class="btn">Disabled</button>
+      //- end: demo
+
+    +content-sub-section('Sizes')
+
+      +p There are three main sizes of buttons: medium (default), large and small. Size can be set with additional class like <code class='l-code-inline'>.btn-[large/small]</code>.
+
+      +demo
+        +demo-example
+          .btn-line.btn-line-stack-xs
+            button.btn.btn-large(type='button') Large
+            button.btn(type='button') Medium
+            button.btn.btn-small(type='button') Small
+        +demo-code
+          :code
+            <button type="button" class="btn btn-large">Large</button>
+            <button type="button" class="btn">Medium</button>
+            <button type="button" class="btn btn-small">Small</button>
+      //- end: demo
+
+    +content-sub-section('Expanding buttons')
+
+      +p Buttons can be expanded to full width when screen gets smaller by using classes <code class='l-code-inline'>.btn-full-[layout]</code>. Also buttons can be expanded for all screen sizes by using class <code class='l-code-inline'>.btn-full</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .btn-block
+                button.btn.btn-full(type='button') Expanded
+                button.btn.btn-full-l(type='button') L: Expand
+                button.btn.btn-full-m(type='button') M: Expand
+                button.btn.btn-full-s(type='button') S: Expand
+                button.btn.btn-full-xs(type='button') XS: Expand
+        +demo-code
+          :code
+            <button type="button" class="btn btn-full">Expanded</button>
+            <button type="button" class="btn btn-full-l">L: Expand</button>
+            <button type="button" class="btn btn-full-m">M: Expand</button>
+            <button type="button" class="btn btn-full-s">S: Expand</button>
+            <button type="button" class="btn btn-full-xs">XS: Expand</button>
+      //- end: demo
+
+    //- COLORS
+    +content-sub-section('Colors')
+
+      +p There are three main color variatons for buttons: default, primary and link. Color variation on button can be set with additional class like <code class='l-code-inline'>.btn-[primary/link]</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-3.col-s-6
+              h4 Default
+              .btn-block
+                button.btn(type='button') Default
+                button.btn.active(type='button') Default
+                button.btn(type='button', disabled) Default
+            .col.col-l-3.col-s-6
+              h4 Primary
+              .btn-block
+                button.btn.btn-primary(type='button') Primary
+                button.btn.btn-primary.active(type='button') Primary
+                button.btn.btn-primary(type='button', disabled) Primary
+            .col.col-l-3.col-s-6
+              h4 Link
+              .btn-block
+                button.btn.btn-link(type='button') Link
+                button.btn.btn-link.active(type='button') Link
+                button.btn.btn-link(type='button', disabled) Link
+        +demo-code
+          :code
+            <!-- default -->
+            <button type="button" class="btn">Default</button>
+            <button type="button" class="btn active">Default</button>
+            <button type="button" disabled="" class="btn">Default</button>
+
+            <!-- primary -->
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary active">Primary</button>
+            <button type="button" disabled="" class="btn btn-primary">Primary</button>
+
+            <!-- link -->
+            <button type="button" class="btn btn-link">Link</button>
+            <button type="button" class="btn btn-link active">Link</button>
+            <button type="button" disabled="" class="btn btn-link">Link</button>
+      //- end: demo
+
+  //- end: section
+
+  //- ICONS IN BUTTONS
+  +content-section(contents[1])
+
+    +p Icons can be added to button by creating icon element same way as described in <a class='l-a' href='icons.html'>icons</a>. There are two ways how to use icons in buttons - they can be floating or positioned.
+
+    +content-sub-section('Floating icons')
+
+      +p Floating icons can be moved to left or right side by adding classes like <code class='l-code-inline'>.icon-left</code> and <code class='l-code-inline'>.icon-right</code> on the icon element.
+
+      +demo
+        +demo-example
+          .row
+
+            .col.col-l-6.col-m-12
+              h4 Small icon and text
+              .btn-line.btn-line-stack-xs
+                button.btn(type='button')
+                  i.icon.icon-s.icon-left download
+                  | Download
+                button.btn.btn-primary(type='button')
+                  | Settings
+                  i.icon.icon-s.icon-right settings
+
+            .col.col-l-6.col-m-12
+              h4 Medium icon and text
+              .btn-line.btn-line-stack-xs
+                button.btn.btn-primary(type='button')
+                  i.icon.icon-m.icon-left download
+                  | Download
+                button.btn(type='button')
+                  | Settings
+                  i.icon.icon-m.icon-right settings
+
+            .col.col-l-6.col-m-12
+              h4 Large button and small button
+              .btn-line.btn-line-stack-xs
+                button.btn.btn-small.btn-primary(type='button')
+                  i.icon.icon-s.icon-left download
+                  | Download
+                button.btn.btn-large(type='button')
+                  | Settings
+                  i.icon.icon-m.icon-right settings
+
+            .col.col-l-6.col-m-12
+              h4 Only icons
+              .btn-line.btn-line-stack-xs
+                button.btn(type='button')
+                  i.icon.icon-s home
+                button.btn.btn-primary(type='button')
+                  i.icon.icon-m facebook
+                button.btn.btn-link(type='button')
+                  i.icon.icon-m edit
+        +demo-code
+          :code
+            <!-- small icon and text -->
+            <button type="button" class="btn">
+              <i class="icon icon-s icon-left">download</i> Download
+            </button>
+
+            <button type="button" class="btn btn-primary"> Settings
+              <i class="icon icon-s icon-right">settings</i>
+            </button>
+
+            <!-- medium icon and text -->
+            <button type="button" class="btn btn-primary">
+              <i class="icon icon-m icon-left">download</i> Download
+            </button>
+
+            <button type="button" class="btn"> Settings
+              <i class="icon icon-m icon-right">settings</i>
+            </button>
+
+            <!-- large and small button -->
+            <button type="button" class="btn btn-primary btn-small">
+              <i class="icon icon-s icon-left">download</i> Download
+            </button>
+
+            <button type="button" class="btn btn-large"> Settings
+              <i class="icon icon-m icon-right">settings</i>
+            </button>
+
+            <!-- only icons -->
+            <button type="button" class="btn">
+              <i class="icon icon-s">download</i>
+            </button>
+
+            <button type="button" class="btn btn-primary">
+              <i class="icon icon-m">settings</i>
+            </button>
+
+            <button type="button" class="btn btn-link">
+              <i class="icon icon-m">edit</i>
+            </button>
+      //- end: demo
+
+    +content-sub-section('Positioned icons')
+
+      +p Unlike floating icons, position of icons is set by using classes like <code class='l-code-inline'>.btn-icon-left</code> and <code class='l-code-inline'>.btn-icon-right</code> on button element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-4.col-m-5.col-xs-12
+              button.btn.btn-full.btn-icon-left(type='button')
+                i.icon.icon-s chevronleft
+                | Back
+
+            .col.col-l-4.ofst-l-4.col-m-5.ofst-m-2.col-xs-12.ofst-xs-0.col-xs-space
+              button.btn.btn-primary.btn-full.btn-icon-right(type='button')
+                | Next
+                i.icon.icon-s chevronright
+          .row.row-space
+            .col.col-l-4.col-m-5.col-xs-12
+              button.btn.btn-large.btn-full.btn-icon-left(type='button')
+                i.icon chevronleft
+                | Back
+
+            .col.col-l-4.ofst-l-4.col-m-5.ofst-m-2.col-xs-12.ofst-xs-0.col-xs-space
+              button.btn.btn-small.btn-primary.btn-full.btn-icon-right(type='button')
+                | Next
+                i.icon.icon-s chevronright
+
+        +demo-code
+          :code
+            <button type="button" class="btn btn-full btn-icon-left">
+              <i class="icon icon-s">chevronleft</i> Back
+            </button>
+
+            <button type="button" class="btn btn-primary btn-full btn-icon-right"> Next
+              <i class="icon icon-s">chevronright</i>
+            </button>
+
+            <button type="button" class="btn btn-large btn-full btn-icon-left">
+              <i class="icon">chevronleft</i> Back
+            </button>
+
+            <button type="button" class="btn btn-small btn-primary btn-full btn-icon-right"> Next
+              <i class="icon icon-s">chevronright</i>
+            </button>
+      //- end: demo
+
+  //- end: section
+
+  //- LAYOUTS
+  +content-section(contents[2])
+
+    +p There are two main button layouts that can be used: block and inline. Inline layout can be also combined with block layout.
+
+    +content-sub-section('Button line')
+
+      +p Line of buttons can be created by wrapping buttons into element with class <code class='l-code-inline'>.btn-line</code>. Buttons can then stack verticaly for small screens by using classes like <code class='l-code-inline'>.btn-line-stack-[layout]</code>.
+
+      +demo
+        +demo-example
+          p Buttons will stack verticaly for extra small screens.
+          .btn-line.btn-line-stack-xs
+            button.btn(type='button') Button
+            button.btn(type='button') Button
+            button.btn(type='button') Button
+        +demo-code
+          :code
+            <div class="btn-line btn-line-stack-xs">
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Button block')
+
+      +p Block of buttons can be created by wrapping buttons into element with class <code class='l-code-inline'>.btn-block</code>. There can be also created blocks of button lines same way.
+
+      +demo
+        +demo-example
+          .btn-block
+            button.btn(type='button') Button
+            button.btn(type='button') Button
+            .btn-line.btn-line-stack-xs
+              button.btn.btn-primary(type='button') Button
+              button.btn.btn-primary(type='button') Button
+        +demo-code
+          :code
+            <div class="btn-block">
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+              <div class="btn-line btn-line-stack-xs">
+                <button type="button" class="btn btn-primary">Button</button>
+                <button type="button" class="btn btn-primary">Button</button>
+              </div>
+            </div>
+      //- end: demo
+
+  //- end: section
+
+  //- GROUPS AND BARS
+  +content-section(contents[3])
+
+    +p Button groups and button bars can be used to merge related buttons into more complex components.
+
+    +content-sub-section('Button groups')
+
+      +p Button groups can be created by wrapping buttons into element with class <code class='l-code-inline'>.btn-group</code>. Button groups are by default inline, but if you want to stack them verticaly, you can use additional class <code class='l-code-inline'>.btn-group-stack</code> or <code class='l-code-inline'>.btn-group-stack-full</code> in case you need buttons to expand.
+      +p Buttons can also stack depending on screen size by using classes like <code class='l-code-inline'>.btn-group-stack-[layout]</code> and <code class='l-code-inline'>.btn-group-stack-full-[layout]</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-m-12.col-s-12
+              h4 Button groups inline
+              .btn-bar.btn-bar-stack
+                .btn-group.btn-group-stack-full-xs
+                  button.btn(type='button') Button
+                  button.btn(type='button') Button
+                  button.btn(type='button') Button
+                .btn-group.btn-group-stack-full-xs
+                  button.btn.btn-large.btn-primary(type='button') Button
+                  button.btn.btn-large.btn-primary(type='button') Button
+                  button.btn.btn-large.btn-primary(type='button')
+                    i.icon settings
+                .btn-group.btn-group-stack-full-xs
+                  button.btn.btn-small(type='button', disabled) Disabled
+                  button.btn.btn-small(type='button') Button
+                  button.btn.btn-small(type='button')
+                    i.icon.icon-s.icon-left edit
+                    | Edit
+
+            .col.col-l-6.col-m-12.col-s-12
+              h4 Button groups vertical
+
+              .btn-bar.btn-bar-stack-xs
+                .btn-group.btn-group-stack.btn-group-stack-full-xs
+                  button.btn.btn-primary(type='button') Button
+                  button.btn.btn-primary(type='button') Button
+                  button.btn.btn-primary(type='button') Button
+                .btn-group.btn-group-stack.btn-group-stack-full-xs
+                  button.btn.btn-large(type='button')
+                    i.icon home
+                  button.btn.btn-large(type='button') Button
+                .btn-group.btn-group-stack.btn-group-stack-full-xs
+                  button.btn.btn-small.btn-primary(type='button', disabled) Disabled
+                  button.btn.btn-small.btn-primary(type='button') Button
+                  button.btn.btn-small.btn-primary.btn-icon-left(type='button')
+                    i.icon.icon-s edit
+                    | Edit
+        +demo-code
+          :code
+            <div class="btn-group btn-group-stack-full-xs">
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+            </div>
+            <div class="btn-group btn-group-stack-full-xs"> ... </div>
+            <div class="btn-group btn-group-stack-full-xs"> ... </div>
+
+            <div class="btn-group btn-group-stack btn-group-stack-full-xs">
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+              <button type="button" class="btn">Button</button>
+            </div>
+            <div class="btn-group btn-group-stack btn-group-stack-full-xs"> ... </div>
+            <div class="btn-group btn-group-stack btn-group-stack-full-xs"> ... </div>
+      //- end: demo
+
+    +content-sub-section('Button bars')
+
+      +p Button bars can be created by wrapping button groups into element with class <code class='l-code-inline'>.btn-bar</code>. Button groups in button bars are ordered by default horizontaly but can also stack verticaly by using classes like <code class='l-code-inline'>.btn-bar-stack</code> or <code class='l-code-inline'>.btn-bar-stack-[layout]</code>.
+
+      +demo
+        +demo-example
+          .btn-bar.btn-bar-stack-s
+            .btn-group.btn-group-stack-full-xs
+              button.btn(type='button') Button
+              button.btn(type='button') Button
+            .btn-group
+              button.btn.btn-primary(type='button')
+                i.icon.icon-s home
+              button.btn.btn-primary(type='button')
+                i.icon.icon-s user
+              button.btn.btn-primary(type='button')
+                i.icon.icon-s settings
+            .btn-group
+              button.btn(type='button')
+                i.icon.icon-s facebook
+        +demo-code
+          :code
+            <div class="btn-bar btn-bar-stack-s">
+              <div class="btn-group btn-group-stack-full-xs">
+                <button type="button" class="btn">Button</button>
+                <button type="button" class="btn">Button</button>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary"> <i class="icon icon-s">home</i></button>
+                <button type="button" class="btn btn-primary"> <i class="icon icon-s">user</i></button>
+                <button type="button" class="btn btn-primary"> <i class="icon icon-s">settings</i></button>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn"><i class="icon icon-s">facebook</i></button>
+              </div>
+            </div>
+      //- end: demo
+  //- end: section
+
+  //- SPLIT AND DROPDOWNS
+  +content-section(contents[4], true)
+
+    +p Dropdown and split buttons are custom button components with extended functionality. While dropdowns provide extended options of action in dropdown menu, split buttons have these options separated from main action into second part of button.
+
+    +warning
+      +p Split buttons and dropdowns use toggle.js javascript module. Do not forget tu use class <code class='l-code-inline'>.js-toggle</code> to activate toggle.js. Use attributes like <code class='l-code-inline'>data-target</code>, <code class='l-code-inline'>data-toggle</code> and <code class='l-code-inline'>data-toggle-icon</code> to setup buttons.
+
+    +dependency('Javascript')
+
+      +p Split and dropdown button components require toggle.js javascript module: <code class='l-code-inline'>app/scripts/modules/toggle.js</code>. Init in: <code class='l-code-inline'>app/scripts/main.js</code> file.
+
+    +content-sub-section('Dropdown buttons')
+
+      +p Button dropdowns can be created by wrapping button and dropdown list into element with class <code class='l-code-inline'>.btn-dropdown</code>. Exact examples are shown below.
+
+      +note
+        +p Button dropdowns can be also used in button layouts same way as normal buttons. To expand button dropdowns use classes like <code class='l-code-inline'>.btn-dropdown-full</code> or <code class='l-code-inline'>.btn-dropdown-full-[layout]</code>.
+
+      +warning
+        +p Button dropdowns are not supported in button groups and button bars.
+
+      +demo
+        +demo-example
+          .btn-block
+            .btn-dropdown.btn-dropdown-full-xs
+              button.btn.js-toggle(type='button', data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup")
+                | Button
+                i.icon.icon-dropdown chevrondown
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+
+            .btn-dropdown.btn-dropdown-full-xs
+              button.btn.btn-primary.btn-large.js-toggle(type='button', data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup")
+                | Button
+                i.icon.icon-dropdown chevrondown
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+
+            .btn-dropdown.btn-dropdown-full-xs
+              button.btn.btn-small.js-toggle(type='button', data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup", disabled)
+                | Button
+                i.icon.icon-dropdown chevrondown
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+        +demo-code
+          :code
+            <div class="btn-dropdown btn-dropdown-full-xs">
+              <button type="button" data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn js-toggle"> Button
+                <i class="icon icon-dropdown">chevrondown</i>
+              </button>
+              <ul class="dropdown-list">
+                <li><a class="dropdown-list_item">List item 1</a></li>
+                ...
+              </ul>
+            </div>
+
+            <div class="btn-dropdown btn-dropdown-full-xs">
+              <button type="button" data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn btn-primary btn-large js-toggle"> Button
+                <i class="icon icon-dropdown">chevrondown</i>
+              </button>
+              <ul class="dropdown-list">
+                ...
+              </ul>
+            </div>
+
+            <div class="btn-dropdown btn-dropdown-full-xs">
+              <button type="button" data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn btn-small js-toggle disabled="""> Button
+                <i class="icon icon-dropdown">chevrondown</i>
+              </button>
+              <ul class="dropdown-list">
+                ...
+              </ul>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Split buttons')
+
+      +p Split buttons are basicaly extended dropdown buttons. They can be created same way as dropdowns with additional class <code class='l-code-inline'>.btn-dropdown-split</code> and instead of using one button, you will use two. First button is split control with class <code class='l-code-inline'>.btn-split-control</code> and second is regular button with class <code class='l-code-inline'>.btn-split</code>.
+      +p Same as dropdowns, split buttons can expand by using classes like <code class='l-code-inline'>.btn-dropdown-full</code> or <code class='l-code-inline'>.btn-dropdown-full-[layout]</code>.
+
+      +warning
+        +p Split buttons are not supported in button groups and button bars.
+        +p There is an issue with <code class='l-code-inline'>&lt;button&gt;</code> tag and expanding split button, please use <code class='l-code-inline'>&lt;a&gt;</code> tag instead.
+
+      +demo
+        +demo-example
+          .btn-block
+            .btn-dropdown.btn-dropdown-split.btn-dropdown-full-xs
+              a.btn.btn-split-control.js-toggle(data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup")
+                i.icon.icon-split chevrondown
+              a.btn.btn-split Button
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+
+            .btn-dropdown.btn-dropdown-split.btn-dropdown-full-xs
+              a.btn.btn-primary.btn-large.btn-split-control.js-toggle(data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup")
+                i.icon.icon-split chevrondown
+              a.btn.btn-primary.btn-large.btn-split Button
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+
+            .btn-dropdown.btn-dropdown-split.btn-dropdown-full-xs.disabled
+              a.btn.btn-small.btn-split-control.js-toggle.disabled(data-target='parent', data-toggle='dropdown', data-toggle-icon="chevronup")
+                i.icon.icon-split chevrondown
+              a.btn.btn-small.btn-split.disabled Button
+              ul.dropdown-list
+                each item in [1,2,3,4,5]
+                  li
+                    a.dropdown-list_item List item #{item}
+        +demo-code
+          :code
+            <div class="btn-dropdown btn-dropdown-split btn-dropdown-full-xs">
+              <a data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn btn-split-control js-toggle"><i class="icon icon-split">chevrondown</i>
+              </a>
+              <a class="btn btn-split">Button</a>
+              <ul class="dropdown-list">
+                <li><a class="dropdown-list_item">List item 1</a></li>
+                ...
+              </ul>
+            </div>
+
+            <div class="btn-dropdown btn-dropdown-split btn-dropdown-full-xs">
+              <a data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn btn-primary btn-large btn-split-control js-toggle"><i class="icon icon-split">chevrondown</i></a>
+              <a class="btn btn-primary btn-large btn-split">Button</a>
+              <ul class="dropdown-list"> ... </ul>
+            </div>
+
+            <div class="btn-dropdown btn-dropdown-split btn-dropdown-full-xs disabled">
+              <a data-target="parent" data-toggle="dropdown" data-toggle-icon="chevronup" class="btn btn-small btn-split-control js-toggle disabled"><i class="icon icon-split">chevrondown</i></a>
+              <a class="btn btn-small btn-split disabled">Button</a>
+              <ul class="dropdown-list"> ... </ul>
+            </div>
+
+  //- end: section

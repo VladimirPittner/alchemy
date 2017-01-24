@@ -1,0 +1,277 @@
+// ---------------------------------------------
+// TYPOGRAPHY
+// ---------------------------------------------
+
+// CONTENTS
+// General
+// Headings
+// Text
+// Lists
+// Utility
+
+// ---------------------------------------------
+// GENERAL
+
+  %text--default {
+    margin: $text--default-mv 0;
+  }
+
+// ---------------------------------------------
+// HEADINGS
+
+  h1,
+  .h1 {
+    margin: $h1-m;
+    font-family: $h1-ff;
+    font-size: $h1-fs;
+    font-weight: $h1-fw;
+    line-height: $h1-lh;
+    text-transform: $h1-tt;
+    letter-spacing: $h1-ltrsp;
+  } // headline 1
+
+  h2,
+  .h2 {
+    margin: $h2-m;
+    font-family: $h2-ff;
+    font-size: $h2-fs;
+    font-weight: $h2-fw;
+    line-height: $h2-lh;
+    text-transform: $h2-tt;
+    letter-spacing: $h2-ltrsp;
+  } // headline 2
+
+  h3,
+  .h3 {
+    margin: $h3-m;
+    font-family: $h3-ff;
+    font-size: $h3-fs;
+    font-weight: $h3-fw;
+    line-height: $h3-lh;
+    text-transform: $h3-tt;
+    letter-spacing: $h3-ltrsp;
+  } // headline 3
+
+  h4,
+  .h4 {
+    margin: $h4-m;
+    font-family: $h4-ff;
+    font-size: $h4-fs;
+    font-weight: $h4-fw;
+    line-height: $h4-lh;
+    text-transform: $h4-tt;
+    letter-spacing: $h4-ltrsp;
+  } // headline 4
+
+   h5,
+  .h5 {
+    margin: $h5-m;
+    font-family: $h5-ff;
+    font-size: $h5-fs;
+    font-weight: $h5-fw;
+    line-height: $h5-lh;
+    text-transform: $h5-tt;
+    letter-spacing: $h5-ltrsp;
+  } // headline 4
+
+  @include media-w-s {
+    h1,
+    .h1 {
+      font-size: $h1-fs-s;
+    }
+
+    h2,
+    .h2 {
+      font-size: $h2-fs-s;
+    }
+
+    h3,
+    .h3 {
+      font-size: $h3-fs-s;
+    }
+  }
+
+// ---------------------------------------------
+// TEXT
+
+  p {
+    @extend %text--default;
+  } // paragraph
+
+  .text-large {
+    font-size: $text-large-fs;
+    font-weight: $text-large-fw;
+    line-height: $text-large-lh
+  } // large
+
+  .text-small {
+    font-size: $text-small-fs;
+    font-weight: $text-small-fw;
+    line-height: $text-small-lh;
+  }
+
+  .text-desc {
+    color: $text-desc-c;
+    font-style: italic;
+    font-weight: $text-desc-fw;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $default-c;
+  }
+
+  .link {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    color: $link-c;
+    cursor: pointer;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+    transition: color $link-t, border $link-t;
+    &:hover {
+      color: $link-hover-c;
+      border-bottom-color: $link-hover-c;
+    }
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  abbr {
+    cursor: help;
+  }
+
+  hr {
+    height: 1px;
+    display: block;
+    margin: $hr-m;
+    border: none;
+    border-top: 1px solid $hr-bgc;
+  }
+
+  @include media-w-s(){
+    .text-large {
+      font-size: $text-large-fs-s;
+    }
+  }
+
+// ---------------------------------------------
+// LISTS
+
+  %list-unstyled,
+  .list-unstyled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  } // unstyled list
+
+  ul,
+  ol,
+  dl {
+    @extend %text--default;
+  }
+
+  .list-no-offset {
+    padding-left: 20px;
+    list-style-position: outside;
+  }
+
+  .list-expanded {
+    li {
+      margin: 0 0 $list-expanded-mb;
+      &:last-child {margin-bottom: 0;}
+    }
+  }
+
+  .list-inline {
+    @extend %list-unstyled;
+    margin:  $inline-list-margin;
+    & > li {
+      margin: $inline-list-margin-vertical $inline-list-margin-horizontal $inline-list-margin-vertical 0;
+      display: inline-block;
+      &:first-child {margin-left: 0;}
+      &:last-child {margin-right: 0;}
+    }
+  }
+
+  .list-inline-line {
+    margin: 0;
+    display: inline-block;
+    & > li {
+      margin: 0 $inline-list-margin-horizontal 0 0;
+      vertical-align: middle;
+    }
+  }
+
+  .list-inline-expanded {
+    & > li {
+      margin: $inline-list-margin-vertical $inline-list-expanded-margin-horizontal $inline-list-margin-vertical 0;
+    }
+  }
+
+  dl {
+    @extend %text--default;
+    dt {
+      font-weight: $dl__dt-fw;
+    }
+    dd {
+      margin-left: 0;
+      margin-bottom: $dl__dd-mb;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  } // definition list
+
+  .dl-inverted {
+    dt {
+      font-weight: normal;
+    }
+    dd {
+      font-weight: $dl__dt-fw;
+    }
+  }
+
+  .dl-inline {
+    @include clearfix;
+    dt, dd {
+      float: left;
+      margin: 0;
+    }
+    dt {
+      clear:both;
+      margin-right: $dl--inline__dt-mr;
+    }
+  }
+
+  .list-iconlist {
+    @extend %list-unstyled;
+    @extend .list-expanded;
+    .icon {
+      text-align: center;
+      margin-right: $list--iconlist__icon-mr;
+    }
+    li {
+      display: flex;
+      align-items: center;
+    }
+    li > span, .icon {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }

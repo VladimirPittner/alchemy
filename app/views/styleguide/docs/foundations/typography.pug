@@ -1,0 +1,484 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('foundations.typography', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/foundations/_typography.scss', 'app/styles/tools/_utilities.scss'], contents)
+
+    +p-big Documentation of headings, texts, list and all elements related to typography, including utility classes for text.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- HEADINGS
+  +content-section(contents[0])
+
+    +p There are five main headlines: h1-h5.
+
+    +note
+      +p In case that html tag mismatch style of headline, you can use classes <code class='l-code-inline'>.h1</code> - <code class='l-code-inline'>.h5</code>.
+
+    +demo
+      +demo-example
+        h1 Headline 1: Lorem ipsum
+
+        h2 Headline 2: Lorem ipsum Dolore eiusmod.
+
+        h3 Headline 3: Lorem ipsum Cupidatat irure.
+
+        h4 Headline 4: Lorem ipsum In laborum consequat.
+
+        h5 Headline 5: Lorem ipsum Aliquip culpa adipisicing.
+
+      +demo-code
+        :code
+          <h1>Headline 1...</h1>
+          <h2>Headline 2...</h2>
+          <h3>Headline 3...</h3>
+          <h4>Headline 4...</h4>
+          <h5>Headline 5...</h5>
+    //- end: demo
+
+    +table
+      thead
+        tr
+          th
+          th Tag / Class
+          th Font-size
+          th Font-family
+          th Font-weight
+      tbody
+        tr
+          th Headline 1
+          td <code class='l-code-inline'>&lt;h1&gt;</code>, <code class='l-code-inline'>.h1</code>
+          td 48px
+          td Libre Baskerville
+          td Bold
+        tr
+          th Headline 2
+          td <code class='l-code-inline'>&lt;h2&gt;</code>, <code class='l-code-inline'>.h2</code>
+          td 30px
+          td Libre Baskerville
+          td Regular
+        tr
+          th Headline 3
+          td <code class='l-code-inline'>&lt;h3&gt;</code>, <code class='l-code-inline'>.h3</code>
+          td 24px
+          td Open Sans
+          td Bold
+        tr
+          th Headline 4
+          td <code class='l-code-inline'>&lt;h4&gt;</code>, <code class='l-code-inline'>.h4</code>
+          td 16px
+          td Open Sans
+          td Bold
+        tr
+          th Headline 5
+          td <code class='l-code-inline'>&lt;h5&gt;</code>, <code class='l-code-inline'>.h5</code>
+          td 16px
+          td Libre Baskerville
+          td Bold
+  //- end: section
+
+  //- TEXT
+  +content-section(contents[1])
+
+    +p There are styles for default body text, large, small and description text.
+
+    +note
+      +p For hypertext links use class <code class='l-code-inline'>.link</code>
+
+    +demo
+      +demo-example
+        p.text-large <strong>Text large:</strong> Lorem ipsum Dolor quis adipisicing in in minim laborum adipisicing eu irure voluptate quis dolore sit cillum minim in adipisicing adipisicing occaecat laborum.
+
+        p <strong>Text body:</strong> Lorem ipsum <a class='link'>Ullamco voluptate</a> veniam consectetur mollit adipisicing labore cupidatat ad in dolore   consectetur culpa sit Duis cupidatat Duis laboris <a class='link'>voluptate</a> est nulla  enim laboris sit sint deserunt ullamco in fugiat dolor ullamco esse id ut <em>aliqua labore</em> pariatur lcommodo consectetur reprehenderit minim <strong>consectetur incididunt</strong> adipisicing deserunt pariatur non eiusmod velit ut quis aliquip qui occaecat in ex in adipisicing sunt.
+
+        p.text-desc <strong>Text description:</strong> Lorem ipsum Sed dolor magna cillum aliquip adipisicing occaecat nisi veniam deserunt est magna qui consequat Ut enim commodo laboris reprehenderit eu nostrud et tempor velit.
+
+        p.text-small <strong>Text small:</strong> Lorem ipsum Dolore veniam in ex ut culpa sunt incididunt aliquip et eu consectetur culpa quis elit anim magna enim dolor dolor officia occaecat sed tempor irure fugiat ullamco et laboris reprehenderit amet tempor sit nulla ut proident ex exercitation veniam.
+
+      +demo-code
+        :code
+          <!-- large -->
+          <p class="text-large">...</p>
+
+          <!-- default -->
+          <p>...</p>
+
+          <!-- description -->
+          <p class="text-desc">... </p>
+
+          <!-- small -->
+          <p class="text-small">...</p>
+    //- end: demo
+
+    +table
+      thead
+        tr
+          th
+          th Tag / Class
+          th Font-size
+          th Font-weight
+      tbody
+        tr
+          th Text large
+          th <code class='l-code-inline'>.text-large</code>
+          td 24px
+          td Regular
+        tr
+          th Text body
+          th <code class='l-code-inline'>&lt;p&gt;</code>
+          td 16px
+          td Regular
+        tr
+          th Text description
+          th <code class='l-code-inline'>.text-desc</code>
+          td 16px
+          td Regular
+        tr
+          th Text small
+          th <code class='l-code-inline'>.text-small</code>
+          td 13px
+          td Regular
+  //- end: section
+
+  //- LISTS
+  +content-section(contents[2])
+
+    +p There are styles for unordered, ordered and description lists and their variations.
+
+    +content-sub-section('Unordered list')
+
+      +demo
+        +demo-example
+          ul
+            li Est dolor incididunt eiusmod.
+            li Ad dolor ea aliquip officia.
+              ul
+                li Est dolor incididunt eiusmod.
+                li Ad dolor ea aliquip officia.
+            li Aliqua anim esse eu ex.
+            li Est sit enim est.
+            li Labore deserunt elit dolor commodo mollit.
+
+        +demo-code
+          :code
+            <ul>
+              <li>Est dolor incididunt eiusmod.</li>
+              <li>Ad dolor ea aliquip officia.
+                <ul>
+                  <li>...</li>
+                </ul>
+              </li>
+              <li>...</li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Ordered list')
+
+      +demo
+        +demo-example
+          ol
+            li Est dolor incididunt eiusmod.
+            li Ad dolor ea aliquip officia.
+              ol
+                li Est dolor incididunt eiusmod.
+                li Ad dolor ea aliquip officia.
+            li Aliqua anim esse eu ex.
+            li Est sit enim est.
+            li Labore deserunt elit dolor commodo mollit.
+
+        +demo-code
+          :code
+            <ol>
+              <li>Est dolor incididunt eiusmod.</li>
+              <li>Ad dolor ea aliquip officia.
+                <ol>
+                  <li>...</li>
+                </ol>
+              </li>
+              <li>...</li>
+            </ol>
+      //- end: demo
+
+    +content-sub-section('Custom lists')
+
+      +demo
+        +demo-example
+          h4 List no offset
+          ul.list-no-offset
+            li Ut veniam Ut dolor
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+
+          hr
+
+          h4 List expanded
+          ul.list-expanded
+            li Exercitation velit ex
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+
+          hr
+          h4 List unstyled
+          ul.list-unstyled
+            li Enim laborum
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+        +demo-code
+          :code
+            <!-- list no offset -->
+            <ul class="list-no-offset">
+              <li><strong>Ut veniam Ut dolor</strong></li>
+              <li>Ad dolor</li>
+              <li>Aliqua anim</li>
+              <li>Est sit</li>
+            </ul>
+
+            <!-- list expanded -->
+            <ul class="list-expanded">
+              <li><strong>Exercitation velit ex</strong></li>
+              <li>Ad dolor</li>
+              <li>Aliqua anim</li>
+              <li>Est sit</li>
+            </ul>
+
+            <!-- list unstyled -->
+            <ul class="list-unstyled">
+              <li><strong>Enim laborum</strong></li>
+              <li>Ad dolor</li>
+              <li>Aliqua anim</li>
+              <li>Est sit</li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Inline list')
+
+      +demo
+        +demo-example
+          h4 List inline
+          ul.list-inline
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+            li Labore deserunt
+
+          h4 List inline expanded
+          ul.list-inline.list-inline-expanded
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+            li Labore deserunt
+
+          h4 List inline line
+          ul.list-inline.list-inline-line
+            li Ad dolor
+            li Aliqua anim
+            li Est sit
+            li Labore deserunt
+
+        +demo-code
+          :code
+            <ul class="list-inline">
+              <li><strong>List inline</strong></li>
+              <li>...</li>
+            </ul>
+
+            <ul class="list-inline list-inline-expanded">
+              <li><strong>List inline expanded</strong></li>
+              <li>...</li>
+            </ul>
+
+            <ul class="list-inline list-inline-line">
+              <li><strong>List inline line</strong></li>
+              <li>...r</li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Description list')
+
+      +demo
+        +demo-example
+          h4 Description list
+          dl
+            dt Description list
+            dd Do dolor anim sit dolore ex.
+            dt Veniam ut amet
+            dd Non dolore in sed.
+            dt Eiusmod aute
+            dd Eu sed sint irure.
+          hr.l-hr
+
+          h4 Description list inverted
+          dl.dl-inverted
+            dt Description list inline
+            dd Do dolor anim sit dolore ex.
+            dt Veniam ut amet
+            dd Non dolore in sed.
+            dt Eiusmod aute
+            dd Eu sed sint irure.
+          hr.l-hr
+
+          h4 Description list inline
+          dl.dl-inline
+            dt Description list inline
+            dd Do dolor anim sit dolore ex.
+            dt Veniam ut amet
+            dd Non dolore in sed.
+            dt Eiusmod aute
+            dd Eu sed sint irure.
+
+        +demo-code
+          :code
+            <dl>
+              <dt>Description list</dt>
+              <dd>...</dd>
+            </dl>
+
+            <dl class='dl-inverted'>
+              <dt>Description list inverted</dt>
+              <dd>...</dd>
+            </dl>
+
+            <dl class="dl-inline">
+              <dt>Description list inline</dt>
+              <dd>...</dd>
+            </dl>
+      //- end: demo
+
+    +content-sub-section('Iconlist list')
+
+      +demo
+        +demo-example
+          ul.list-iconlist
+            li
+              i.icon.icon-m home
+              span Lorem ipsum Duis pariatur minim anim.
+            li
+              i.icon.icon-m user
+              span Lorem ipsum Culpa laborum elit.
+            li
+              i.icon.icon-m doc
+              span Lorem ipsum Do aute aliqua dolor nulla velit.
+        +demo-code
+          :code
+            <ul class="list-iconlist">
+              <li>
+                <i class="icon icon-m">home</i>
+                <span>Lorem ipsum Duis pariatur minim anim.</span>
+              </li>
+              <li>
+                <i class="icon icon-m">user</i>
+                <span>Lorem ipsum Culpa laborum elit.</span>
+              </li>
+              <li>
+                <i class="icon icon-m">doc</i>
+                <span>Lorem ipsum Do aute aliqua dolor nulla velit.</span>
+              </li>
+            </ul>
+      //- end: demo
+  //- end: section
+
+  //- UTILITIES
+  +content-section(contents[3], true)
+
+    +p Text utility classes provides basic functionality such as alignment or text transform. There are also utility classes for text colors.
+
+    +demo
+      +demo-example
+        p.text-left text left
+        p.text-center text center
+        p.text-right text right
+
+        p
+          span.text-vam text vertical align middle,
+          span.text-vat.text-space-fix text vertical align top,
+          span.text-vab.text-space-fix text vertical align bottom
+          span.text-vabl.text-space-fix text vertical align baseline
+
+        p
+          span.text-transform-upper text transform upper
+          br
+          span.text-transform-none text transform none
+
+        p
+          span.text-bold text bold
+          br
+          span.text-semibold text semibold
+          br
+          span.text-regular text regular
+          br
+          span.text-italic text italic
+
+        p.text-nospace text nospace
+        p.text-space-half text space half
+
+        p.text-nowrap <strong>Text nowrap</strong> ea dolor ea exercitation et esse incididunt ut Excepteur officia.
+
+        p.text-ellipsis Text ellipsis ea dolor ea exercitation et esse incididunt ut Excepteur officia Ut sint cupidatat cupidatat nostrud veniam id nisi ut proident proident culpa consectetur occaecat velit ullamco in sunt sint deserunt adipisicing.
+
+      +demo-code
+        :code
+          <p class="text-left">text left </p>
+          <p class="text-center">text center</p>
+          <p class="text-right">text right</p>
+
+          <p>
+            <span class="text-vam">text vertical align middle</span>
+            <span class="text-vat text-space-fix">text vertical align top</span>
+            <span class="text-vab text-space-fix">text vertical align bottom</span>
+            <span class="text-vabl text-space-fix">text vertical align baseline</span>
+          </p>
+
+          <p>
+            <span class="text-transform-upper">text transform upper</span><br>
+            <span class="text-transform-normal">text transform normal</span><br>
+
+            <span class="text-regular">text regular</span>
+            <span class="text-bold">text bold</span><br>
+            <span class="text-semibold">text semibold</span><br>
+            <span class="text-italic">text italic</span>
+          </p>
+
+          <p class="text-space-half">text space half</p>
+          <p class="text-nospace">text nospace</p>
+
+          <p class="text-nowrap">...</p>
+          <p class="text-ellipsis">...</p>
+    //- end: demo
+
+    +content-sub-section('Text colors')
+
+      +demo
+        +demo-example
+          ul.l-text-colors
+            each color in l_textcolors
+              li
+                span(class='text-color-' + color)= color
+
+        +demo-code
+          each color in l_textcolors
+            :code
+              <span class="text-color-
+            |#{color}
+            :code
+              ">
+            |#{color}
+            :code
+              </span>
+
+      //- end: demo
+  //- end: section
+

@@ -1,0 +1,133 @@
+// Lighting Grid Tool
+// Author: Vladimir Pittner
+// Email: iam@vladimirpittner.sk
+
+@mixin grid-base($columns, $gutter, $vertical-space: 0) {
+
+  .row {
+    width: auto;
+    margin: 0 #{-$gutter};
+    *zoom: 1;
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+    &.row-space {
+      margin: $vertical-space #{-$gutter};
+    }
+  }
+
+  .col-space {
+    margin-top: $vertical-space;
+  }
+
+  .col {
+    width: 100%;
+    min-height: 1px;
+    padding: 0 $gutter;
+    position: relative;
+    float: left;
+  }
+}
+
+@mixin grid-gutters($columns, $gutter) {
+
+  .row, .row.row-space {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+  }
+
+  .row-nospace {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .col {
+    padding: 0 $gutter;
+  }
+}
+
+@mixin grid-columns($columns-base, $columns, $postfix: "", $vertical-space: 0) {
+  $column-base-size: 100% / $columns-base;
+  $ratio: $columns-base / $columns;
+  $step: 1;
+  $i: 1;
+  $class: ".col-" + $postfix + "-";
+
+  @while $step <= $columns {
+
+    @if ($i + 1) / $ratio <= $step {
+      $class: $class + $i + ", .col-" + $postfix + "-";
+    }
+    @if ($i + 1) / $ratio > $step {
+      $class: $class + $i;
+
+      #{$class} {
+        width: $column-base-size * $step * $ratio;
+      }
+
+      $class: ".col-" + $postfix + "-";
+    }
+    @if $i / $ratio >= $step {
+      $step: $step + 1;
+    }
+
+    $i: $i + 1;
+  }
+
+  .row-#{$postfix}-space {
+    margin-top: $vertical-space;
+    margin-bottom: $vertical-space;
+  }
+
+  .col-#{$postfix}-space {
+    margin-top: $vertical-space;
+    // margin-bottom: $vertical-space;
+    // &:first-child { margin-top: $vertical-space; }
+    // &:last-child { margin-bottom: $vertical-space; }
+  }
+
+  .col-#{$postfix}-nospace, .row-#{$postfix}-nospace {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@mixin grid-offsets($columns-base, $columns, $prefix: "") {
+  $column-base-size: 100% / $columns-base;
+  $ratio: $columns-base / $columns;
+  $step: 0;
+  $i: 0;
+  $class: ".ofst-" + $prefix + "-";
+
+  @while $step <= $columns {
+
+    @if ($i + 1) / $ratio <= $step {
+      $class: $class + $i + ", .ofst-" + $prefix + "-";
+    }
+    @if ($i + 1) / $ratio > $step {
+      $class: $class + $i;
+
+      #{$class} {
+       margin-left: $column-base-size * $step * $ratio;
+      }
+
+      $class: ".ofst-" + $prefix + "-";
+    }
+    @if $i / $ratio >= $step {
+      $step: $step + 1;
+    }
+
+    $i: $i + 1;
+  }
+
+   #{$class}center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

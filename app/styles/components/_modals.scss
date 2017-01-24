@@ -1,0 +1,119 @@
+// ---------------------------------------------
+// MODALS
+// ---------------------------------------------
+
+// CONTENTS
+// Modal
+
+// ----------------------------
+// MODALS
+
+  .modal-overlay {
+    width: 0;
+    height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $modal-overlay-z-index;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(1.1,1.1);
+    background-color: $modal-overlay-bg-color;
+    transition: opacity $modal-overlay-e, transform $modal-overlay-e, width 0s linear 0.2s, height 0s linear 0.2s;
+
+    &.active {
+      width: 100% !important;
+      height: 100% !important;
+      opacity: 1;
+      transform: scale(1,1);
+      transition-delay: 0s;
+    }
+  }
+
+  .modal {
+    width: $modal-width;
+    max-height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateZ(0) translateY(-50%);
+    display: flex;
+    flex-flow: column;
+    background-color: $modal-bg-color;
+    border: $modal-border;
+    border-radius: $modal-border-radius;
+    box-shadow: $modal-box-shadow;
+
+    @include media-w-s {
+      width: 100%;
+      max-height: 100%;
+      height: 100%;
+      border-radius: 0;
+
+      &.modal-large {
+        width: 100%;
+      }
+    }
+  }
+
+  .modal-large {
+    width: $modal-large-width;
+  }
+
+  .modal_header {
+    width: 100%;
+    height: $modal_header-height;
+    padding: $modal_header-padding;
+    display: table;
+    flex: 0 0 auto;
+    vertical-align: middle;
+    background-color: $modal_header-bg-color;
+    border-radius: $modal-border-radius $modal-border-radius 0 0;
+
+    & + .modal_content {
+      border-top: $modal_header-border;
+    }
+  }
+
+  %modal_header_section {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal_header_headline {
+    @extend %modal_header_section;
+  }
+
+  .modal_header_action {
+    @extend %modal_header_section;
+    text-align: right;
+  }
+
+  .modal_close {
+    float: right;
+    padding-right: 0;
+  }
+
+  .modal_content {
+    padding: $modal_content-padding;
+    overflow: auto;
+    flex: 1 1 auto;
+    background-color: $modal_content-bg-color;
+
+    &:last-child {
+      border-radius: 0 0 $modal-border-radius $modal-border-radius;
+    }
+  }
+
+  .modal_footer {
+    padding: $modal_footer-padding;
+    flex: 0 0 auto;
+    background-color: $modal_footer-bg-color;
+    border-top: $modal_footer-border;
+
+    &:last-child {
+      border-radius: 0 0 $modal-border-radius $modal-border-radius;
+    }
+  }

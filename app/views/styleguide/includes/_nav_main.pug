@@ -1,0 +1,36 @@
+//- NAVIGATION MAIN
+
+// navigation main
+nav.l-nav-main(data-role='dropdown')
+
+  a.l-nav-main_headline(href='/')
+    span #{projectName}
+    br
+    small Styleguide
+
+  ul.l-nav-main_list.js-scrollbar(data-role='sidebar')
+
+    each category, keyCat in l_sitemap
+      li.l-nav-main_list_item
+
+        a.l-nav-main_link.js-toggle(class=keyCat == categoryID?'active selected':'', data-target='next')
+          | #{category.category}
+          i.icon caretright
+
+        ul.l-nav-main_list-sub(class=keyCat == categoryID?'active':'')
+          each page, keyPage in category.topics
+            unless page.visible == false
+              li.l-nav-main_list-sub_item
+                unless page.sub == undefined
+                  a.l-nav-main-sub_link.js-toggle(class=keyPage == pageID && keyCat == categoryID?'active selected':'', data-target='next')
+                    | #{page.title}
+                    i.icon.js-icon add
+                  ul.l-nav-main_list-sub2(class=keyCat == categoryID && keyPage == pageID?'active':'')
+                    each subpage, key2 in page.sub
+                      unless subpage.visible == false
+                        li.l-nav-main_list-sub2_item
+                          a.l-nav-main-sub2_link(href='/styleguide/docs/' + subpage.hlink, class=keyCat == categoryID && keyPage == pageID && key2 == subPageID?'selected':'') - #{subpage.title}
+                else
+                  a.l-nav-main-sub_link(href='/styleguide/docs/' + page.hlink, class=keyPage == pageID && keyCat == categoryID?'selected':'')= page.title
+
+// end: navigation main

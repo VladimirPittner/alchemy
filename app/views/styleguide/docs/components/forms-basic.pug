@@ -1,0 +1,550 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formBasic', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_forms.scss'], contents)
+
+    +p-big Documentation of basic form components such as inputs, textarea, checkboxes, radios and selects.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- INPUT
+  +content-section(contents[0])
+
+    +p Text inputs are basic form components and can be created by using class <code class='l-code-inline'>.input</code> on <code class='l-code-inline'>&lt;input&gt;</code> element.
+
+    +demo
+      +demo-example
+        .row.form-row
+          .form-controls.col.col-l-6.col-s-12
+            .form-control
+              input.input(type='text', placeholder='Input')
+      +demo-code
+        :code
+          <input placeholder="Input" class="input" type="text">
+    //- end: demo
+
+    +content-sub-section('Text input states')
+
+      +p States can be set by attributes and classes like <code class='l-code-inline'>.active</code>, <code class='l-code-inline'>[disabled]</code>, <code class='l-code-inline'>.disabled</code>, <code class='l-code-inline'>[readonly]</code>, <code class='l-code-inline'>.readonly</code> and <code class='l-code-inline'>.error</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    input.input.active(type='text', placeholder='Focus')
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    input.input(type='text', placeholder='Disabled', disabled, value='Disabled')
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    input.input(type='text', placeholder='Readonly', readonly, value='Readonly')
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    input.input.error(type='text', placeholder='Error', value='Error')
+        +demo-code
+          :code
+            <input placeholder="Focus" class="input active" type="text">
+            <input placeholder="Disabled" disabled="" class="input" type="text">
+            <input placeholder="Readonly" readonly="" class="input" type="text">
+            <input placeholder="Error" class="input error" type="text">
+      //- end: demo
+
+    +content-sub-section('Text input sizes')
+
+      +p There are three main sizes of text inputs: medium (default), large <code class='l-code-inline'>.input-large</code> and small <code class='l-code-inline'>.input-small</code>.
+
+      +demo
+        +demo-example
+          .row.form-row
+            .form-controls.col.col-l-6.col-s-12
+              .form-control
+                input.input.input-large(type='text', placeholder='Large', value='Large')
+              .form-control
+                input.input(type='text', placeholder='Medium', value='Medium')
+              .form-control
+                input.input.input-small(type='text', placeholder='Small', value='Small')
+        +demo-code
+          :code
+            <input placeholder="Large" class="input input-large" type="text">
+            <input placeholder="Medium" class="input" type="text">
+            <input placeholder="Small" class="input input-small" type="text">
+      //- end: demo
+
+  //- end: section
+
+  //- TEXTAREA
+  +content-section(contents[1])
+
+    +p Textarea can be styled by using class <code class='l-code-inline'>.input</code> on <code class='l-code-inline'>&lt;textarea&gt;</code> tag. Height can be specified with <code class='l-code-inline'>[rows]</code> attribute. States for textarea are same as for input.
+
+    +demo
+      +demo-example
+        .row.form-row
+          .form-controls.col.col-l-6.col-s-12
+            .form-control
+              textarea.input(rows=3)
+      +demo-code
+        :code
+          <textarea rows="4" class="input"></textarea>
+    //- end: demo
+
+  //- end: section
+
+  //- CHECKBOX RADIO
+  +content-section(contents[2])
+
+    +p Checkbox or radio element can be created by wrapping native <code class='l-code-inline'>&lt;inuput&gt;</code> element and <code class='l-code-inline'>&lt;label&gt;</code> with specific class as shown in examples below.
+
+    +warning
+      +p To proper function of checkbox or radio, do not forget to spicify ID for native <code class='l-code-inline'>&lt;input&gt;</code> element and <code class='l-code-inline'>[for]</code> attribute for custom element.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-controls.col
+                .checkbox
+                  input.checkbox-input(type='checkbox', id='checkbox-01', name='checkbox-01')
+                  label.checkbox-custom(for='checkbox-01')
+                  label.checkbox-label(for='checkbox-01') Checkbox
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-controls.col
+                .radio
+                  input.radio-input(type='radio', id='radio-01-01', name='radio-01')
+                  label.radio-custom(for='radio-01-01')
+                  label.radio-label(for='radio-01-01') Radio
+      +demo-code
+        :code
+          <div class="checkbox">
+            <input id="..." name="..." class="checkbox-input" type="checkbox">
+            <label for="..." class="checkbox-custom"></label>
+            <label for="..." class="checkbox-label">Checkbox</label>
+          </div>
+
+          <div class="radio">
+            <input id="..." name="..." class="radio-input" type="radio">
+            <label for="..." class="radio-custom"></label>
+            <label for="..." class="radio-label">Radio</label>
+          </div>
+    //- end: demo
+
+    +content-sub-section('Checkbox states')
+
+      +p States can be set by using attributes and classes like <code class='l-code-inline'>.active</code>, <code class='l-code-inline'>[disabled]</code>, <code class='l-code-inline'>.disabled</code>, <code class='l-code-inline'>[readonly]</code>, <code class='l-code-inline'>.readonly</code> and <code class='l-code-inline'>.error</code> on hidden native input element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .checkbox
+                    input.checkbox-input.active(type='checkbox', id='checkbox-02', name='checkbox-02', checked)
+                    label.checkbox-custom(for='checkbox-02')
+                    label.checkbox-label(for='checkbox-02') Focus
+              .row.form-row
+                .form-controls.col
+                  .checkbox
+                    input.checkbox-input(type='checkbox', id='checkbox-03', name='checkbox-03', disabled, checked)
+                    label.checkbox-custom(for='checkbox-03')
+                    label.checkbox-label(for='checkbox-03') Disabled
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .checkbox
+                    input.checkbox-input(type='checkbox', id='checkbox-04', name='checkbox-04', readonly, checked)
+                    label.checkbox-custom(for='checkbox-04')
+                    label.checkbox-label(for='checkbox-04') Readonly
+              .row.form-row
+                .form-controls.col
+                  .checkbox
+                    input.checkbox-input.error(type='checkbox', id='checkbox-05', name='checkbox-05', checked)
+                    label.checkbox-custom(for='checkbox-05')
+                    label.checkbox-label(for='checkbox-05') Error
+        +demo-code
+          :code
+            <div class="checkbox">
+              <input id="..." name="..." checked="" class="checkbox-input active" type="checkbox">
+              <label for="..." class="checkbox-custom"></label>
+              <label for="..." class="checkbox-label">Focus</label>
+            </div>
+
+            <div class="checkbox">
+              <input id="..." name="..." disabled="" checked="" class="checkbox-input" type="checkbox">
+              <label for="..." class="checkbox-custom"></label>
+              <label for="..." class="checkbox-label">Disabled</label>
+            </div>
+
+            <div class="checkbox">
+              <input id="..." name="..." readonly="" checked="" class="checkbox-input" type="checkbox">
+              ...
+            </div>
+
+            <div class="checkbox">
+              <input id="..." name="..." checked="" class="checkbox-input error" type="checkbox">
+              ...
+            </div>
+      //- end: demo
+
+    +content-sub-section('Radio states')
+
+      +p States can be set same way as for checkboxes.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .radio
+                    input.radio-input.active(type='radio', id='radio-02-01', name='radio-02', checked)
+                    label.radio-custom(for='radio-02-01')
+                    label.radio-label(for='radio-02-01') Focus
+              .row.form-row
+                .form-controls.col
+                  .radio
+                    input.radio-input(type='radio', id='radio-03-01', name='radio-03', disabled, checked)
+                    label.radio-custom(for='radio-03-01')
+                    label.radio-label(for='radio-03-01') Disabled
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .radio
+                    input.radio-input(type='radio', id='radio-04-01', name='radio-04', readonly, checked)
+                    label.radio-custom(for='radio-04-01')
+                    label.radio-label(for='radio-04-01') Readonly
+              .row.form-row
+                .form-controls.col
+                  .radio
+                    input.radio-input.error(type='radio', id='radio-05-01', name='radio-05-01', checked)
+                    label.radio-custom(for='radio-05-01')
+                    label.radio-label(for='radio-05-01') Error
+
+        +demo-code
+          :code
+            <div class="radio">
+              <input id="..." name="..." checked="" class="radio-input active" type="radio">
+              <label for="..." class="radio-custom"></label>
+              <label for="..." class="radio-label">Focus</label>
+            </div>
+
+            <div class="radio">
+              <input id="..." name="..." disabled="" checked="" class="radio-input" type="radio">
+              ...
+            </div>
+
+            <div class="radio">
+              <input id="..." name="..." readonly="" checked="" class="radio-input" type="radio">
+              ...
+            </div>
+
+            <div class="radio">
+              <input id="..." name="..." checked="" class="radio-input error" type="radio">
+              ...
+            </div>
+      //- end: demo
+
+    +content-sub-section('Checkbox / Radio sizes')
+
+      +p Size of checkbox or radio can be set by using classes like <code class='l-code-inline'>.checkbox-[size]</code> and <code class='l-code-inline'>.radio-[size]</code> on wrapper element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              h4 Checkbox
+              .row.form-row
+                .form-controls.col
+                  .checkbox.checkbox-large
+                    input.checkbox-input(type='checkbox', id='checkbox-large', name='checkbox-large', checked)
+                    label.checkbox-custom(for='checkbox-large')
+                    label.checkbox-label(for='checkbox-large') Large
+              .row.form-row
+                .form-controls.col
+                  .checkbox
+                    input.checkbox-input(type='checkbox', id='checkbox-medium', name='checkbox-medium', checked)
+                    label.checkbox-custom(for='checkbox-medium')
+                    label.checkbox-label(for='checkbox-medium') Medium
+              .row.form-row
+                .form-controls.col
+                  .checkbox.checkbox-small
+                    input.checkbox-input(type='checkbox', id='checkbox-small', name='checkbox-small', checked)
+                    label.checkbox-custom(for='checkbox-small')
+                    label.checkbox-label(for='checkbox-small') Small
+            .col.col-l-6.col-s-12
+              h4 Radio
+              .row.form-row
+                .form-controls.col
+                  .radio.radio-large
+                    input.radio-input(type='radio', id='radio-large', name='radio-large', checked)
+                    label.radio-custom(for='radio-large')
+                    label.radio-label(for='radio-large') Large
+              .row.form-row
+                .form-controls.col
+                  .radio
+                    input.radio-input(type='radio', id='radio-medium', name='radio-medium', checked)
+                    label.radio-custom(for='radio-medium')
+                    label.radio-label(for='radio-medium') Medium
+              .row.form-row
+                .form-controls.col
+                  .radio.radio-small
+                    input.radio-input(type='radio', id='radio-small', name='radio-small', checked)
+                    label.radio-custom(for='radio-small')
+                    label.radio-label(for='radio-small') Small
+        +demo-code
+          :code
+            <div class="checkbox checkbox-large">
+              <input id="..." name="..." class="checkbox-input" type="checkbox">
+              ...
+            </div>
+            <div class="checkbox">
+              <input id="..." name="..." class="checkbox-input" type="checkbox">
+              ...
+            </div>
+            <div class="checkbox checkbox-small">
+              <input id="..." name="..." class="checkbox-input" type="checkbox">
+              ...
+            </div>
+
+            <div class="radio radio-large">
+              <input id="..." name="..." class="radio-input" type="radio">
+              ...
+            </div>
+            <div class="radio">
+              <input id="..." name="..." class="radio-input" type="radio">
+              ...
+            </div>
+            <div class="radio radio-small">
+              <input id="..." name="..." class="radio-input" type="radio">
+              ...
+            </div>
+
+    +content-sub-section('Checkbox / Radio groups')
+
+      +p Checkbox (radio) group can be created by wrapping more checkbox (radio) elements into element with class <code class='l-code-inline'>.checkbox-group</code> or <code class='l-code-inline'>.radio-group</code>.
+
+      +warning
+        +p States for checkboxes and radios are set individualy on each element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              h4 Checkbox group
+              .row.form-row
+                .form-controls.col
+                  .checkbox-group
+                    .checkbox
+                      input.checkbox-input(type='checkbox', id='checkbox-group-01', name='checkbox-group-01')
+                      label.checkbox-custom(for='checkbox-group-01')
+                      label.checkbox-label(for='checkbox-group-01') Checkbox 1
+                    .checkbox
+                      input.checkbox-input(type='checkbox', id='checkbox-group-02', name='checkbox-group-02')
+                      label.checkbox-custom(for='checkbox-group-02')
+                      label.checkbox-label(for='checkbox-group-02') Checkbox 2
+                    .checkbox
+                      input.checkbox-input(type='checkbox', id='checkbox-group-03', name='checkbox-group-03')
+                      label.checkbox-custom(for='checkbox-group-03')
+                      label.checkbox-label(for='checkbox-group-03') Checkbox 3
+            .col.col-l-6.col-s-12
+              h4 Radio group
+              .row.form-row
+                .form-controls.col
+                  .radio-group
+                    .radio
+                      input.radio-input(type='radio', id='radio-group-01', name='radio-group')
+                      label.radio-custom(for='radio-group-01')
+                      label.radio-label(for='radio-group-01') Radio 1
+                    .radio
+                      input.radio-input(type='radio', id='radio-group-02', name='radio-group')
+                      label.radio-custom(for='radio-group-02')
+                      label.radio-label(for='radio-group-02') Radio 2
+                    .radio
+                      input.radio-input(type='radio', id='radio-group-03', name='radio-group')
+                      label.radio-custom(for='radio-group-03')
+                      label.radio-label(for='radio-group-03') Radio 3
+        +demo-code
+          :code
+            <div class="checkbox-group">
+              <div class="checkbox">
+                <input id="..." name="..." class="checkbox-input" type="checkbox">
+                <label for="..." class="checkbox-custom"></label>
+                <label for="..." class="checkbox-label">Checkbox 1</label>
+              </div>
+              <div class="checkbox">
+                ...
+              </div>
+              <div class="checkbox">
+                ...
+              </div>
+            </div>
+
+            <div class="radio-group">
+              <div class="radio">
+                <input id="..." name="..." class="radio-input" type="radio">
+                <label for="..." class="radio-custom"></label>
+                <label for="..." class="radio-label">Radio 1</label>
+              </div>
+              <div class="radio">
+                ...
+              </div>
+              <div class="radio">
+                ...
+              </div>
+            </div>
+    //- end: demo
+  //- end: section
+
+  //- SELECT
+  +content-section(contents[3], true)
+
+    +p Select can be created by using native <code class='l-code-inline'>&lt;select&gt;</code> element with class <code class='l-code-inline'>.js-select</code>. Then javascript will dynamicaly inject HTML DOM for custom select.
+
+    +dependency('Javascript')
+
+      +p Select component requires custom select plugin: <code class='l-code-inline'>app/scripts/plugins/customselect/dist/js/bootstrap-select.js</code>.
+      +p To ensure correct animation for select dropdown use SelectDropdownFade javascript in <code class='l-code-inline'>app/scripts/main.js</code>
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  select.js-select
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+      +demo-code
+        :code
+          <select class="js-select">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            ...
+          </select>
+    //- end: demo
+
+    +content-sub-section('Select states')
+
+      +p States can be set by using attributes and classes like <code class='l-code-inline'>[disabled]</code>, <code class='l-code-inline'>.disabled</code>, <code class='l-code-inline'>.readonly</code> and <code class='l-code-inline'>.error</code> on hidden native select element.
+
+      +warning
+        +p Readonly state must be set through class <code class='l-code-inline'>.readonly</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select(disabled)
+                      each option in [1,2,3,4,5]
+                        option Option #{option}
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select.readonly
+                      each option in [1,2,3,4,5]
+                        option Option #{option}
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select.error
+                      each option in [1,2,3,4,5]
+                        option Option #{option}
+        +demo-code
+          :code
+            <!-- disabled -->
+            <select disabled="" class="js-select">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- readonly -->
+            <select class="js-select readonly">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- error -->
+            <select class="js-select error">
+              <option>Option 1</option>
+              ...
+            </select>
+    //- end: demo
+
+    +content-sub-section('Select sizes')
+
+      +p There are three default sizes of select: medium, small and large. These can be set by using classes <code class='l-code-inline'>.select-[size]</code> on hidden native select element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select.select-large
+                      option Large
+                      each option in [1,2,3,4,5,]
+                        option Option #{option}
+
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select
+                      option Medium
+                      each option in [1,2,3,4,5,]
+                        option Option #{option}
+
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select.select-small
+                      option Small
+                      each option in [1,2,3,4,5,]
+                        option Option #{option}
+        +demo-code
+          :code
+            <!-- large -->
+            <select class="js-select select-large">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- medium -->
+            <select class="js-select">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- small -->
+            <select class="js-select select-small">
+              <option>Option 1</option>
+              ...
+            </select>
+    //- end: demo
+  //- end: section

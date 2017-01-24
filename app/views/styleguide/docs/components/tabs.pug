@@ -1,0 +1,83 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.tabs', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_tabs.scss'], contents)
+
+    +p-big Documentation for tab components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p Basic tabs can be created with main wrapper element <code class='l-code-inline'>.tabs</code>, list elements <code class='l-code-inline'>.tabs_tab</code> and link elements <code class='l-code-inline'>.tabs_link</code>.
+
+    +dependency('Javascript')
+
+      +p All tab components require Bootstrap Tab plugin <code class='l-code-inline'>/bower_components/bootstrap/js/tab.js</code>. <br> Documentation for bootstrap tabs: <a href='https://getbootstrap.com/javascript/#tabs' class='l-a' target='_blank'>getbootstrap.com/javascript/#tabs</a>.
+
+    +demo
+      +demo-example
+        ul.tabs
+          li.tabs_tab.active
+            a.tabs_link(href='#tab-1', data-toggle='tab') Tab active
+          li.tabs_tab
+            a.tabs_link(href='#tab-2', data-toggle='tab') Tab default
+          li.tabs_tab
+            a.tabs_link(href='#tab-3', data-toggle='tab') Tab default
+          li.tabs_tab
+            a.tabs_link.disabled(href='#tab-4', data-toggle='tab') Tab disabled
+
+        article.tabs_panes
+          section#tab-1.tabs_pane.active
+            p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+          section#tab-2.tabs_pane
+            p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+          section#tab-3.tabs_pane
+            p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+          section#tab-4.tabs_pane
+            p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
+      +demo-code
+        :code
+          <!-- tabs -->
+          <ul class="tabs">
+            <li class="tabs_tab active">
+              <a aria-expanded="true" href="#tab-1" data-toggle="tab" class="tabs_link">Tab active</a>
+            </li>
+            <li class="tabs_tab">
+              <a aria-expanded="false" href="#tab-2" data-toggle="tab" class="tabs_link">Tab default</a>
+            </li>
+            <li class="tabs_tab">
+              <a aria-expanded="false" href="#tab-2" data-toggle="tab" class="tabs_link">Tab default</a>
+            </li>
+            <li class="tabs_tab">
+              <a href="#tab-4" data-toggle="tab" class="tabs_link disabled">Tab disabled</a>
+            </li>
+          </ul>
+
+          <!-- tabs panes-->
+          <article class="tabs_panes">
+            <section id="tab-1" class="tabs_pane active">
+            </section>
+            <section id="tab-2" class="tabs_pane">
+            </section>
+            <section id="tab-3" class="tabs_pane">
+            </section>
+            <section id="tab-4" class="tabs_pane">
+            </section>
+          </article>
+      //- end: demo
+
+//- end: section
+

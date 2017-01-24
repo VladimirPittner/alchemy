@@ -1,0 +1,160 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.tables', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_tables.scss'], contents)
+
+    +p-big Documentation for tables and table components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- INPUT
+  +content-section(contents[0], true)
+
+    +p Basic table can be created by using class <code class='l-code-inline'>.table</code> on standard HTML table.
+
+    +demo
+      +demo-example
+        table.table
+          thead
+            tr
+              th No.
+              th Lorem
+              th Ipsum
+              th Dolor
+          tbody
+            tr
+              td 1
+              td Et fugiat
+              td Voluptate dolore
+              td 979
+            tr
+              td 2
+              td Quis deserunt
+              td Aliqua sint laboris ut
+              td 814
+            tr
+              td 3
+              td Voluptate dolore
+              td Aliqua sint laboris ut
+              td 436
+      +demo-code
+        :code
+          <table class="table">
+            ...
+          </table>
+    //- end: demo
+
+    +content-sub-section('Bordered')
+
+      +p To create bordered version of table simple ad additional class <code class='l-code-inline'>.table-bordered</code>.
+
+      +demo
+        +demo-example
+          table.table.table-bordered
+            thead
+              tr
+                th No.
+                th Lorem
+                th Ipsum
+                th Dolor
+            tbody
+              tr
+                td 1
+                td Et fugiat
+                td Voluptate dolore
+                td 979
+              tr
+                td 2
+                td Quis deserunt
+                td Aliqua sint laboris ut
+                td 814
+              tr
+                td 3
+                td Voluptate dolore
+                td Aliqua sint laboris ut
+                td 436
+        +demo-code
+          :code
+            <table class="table table-bordered">
+              ...
+            </table>
+      //- end: demo
+
+    +content-sub-section('Striped')
+
+      +p To create striped version of table simple ad additional class <code class='l-code-inline'>.table-striped</code>.
+
+      +demo
+        +demo-example
+          table.table.table-striped
+            thead
+              tr
+                th No.
+                th Lorem
+                th Ipsum
+                th Dolor
+            tbody
+              tr
+                td 1
+                td Et fugiat
+                td Voluptate dolore
+                td 979
+              tr
+                td 2
+                td Quis deserunt
+                td Aliqua sint laboris ut
+                td 814
+              tr
+                td 3
+                td Voluptate dolore
+                td Aliqua sint laboris ut
+                td 436
+        +demo-code
+          :code
+            <table class="table table-striped">
+              ...
+            </table>
+      //- end: demo
+
+    +content-sub-section('Clean')
+
+      +p To create clean no bordered version of table simple ad additional class <code class='l-code-inline'>.table-clean</code>.
+
+      +demo
+        +demo-example
+          table.table.table-clean
+            tbody
+              tr
+                td 1
+                td Et fugiat
+                td Voluptate dolore
+                td 979
+              tr
+                td 2
+                td Quis deserunt
+                td Aliqua sint laboris ut
+                td 814
+              tr
+                td 3
+                td Voluptate dolore
+                td Aliqua sint laboris ut
+                td 436
+        +demo-code
+          :code
+            <table class="table table-clean">
+              ...
+            </table>
+      //- end: demo
+
+  //- end: section

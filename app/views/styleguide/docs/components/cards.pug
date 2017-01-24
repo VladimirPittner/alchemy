@@ -1,0 +1,160 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.cards', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_cards.scss'], contents)
+
+    +p-big Documentation for basic card components, card headers and footers.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- CARDS
+  +content-section(contents[0])
+
+    +p A card serves as an entry point to more detailed information. Cards may contain a photo, text, link, list, tables and any other conten. The most basic card can be created by using class <code class='l-code-inline'>.card</code> on element that wraps our content. Content should be then wrapped in element with class <code class='l-code-inline'>.card_content</code>. One card can contain more <code class='l-code-inline'>.card_content</code> elements.
+
+    +note
+      +p More complex cards can contain also headers and footers.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-m-12
+            article.card
+              section.card_content
+                h3.text-nospace Basic card
+                p.no-mrg-bottom Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat qui magna qui labore dolore do velit sint.
+
+          .col.col-l-6.col-m-12.col-m-space
+            article.card
+              section.card_content
+                h3.text-nospace Card with two contents.
+                p.no-mrg-bottom Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et.
+              section.card_content
+                p.text-nospace Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat qui magna qui labore dolore do velit sint.
+      +demo-code
+        :code
+          <!-- basic card -->
+          <article class="card">
+            <section class="card_content">
+              ...
+            </section>
+          </article>
+
+          <!-- card with two contents-->
+          <article class="card">
+            <section class="card_content">
+              ...
+            </section>
+            <section class="card_content">
+              ...
+            </section>
+          </article>
+    //- end: demo
+
+  //- end: section
+
+  //- HEADER
+  +content-section(contents[1])
+
+    +p Card header is part of the card component. It can be created by using class <code class='l-code-inline'>.card_header</code> on header element.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-m-12
+            article.card
+              header.card_header
+                h4.text-nospace Card with header
+              section.card_content
+                p.text-nospace Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
+      +demo-code
+        :code
+          <article class="card">
+            <header class="card_header">
+              ...
+            </header>
+            <section class="card_content">
+              ...
+            </section>
+          </article>
+    //- end: demo
+
+    +content-sub-section('Header sections')
+
+      +p Card header can be also split into two sections. In that case use additional class <code class='l-code-inline'>.card_header-split</code>. Then you can use classes like <code class='l-code-inline'>.card_header_primary</code> and <code class='l-code-inline'>.card_header_secondary</code> on inner elements.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-m-12
+              article.card
+                header.card_header.card_header-split
+                  .card_header_primary
+                    h4.text-nospace Headline
+                  .card_header_secondary
+                    button.btn.btn-link.no-pad-right(type='button')
+                      i.icon.icon-m settings
+                section.card_content
+                  p.text-nospace Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
+        +demo-code
+          :code
+            <article class="card">
+              <header class="card_header card_header-split">
+                <div class="card_header_primary">
+                  ...
+                </div>
+                <div class="card_header_secondary">
+                  ...
+                </div>
+              </header>
+              <section class="card_content">
+                ...
+              </section>
+            </article>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section
+
+  //- FOOTER
+  +content-section(contents[2], true)
+
+    +p Card footer is part of the card component. It can be created by using class <code class='l-code-inline'>.card_footer</code> on footer element.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-m-12
+            article.card
+              section.card_content
+                h3.text-nospace Card with footer
+                p.no-mrg-bottom Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat qui magna qui labore dolore do velit sint.
+              footer.card_footer
+                button.btn.btn-link(type='button') Cancel
+                button.btn.btn-link.no-pad-right(type='button') Save
+
+      +demo-code
+        :code
+          <article class="card">
+            <section class="card_content">
+              ...
+            </section>
+            <footer class="card_footer">
+              ...
+            </footer>
+          </article>
+    //- end: demo
+
+  //- end: section

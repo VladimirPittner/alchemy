@@ -1,0 +1,120 @@
+// ---------------------------------------------
+// UTILITIES
+// set of utility classes
+// ---------------------------------------------
+
+// CONTENTS
+// Typography utilities
+// Layout utilities
+
+// ---------------------------------------------
+// TYPOGRAPHY UTILITIES
+
+  .text-transform-upper { text-transform: uppercase; }
+  .text-transform-none { text-transform: none; }
+
+  .text-normal { font-weight: normal; }
+  .text-semibold { font-weight: 600; }
+  .text-bold, strong { font-weight: 700; }
+
+  em, .text-italic { font-style: italic;}
+
+  .text-center { text-align: center; }
+  .text-left { text-align: left; }
+  .text-right { text-align: right; }
+  .text-justify { text-align: justify; }
+
+  .text-vam { vertical-align: middle;}
+  .text-vat { vertical-align: top;}
+  .text-vab { vertical-align: bottom;}
+  .text-vabl { vertical-align: baseline; }
+
+  .text-space-half { margin: $text--default-mv/2 0; }
+  .text-nospace {
+    margin: 0;
+  }
+  .text-space-fix { margin-left: 0.5em; }
+
+
+  .text-nowrap { white-space: nowrap;}
+  .text-ellipsis {
+    @include text-ellipsis;
+  }
+
+  .text-color-theme-500 { color: $text-color-theme-500; }
+  .text-color-theme-400 { color: $text-color-theme-400; }
+  .text-color-theme-100 { color: $text-color-theme-100; }
+  .text-color-black { color: $text-color-black; }
+  .text-color-semiblack { color: $text-color-semiblack; }
+  .text-color-grey { color: $text-color-grey; }
+  .text-color-grey-800 { color: $text-color-grey-800; }
+  .text-color-white { color: $text-color-white; }
+  .text-color-semiwhite { color: $text-color-semiwhite; }
+  .text-color-error { color: $text-color-error; }
+
+// ---------------------------------------------
+// LAYOUT UTILITIES
+
+  // mixin for utilities with layout targeting
+  @mixin rwd-grid-utilities($postfix: '') {
+
+    .pull-right#{$postfix} {float: right !important;}
+    .pull-left#{$postfix} {float: left !important;}
+    .pull-center#{$postfix} {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      float: none !important;
+      display: block !important;
+    }
+
+    .inline-block#{$postfix} {
+      float: none !important;
+      display: inline-block !important;
+    }
+
+    .no-mrg#{$postfix} {margin: 0 !important;}
+    .no-mrg-top#{$postfix} {margin-top: 0 !important;}
+    .no-mrg-bottom#{$postfix} {margin-bottom: 0 !important;}
+    .no-mrg-left#{$postfix} {margin-left: 0 !important;}
+    .no-mrg-right#{$postfix} {margin-right: 0 !important;}
+    .no-mrg-vertical#{$postfix} {margin-top: 0 !important; margin-bottom: 0 !important;}
+    .no-mrg-horizontal#{$postfix} {margin-left: 0 !important; margin-right: 0 !important;}
+
+    .no-pad#{$postfix} {padding: 0 !important;}
+    .no-pad-top#{$postfix} {padding-top: 0 !important;}
+    .no-pad-bottom#{$postfix} {padding-bottom: 0 !important;}
+    .no-pad-left#{$postfix} {padding-left: 0 !important;}
+    .no-pad-right#{$postfix} {padding-right: 0 !important;}
+    .no-pad-vertical#{$postfix} {padding-top: 0 !important; padding-bottom: 0 !important;}
+    .no-pad-horizontal#{$postfix} {padding-left: 0 !important; padding-right: 0 !important;}
+  }
+
+  // utilities without postfix
+  @include rwd-grid-utilities();
+
+  @include media-w-xl {
+    @include rwd-grid-utilities('-xl');
+  }
+
+  @include media-w-m {
+    @include rwd-grid-utilities('-m');
+  }
+
+  @include media-w-s {
+    @include rwd-grid-utilities('-s');
+  }
+
+  @include media-w-xs {
+    @include rwd-grid-utilities('-xs');
+  }
+
+  // layout hacks
+  .clearfix { @include clearfix; }
+  .center-unknown { @include center-unknown('>'); }
+  .clear {clear: both;}
+
+  // flex utilities
+  .flex-row-center {
+    display: flex;
+    align-items: center;
+  }

@@ -1,0 +1,142 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.icons', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_icons_images.scss'], contents)
+
+    +p-big Documentation of icons, image utilities and badge components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- ICONS
+  +content-section(contents[0])
+
+    +p Here is preview of icon set used in this project. An icon can be created by using class <code class='l-code-inline'>.icon</code> on <code class='l-code-inline'>&lt;i&gt;</code> element and coresponding ligature inside the tags. Ligatures for icons can be found under icons in preview
+
+    +warning
+      +p Do not forget to configure preferences for icomoon font: check include metadata in fonts, check encode &amp; embed font in CSS
+
+    +dependency
+      +p
+        | Icomoon icons require to link <code class='l-code-inline'>app/fonticons/icomoon/style.css</code> file in <code class='l-code-inline'>&lt;head&gt;</code>.
+        br
+        | All files required for icomoon can be found in folder <code class='l-code-inline'>app/fonticons/icomoon/</code>
+        br
+        | For more specific documentation check <a class='l-a' href='https://icomoon.io/', target='_blank'>icomoon</a>.
+
+    +demo
+      +demo-example
+        ul.l-icons
+          each icon in helpers.getIcons()
+            li.l-icons_item
+              i.icon.icon-l= icon
+              br
+              abbr(title=icon).text-color-semiblack= icon
+
+      +demo-code
+        - for (var i=0; i < helpers.getIcons().length; i++) {
+          :code
+            <i class="icon icon-l">
+          | #{helpers.getIcons()[i]}
+          :code
+            </i>
+
+        - }
+    //- end: demo
+
+    +content-sub-section('Sizes')
+
+      +p There are fours sizes for iconsL XL, L, M, S. Size for icon can be specified with class <code class='l-code-inline'>.icon-[xl/l/m/s]</code> on icon element.
+
+      +note
+        +p In case there is no class for size, icon will inherit size from parent font-size property.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              i.icon.icon-xl home
+              br
+              abbr(title='Icon XL').text-color-semiblack XL
+            li.l-icons_item
+              i.icon.icon-l home
+              br
+              abbr(title='Icon L').text-color-semiblack L
+            li.l-icons_item
+              i.icon.icon-m home
+              br
+              abbr(title='Icon M').text-color-semiblack M
+            li.l-icons_item
+              i.icon.icon-s home
+              br
+              abbr(title='Icon S').text-color-semiblack S
+
+        +demo-code
+          :code
+            <ul>
+              <li><i class="icon icon-xl">home</i></li>
+              <li><i class="icon icon-l">home</i></li>
+              <li><i class="icon icon-m">home</i></li>
+              <li><i class="icon icon-s">home</i></li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Colors')
+
+      +p Icons use same <a class='l-a' href='/typography.html#utilities'>text color</a> priciple for colors as typography.
+
+      +note
+        +p In case there is no class for color, icon will inherit color from parent color property.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              i.icon.icon-l.text-color-theme-500 home
+            li.l-icons_item
+              i.icon.icon-l.text-color-theme-100 home
+            li.l-icons_item
+              i.icon.icon-l.text-color-semiblack home
+            li.l-icons_item
+              i.icon.icon-l.text-color-error home
+
+        +demo-code
+          :code
+            <ul>
+              <li><i class="icon icon-l text-color-theme-500">home</i></li>
+              <li><i class="icon icon-l text-color-theme-100">home</i></li>
+              <li><i class="icon icon-l text-color-semiblack">home</i></li>
+              <li><i class="icon icon-l text-color-error">home</i></li>
+            </ul>
+      //- end: demo
+
+  +content-section(contents[1], true)
+
+    +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
+
+    +demo
+      +demo-example
+        figure.l-image
+          img(src='/images/300x300.gif', alt='placeholder').img-fluid
+        figure.l-image
+          img(src='/images/150x150.gif', alt='placeholder').img-rounded
+        figure.l-image
+          img(src='/images/150x150.gif', alt='placeholder').img-circle
+
+      +demo-code
+        :code
+          <img src="..." class="img-fluid">
+          <img src="..." class="img-rounded">
+          <img src="..." class="img-circle">
+    //- end: demo
+  //- end: section

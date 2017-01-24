@@ -1,0 +1,270 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formLayouts', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_forms.scss'], contents)
+
+    +p-big Documentation of possible form layouts including vertical, multicolumn and inline layout.
+  //- end: main info
+
+//- Content
+block append content
+
+  //- FORM LAYOUTS
+  +content-section(contents[0])
+
+    +p Form layouts consists of containers as <code class='l-code-inline'>.form-row</code>, <code class='l-code-inline'>.form-label</code>, <code class='l-code-inline'>.form-controls</code> and <code class='l-code-inline'>.from-control</code>.
+
+    +p The main container <code class='l-code-inline'>.form-row</code> have two children containers <code class='l-code-inline'>.form-label</code> and <code class='l-code-inline'>.form-controls</code>. The <code class='l-code-inline'>.form-label</code> contains basic label for form controls. The <code class='l-code-inline'>.form-controls</code> container can contains one or more <code class='l-code-inline'>.form-control</code> containers.
+
+    +note
+      +p Layouts are using same classes as <a href='grid.html' class='l-a'>grid</a> to represent row (<code class='l-code-inline'>.form-row</code>) and columns (<code class='l-code-inline'>.form-label</code>, <code class='l-code-inline'>.form-controls</code>). Thus width of elements containers can be set the same way as grid.
+
+  //- end: section
+
+  +content-section(contents[1])
+
+    +p Vertical layout is the most basic form layout and can be created by following principles shown in example below. In case you need more form components for one form label, you can use vertical block layout. This layout can be created by using additional class <code class='l-code-inline'>.form-controls-block</code> on <code class='l-code-inline'>.form-controls</code> element.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            h4 Vertical layout
+            .row.form-row
+              .form-label.col
+                label(for='input-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-vl-01')
+            .row.form-row
+              .form-label.col
+                label(for='input-01') Form label:
+              .form-controls.col
+                .form-control
+                  textarea.input(type='text', placeholder='Textarea', id='textarea-vl-01')
+            .row.form-row
+              .form-label.col
+                label(for='input-01') Form label:
+              .form-controls.col
+                .checkbox
+                  input.checkbox-input(type='checkbox', id='checkbox-vl', name='checkbox-vl')
+                  label.checkbox-custom(for='checkbox-vl')
+                  label.checkbox-label(for='checkbox-vl') Checkbox
+
+          .col.col-l-6.col-s-12
+            h4 Vertical block layout
+            .row.form-row
+              .form-label.col
+                label(for='input-01') Form label:
+              .form-controls.form-controls-block.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-vbl-01')
+                .form-control
+                  textarea.input(type='text', placeholder='Textarea', id='textarea-vbl-01')
+                .checkbox
+                  input.checkbox-input(type='checkbox', id='checkbox-vbl', name='checkbox-vbl')
+                  label.checkbox-custom(for='checkbox-vbl')
+                  label.checkbox-label(for='checkbox-vbl') Checkbox
+      +demo-code
+        :code
+          <!-- vertical layout -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label for="...">...</label>
+            </div>
+            <div class="form-controls col">
+              <div class="form-control">
+                <input placeholder="..." id="..." class="input" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="form-label col"> ... </div>
+            <div class="form-controls col"> ... </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="form-label col"> ... </div>
+            <div class="form-controls col"> ... </div>
+          </div>
+
+          <!-- vertical block layout -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label for="...">Form label:</label>
+            </div>
+            <div class="form-controls form-controls-block col">
+              <div class="form-control">
+                <input placeholder="..." id="..." class="input" type="text">
+              </div>
+              <div class="form-control">
+                ...
+              </div>
+              <div class="checkbox">
+                ...
+              </div>
+            </div>
+          </div>
+    //- end: demo
+  //- end: section
+
+  +content-section(contents[2])
+
+    +p Multicolumn layout can be created easily by combining <a href='grid.html#grid12'>Grid 12</a> with form layout as shown in example below.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-3.col-m-5.col-s-6.col-xs-12
+            .row.form-row
+              .form-label.col
+                label(for='input-ml-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-ml-01')
+          .col.col-l-1.col-m-2.col-s-6.col-xs-12
+            .row.form-row
+              .form-label.col
+                label(for='input-ml-03') Label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-ml-02')
+          .col.col-l-3.col-m-5.col-s-12.col-xs-12
+            .row.form-row
+              .form-label.col
+                label(for='input-ml-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-ml-03')
+          .col.col-l-2.col-m-6.col-xs-12
+            .row.form-row
+              .form-label.col
+                label(for='input-ml-05') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-ml-05')
+          .col.col-l-3.col-m-6.col-xs-12
+            .row.form-row
+              .form-label.col
+                label(for='select-ml-01') Form label:
+              .form-controls.col
+                .form-control
+                  select.js-select(id='select-ml-01')
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+      +demo-code
+        :code
+          <div class="row">
+            <div class="col col-l-3 col-m-5 col-s-6 col-xs-12">
+              <div class="row form-row">
+                <div class="form-label col">
+                  <label for="...">Form label:</label>
+                </div>
+                <div class="form-controls col">
+                  <div class="form-control">
+                    <input placeholder="..." id="..." class="input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col col-l-1 col-m-2 col-s-6 col-xs-12">
+              <div class="row form-row">
+                ...
+              </div>
+            </div>
+
+            <div class="col col-l-3 col-m-5 col-s-12 col-xs-12">
+              <div class="row form-row">
+                ...
+              </div>
+            </div>
+
+            <div class="col col-l-2 col-m-6 col-xs-12">
+              <div class="row form-row">
+                ...
+              </div>
+            </div>
+
+            <div class="col col-l-3 col-m-6 col-xs-12">
+              <div class="row form-row">
+                ...
+              </div>
+            </div>
+          </div>
+    //- end: demo
+  //- end: section
+
+  //- FIXED LENGTHS
+  +content-section(contents[3], true)
+
+    +p In some cases you might need to set fixed length (width) of form controls. In that situation you can use wrapper <code class='l-code-inline'>.form-control</code> and additional class <code class='l-code-inline'>.form-control-fixed-[1-12]</code> to set lengths.
+
+    +demo
+      +demo-example
+        - for(var i = 1; i <= 12; i++ ) {
+            .form-control(class='form-control-fixed-' + i)
+              input.input(type='text', placeholder=i + ' length')
+        - }
+      +demo-code
+        :code
+          <div class="form-control form-control-fixed-1">
+            <input class="input" placeholder="1 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-2">
+            <input class="input" placeholder="2 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-3">
+            <input class="input" placeholder="3 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-4">
+            <input class="input" placeholder="4 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-5">
+            <input class="input" placeholder="5 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-6">
+            <input class="input" placeholder="6 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-7">
+            <input class="input" placeholder="7 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-8">
+            <input class="input" placeholder="8 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-9">
+            <input class="input" placeholder="9 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-10">
+            <input class="input" placeholder="10 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-11">
+            <input class="input" placeholder="11 length" type="text">
+          </div>
+
+          <div class="form-control form-control-fixed-12">
+            <input class="input" placeholder="12 length" type="text">
+          </div>
+    //- end: demo
+
+  //- end: section

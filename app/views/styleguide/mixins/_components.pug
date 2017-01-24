@@ -1,0 +1,230 @@
+//- ---------------------------------------------
+//- LIGHT GENERAL HTML ELEMENTS
+//- mixins for general html elements with light classes
+
+mixin h2
+  h2.l-h2()&attributes(attributes)
+    block
+
+mixin h3
+  h3.l-h3()&attributes(attributes)
+    block
+
+mixin h4
+  h4.l-h4()&attributes(attributes)
+    block
+
+mixin p
+  p.l-p()&attributes(attributes)
+    block
+
+mixin p-big
+  p.l-big
+    block
+
+mixin p-small
+  p.l-p.l-small
+    block
+
+mixin p-light
+  p.l-p.l-p-light
+    block
+
+mixin ul(unstyled)
+  ul.l-ul(class=unstyled=='unstyled'?'l-list-unstyled':'bacov')
+    block
+
+mixin ol
+  ol.l-ol
+    block
+
+mixin dl
+  dl.l-dl
+    block
+
+mixin success
+  span.l-success()&attributes(attributes)
+    block
+
+mixin error
+  span.l-error()&attributes(attributes)
+    block
+
+mixin figure
+  figure.l-figure
+    block
+
+mixin figcaption
+  figcaption.l-figcaption
+    p.l-p.no-mrg
+      em
+        block
+
+mixin img(options)
+  if options == 'figure'
+    .l-figure_img
+      img.l-img-fluid(class='l-img-left')&attributes(attributes)
+  else
+    img.l-img-fluid(class=options == 'left'?'l-img-left':'')&attributes(attributes)
+
+mixin table
+  .l-table-wrap
+    table.l-table
+      block
+
+//- ---------------------------------------------
+//- MAIN INFO
+//- mixin for main info for general section containg filepath and contents
+
+mixin main-info(files)
+  section#main-info.l-main-info
+
+    .l-wrap-main
+
+      block
+
+      if files.length
+        +desc-file(files)
+
+//- ---------------------------------------------
+//- DESC FILE
+//- mixin for filepath component
+
+mixin desc-file(files)
+
+  .l-box-desc
+    p.l-box-desc_headline Files
+    each file in files
+      code.l-code= file
+      br
+
+//- ---------------------------------------------
+//- CONTENTS
+//- mixin for contents component
+
+mixin contents(list)
+
+  .l-box-desc
+    p.l-box-desc_headline Contents
+    ul.l-contents_list
+      each item in list
+        li.l-contents_list_item(style=item.hide?'display:none;':'')
+          a.l-contents_list_link(href='#' + item.href, data-smoothscroll='#' + item.href)= item.title
+
+//- ---------------------------------------------
+//- DEPENDENCY
+//- mixin for dependency component
+
+mixin dependency(title)
+
+  .l-box-desc.l-box-warn
+    p.l-box-desc_headline #{title} dependency
+    block
+
+//- ---------------------------------------------
+//- WARNING
+//- mixin for warning component
+
+mixin warning
+
+  .l-box-desc.l-box-warn
+    p.l-box-desc_headline Warning
+    block
+
+//- ---------------------------------------------
+//- NOTE
+//- mixin for note component
+
+mixin note
+
+  .l-box-desc.l-box-note
+    p.l-box-desc_headline Note
+    block
+
+//- ---------------------------------------------
+//- COLOR PALLETE
+//- mixin for generating color palette
+
+mixin color-palette(colors)
+
+  section#color-palette
+
+    .l-wrap-main
+
+      +h2 Color Palette
+
+      block
+
+      ul.l-color-palette
+        each colorset in colors
+          li.l-color-palette_color
+            - var i = 0;
+            each color, key in colorset
+              if i < 1
+                .l-color-main(style='background-color:' + key + ';')
+                  span #{key + ': ' + color}
+              else
+                .l-color-var(style='background-color:' + key + ';')
+                  span #{key + ': ' + color}
+              - i = i + 1;
+
+//- ---------------------------------------------
+//- CONTENT SECTION
+//- mixins default content section
+
+mixin content-section(section, last)
+
+  section(id=section.href)
+
+    .l-wrap-main
+
+      +h2= section.title
+
+      block
+
+      unless last
+        hr.l-hr-section
+
+//- ---------------------------------------------
+//- CONTENT SUB SECTION
+//- mixins default content section
+
+mixin content-sub-section(title)
+
+  div.l-sub-section
+
+    +h3= title
+
+    block
+
+
+//- ---------------------------------------------
+//- DEMO
+//- mixins for demo
+
+mixin demo(noExample)
+
+  article.l-demo(class=noExample?'active no-example':'')
+    block
+
+mixin demo-example(noCode)
+
+  .l-demo_example
+    .l-demo_headbar
+      span.l-demo_headbar_title Example:
+      unless noCode
+        a.js-toggle.l-demo_headbar_control(title='Show code', data-target='parent', data-parent-hop='3')
+          i.icon.icon-s code
+    block
+
+mixin demo-code(lang)
+
+  .l-demo_code
+    .l-demo_headbar
+      span.l-demo_headbar_title Code:
+    pre.prettyprint
+      code(class= 'lang-' + lang ? lang : '-html')
+        block
+
+
+

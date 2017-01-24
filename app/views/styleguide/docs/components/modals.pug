@@ -1,0 +1,158 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.modals', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_modals.scss'], contents)
+
+    +p-big Documentation for modal windows and popups.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- MODALS
+  +content-section(contents[0])
+
+    +p Modal window can contain text or any UI controls such as forms, buttons etc. Modal windows retain focus until dismissed or a required action has been taken.
+
+    +p Modal component is complex component containing <code class='l-code-inline'>.modal-overlay</code> as main wrapper <code class='l-code-inline'>.modal</code> as window wrapper and <code class='l-code-inline'>.modal_header</code>, <code class='l-code-inline'>.modal_content</code> and <code class='l-code-inline'>.modal_footer</code> as inner sections of modal window. Modal window component can be created by following HTML structure in example below.
+
+    +dependency('Javascript')
+      +p Modal component is using <a href='js-toggle.html' class='l-a'>Toggle</a> javascript module, to show and hide window.
+
+    +warning
+      +p Modal component is using flexbox property, supported only by modern browsers. See <a href='http://caniuse.com/#search=flex' target='_blank' class='l-a'>caniuse.com</a>
+
+    +note
+      +p Larger modal window can be created by using additional class on <code class='l-code-inline'>.modal</code> element <code class='l-code-inline'>.modal-large</code>.
+
+    +demo
+      +demo-example
+        button.btn.js-toggle(type='button', data-target='#modal-demo', data-toggle-self='false') Show modal
+        .modal-overlay#modal-demo
+          article.modal
+            header.modal_header
+              .modal_header_headline
+                h3.text-nospace.text-ellipsis Headline
+              .modal_header_action
+                a.btn.btn-link.modal_close.js-toggle(data-target='#modal-demo')
+                  i.icon.icon-m close
+
+
+            section.modal_content
+
+              p.no-mrg-top Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+              .row.form-row
+                .form-controls.col
+                  .form-control.no-mrg
+                    input.input(type='text', placeholder='Input')
+
+            footer.modal_footer
+              .btn-line.text-right
+                button.btn.btn-small.btn-link.no-pad-right.js-toggle(type="button", data-target='#modal-demo') Cancel
+                button.btn.btn-small.btn-link.no-pad-right.js-toggle(type="button", data-target='#modal-demo') Ok
+      +demo-code
+        :code
+          <!-- toggle button -->
+          <button class="btn js-toggle" type="button" data-target="#modal-demo" data-toggle-self="false">Show modal</button>
+
+          <!-- modal -->
+          <div class="modal-overlay active" id="modal-demo">
+            <article class="modal">
+
+              <header class="modal_header">
+                <div class="modal_header_headline">
+                  <h3 class="text-nospace text-ellipsis">Headline</h3>
+                </div>
+                <div class="modal_header_action">
+                  <a class="btn btn-link modal_close js-toggle" data-target="#modal-demo">
+                    <i class="icon icon-m">close</i>
+                  </a>
+                </div>
+              </header>
+
+              <section class="modal_content">
+                ...
+              </section>
+
+              <footer class="modal_footer">
+                <div class="btn-line text-right">
+                  <button class="btn btn-small btn-link no-pad-right js-toggle" type="button" data-target="#modal-demo">Cancel</button>
+                  <button class="btn btn-small btn-link no-pad-right js-toggle" type="button" data-target="#modal-demo">Ok</button>
+                </div>
+              </footer>
+
+            </article>
+          </div>
+    //- end: demo
+
+  //- end: section
+
+  //- POPUPS
+  +content-section(contents[1], true)
+
+    +p Popups are basicaly simplified modal windows, which serve only as informative components, but take all attention from user. They should contain only texts and confirm and cancel action, as shown in example below.
+
+    +demo
+      +demo-example
+        button.btn.js-toggle(type='button', data-target='#popup-demo', data-toggle-self='false') Show popup
+        .modal-overlay#popup-demo
+          article.modal
+            header.modal_header
+              .modal_header_headline
+                h3.text-nospace.text-ellipsis Headline
+              .modal_header_action
+                a.btn.btn-link.modal_close.js-toggle(data-target='#popup-demo')
+                  i.icon.icon-m close
+
+
+            section.modal_content
+
+              p.no-mrg-top Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+              .btn-line.text-right
+                button.btn.btn-small.btn-link.no-pad-right.js-toggle(type="button", data-target='#popup-demo') Cancel
+                button.btn.btn-small.btn-link.no-pad-right.js-toggle(type="button", data-target='#popup-demo') Delete
+
+      +demo-code
+        :code
+          <!-- toggle button -->
+          <button class="btn js-toggle active" type="button" data-target="#popup-demo" data-toggle-self="false">Show popup</button>
+
+          <!-- popup -->
+          <div class="modal-overlay active" id="popup-demo">
+            <article class="modal">
+
+              <header class="modal_header">
+                <div class="modal_header_headline">
+                  <h3 class="text-nospace text-ellipsis">Headline</h3>
+                </div>
+                <div class="modal_header_action">
+                  <a class="btn btn-link modal_close js-toggle" data-target="#popup-demo">
+                    <i class="icon icon-m">close</i>
+                  </a>
+                </div>
+              </header>
+
+              <section class="modal_content">
+                ...
+                <div class="btn-line text-right">
+                  <button class="btn btn-small btn-link no-pad-right js-toggle" type="button" data-target="#popup-demo">Cancel</button>
+                  <button class="btn btn-small btn-link no-pad-right js-toggle" type="button" data-target="#popup-demo">Delete</button>
+                </div>
+              </section>
+
+            </article>
+          </div>
+    //- end: demo
+
+  //- end: section

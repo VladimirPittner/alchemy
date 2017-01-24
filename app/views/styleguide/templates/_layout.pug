@@ -1,0 +1,150 @@
+//- -----------------------------------------------
+//- STYLEGUIDE LAYOUT
+//- -----------------------------------------------
+
+- var projectName = 'Alchemy'
+
+//- -----------------------------------------------
+//- VARIABLES AND DATA
+
+include ../mixins/_components
+
+//- -----------------------------------------------
+//- OPTIONS
+
+block opts
+
+- var contents;
+- var page;
+- if(categoryID != -1) {
+- var category = l_sitemap[categoryID].topics;
+-   if(category[pageID].sub != undefined) {
+-     contents = category[pageID].sub[subPageID].contents
+-     page = category[pageID].sub[subPageID]
+-   } else {
+-     contents = category[pageID].contents
+-     page = category[pageID]
+-   }
+- }
+
+//- -----------------------------------------------
+//- HTML
+
+doctype html
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]>      <html class="no-js gt-ie9" lang="en"> <![endif]-->
+<!--[if !IE] <![IGNORE[--><!--[IGNORE[]]--> <html class="no-js noie" lang="en">
+
+//- -----------------------------------------------
+//- HEAD
+
+head
+  meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no")
+
+  title #{projectName} - Styleguide
+  meta(name='author', content='Vladimir Pittner')
+  meta(name='description', content='Alchemy is SCSS/Pug foundation for living styleguides')
+  meta(name='keywords', content='Alchemy, Living Styleguide, Styleguide, SCSS, Pug')
+  link(rel="icon", type="image/png", href="/images/favicon.png")
+  meta(name="theme-color", content="#12B886")
+
+  link(rel="apple-touch-icon", sizes="57x57", href="/images/favicons/apple-icon-57x57.png")
+  link(rel="apple-touch-icon", sizes="60x60", href="/images/favicons/apple-icon-60x60.png")
+  link(rel="apple-touch-icon", sizes="72x72", href="/images/favicons/apple-icon-72x72.png")
+  link(rel="apple-touch-icon", sizes="76x76", href="/images/favicons/apple-icon-76x76.png")
+  link(rel="apple-touch-icon", sizes="114x114", href="/images/favicons/apple-icon-114x114.png")
+  link(rel="apple-touch-icon", sizes="120x120", href="/images/favicons/apple-icon-120x120.png")
+  link(rel="apple-touch-icon", sizes="144x144",href="/images/favicons/apple-icon-144x144.png")
+  link(rel="apple-touch-icon", sizes="152x152", href="/images/favicons/apple-icon-152x152.png")
+  link(rel="apple-touch-icon", sizes="180x180", href="/images/favicons/apple-icon-180x180.png")
+  link(rel="icon", type="image/png", sizes="192x192",  href="/images/favicons/android-icon-192x192.png")
+  link(rel="icon", type="image/png", sizes="32x32", href="/images/favicons/favicon-32x32.png")
+  link(rel="icon", type="image/png", sizes="96x96", href="/images/favicons/favicon-96x96.png")
+  link(rel="icon", type="image/png", sizes="16x16", href="/images/favicons/favicon-16x16.png")
+  meta(name="msapplication-TileColor", content="#12B886")
+  meta(name="msapplication-TileImage", content="/images/favicons//ms-icon-144x144.png")
+
+  link(href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Ubuntu:400,400i,700&|Open+Sans:300,400,400i,600,700', rel='stylesheet')
+
+  link(rel="stylesheet", href="/fonticons/icomoon/style.css")
+
+  //- build:css /styles/vendor.min.css -->
+  //- endbuild -->
+
+  //- build:css({.tmp,app}) /styles/main-light.min.css -->
+  // bower:css
+  // endbower
+
+  link(rel="stylesheet", href="/styles/main.css")
+  link(rel="stylesheet", href="/styles/alchemy.css")
+  //- endbuild -->
+
+  //- build:js(.tmp) /scripts/modernizr.min.js -->
+  script(src="/scripts/plugins/modernizr.js")
+  //- endbuild -->
+
+//- -----------------------------------------------
+//- BODY
+
+body(data-spy='scroll', data-target='.js-scrollspy', data-offset=150)#top
+
+  // offcanvas
+  .l-offcanvas(data-role='offcanvas')
+
+    // content main
+    article#top.l-content-main
+
+      include ../includes/_header.pug
+
+      .l-content-main_inner
+
+        block content
+
+          unless categoryID == 0 && pageID == 0
+            include ../includes/_nav_sub.pug
+
+    aside.l-wrap-navs
+
+        include ../includes/_nav_main.pug
+
+
+    // end: content main
+
+  // end: offcanvas
+
+  //- -----------------------------------------------
+  //- SCRIPTS
+
+  //- build:js(./app/views/styleguide) /scripts/vendor-alchemy.min.js -->
+  // bower:js
+  script(src='../../../bower_components/jquery/dist/jquery.js')
+  script(src='../../../bower_components/devbridge-autocomplete/dist/jquery.autocomplete.js')
+  // endbower
+  script(src='../../../bower_components/bootstrap/js/tab.js')
+  script(src='../../../bower_components/bootstrap/js/scrollspy.js')
+  script(src='../../../bower_components/jquery-mousewheel/jquery.mousewheel.js')
+  //- endbuild -->
+
+  //- build:js(.tmp) /scripts/alchemy.min.js -->
+  script(src='/scripts/plugins/prettify/prettify.js')
+  //- endbuild -->
+
+  //- build:js(.tmp) /scripts/plugins-alchemy.min.js -->
+  script(src='/scripts/plugins/customselect/dist/js/bootstrap-select.js')
+  script(src="/scripts/plugins/custom-scrollbar/jquery.mCustomScrollbar.js")
+  script(src='/scripts/plugins/icomoon/liga.js')
+  script(src="/scripts/modules/toggle.js")
+  script(src="/scripts/modules/selectAnimate.js")
+  //- endbuild -->
+
+  //- build:js(.tmp) /scripts/main-alchemy.min.js -->
+  script(src="/scripts/main.js")
+  script(src='/scripts/alchemy.js')
+  //- endbuild -->
+
+  block scripts
+
+| </html>

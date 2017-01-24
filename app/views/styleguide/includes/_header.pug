@@ -1,0 +1,21 @@
+// header
+header.l-header-main 
+  .l-header-main_controls
+      a.l-toggle-menu.js-toggle(data-target='body')
+        span.l-toggle-menu_line
+        span.l-toggle-menu_line
+        span.l-toggle-menu_line
+  .l-wrap-main
+      h1.js-header 
+        a(href='#top', data-smoothscroll='#top')= page.title
+        
+      unless categoryID == 0
+        #header-navigation.js-scrollspy.l-headnav
+          ul.l-headnav_list.nav
+            li.l-headnav_item
+              a.l-headnav_link.js-toggle(href='#main-info', data-smoothscroll='#main-info', data-toggle-target='#header-navigation', data-toggle='dropdown') Main info
+            each section in contents
+              li.l-headnav_item(style=section.hide?'display:none;':'')
+                a.l-headnav_link.js-toggle(href='#' + section.href, data-smoothscroll='#' + section.href, data-toggle-target='#header-navigation', data-toggle='dropdown')= section.title
+
+      

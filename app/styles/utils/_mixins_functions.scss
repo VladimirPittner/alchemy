@@ -1,0 +1,164 @@
+// ---------------------------------------------
+// MIXINS AND FUNCTIONS
+// ---------------------------------------------
+
+// -------------------------------
+// MIXINS
+
+@mixin color(
+  $color-fallback,
+  $color){
+    color: $color-fallback;
+    color: $color;
+}
+
+@mixin font-size(
+  $font-size,
+  $font-size-r: $font-size-root) {
+    font-size: $font-size;
+    font-size: ($font-size / $font-size-r) * 1rem;
+}
+
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visually-hidden {
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  border: 0;
+}
+
+// -- Nicolas Gallagher's micro clearfix
+@mixin clearfix {
+  *zoom: 1;           // For IE 6/7 (trigger hasLayout)
+  &:before, &:after { // For modern browsers
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clearfix-old {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+  html[xmlns] & { display: block; }
+  * html & { height: 1% }
+}
+
+@mixin center-unknown(
+  $selector) {
+  text-align: center;
+  &:before {
+    content: '';
+    height: 100%;
+    margin-right: -0.5em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  #{$selector} {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin border-radius(
+  $radius,
+  $border: '',
+  $clip: true ){
+
+    $moz-border: '';
+
+    @if $border == 'top left' {
+      $border: '-top-left';
+    }
+    @else if $border == 'top right' {
+      $border: '-top-right';
+    }
+    @else if $border == 'bottom left' {
+      $border: '-bottom-left';
+    }
+    @else if $border == 'bottom right' {
+      $border: '-bottom-right';
+    }
+
+
+    border#{unquote($border)}-radius: $radius;
+
+    @if $clip == true {
+      //fix bg leaking outside the border
+      background-clip: padding-box;
+    }
+}
+
+@mixin border-top-radius(
+  $radius,
+  $clip: true ){
+    @include border-radius($radius, 'top left', $clip);
+    @include border-radius($radius, 'top right', false);
+}
+
+@mixin border-right-radius(
+  $radius,
+  $clip: true ){
+    @include border-radius($radius, 'top right', $clip);
+    @include border-radius($radius, 'bottom right', false);
+}
+
+@mixin border-bottom-radius(
+  $radius,
+  $clip: true ){
+    @include border-radius($radius, 'bottom left', $clip);
+    @include border-radius($radius, 'bottom right', false);
+}
+
+@mixin border-left-radius(
+  $radius,
+  $clip: true ){
+    @include border-radius($radius, 'top left', $clip);
+    @include border-radius($radius, 'bottom left', false);
+}
+
+// -------------------------------
+// FUNCTIONS
+
+@function _get-em(
+  $size,
+  $font-size ){
+
+  @return $size / $font-size * 1em;
+}
+
+@function _get-rem(
+  $size,
+  $font-size-r: $font-size-root ){
+
+  @return $size / $font-size-r * 1rem;
+}
+
+// -------------------------------
+// MEDIA QUERIES
+
+@mixin media($feature, $value) {
+  @media screen and ($feature: $value) { @content }
+}

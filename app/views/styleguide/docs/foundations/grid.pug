@@ -1,0 +1,413 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('foundations.grid', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/utils/_media.scss','app/styles/foundations/_grid.scss', 'app/styles/tools/_utilities.scss'], contents)
+
+    +p-big Documentation of media queries, grids, wrappers and layout utility classes.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- MEDIA QUERIES
+  +content-section(contents[0])
+
+    +p There are three main media queries for screen layouts: <code class='l-code-inline'>S, M, L</code> and two supplementary media queries <code class='l-code-inline'>XS, XL</code>. Breakpoints for these layouts are described bellow.
+
+    +content-sub-section('Breakpoints')
+
+      +dl
+        dt: big XL
+        dd width &gt; 1280px
+        dt: big L
+        dd width &lt; 1279px
+        dt: big M
+        dd width &lt; 959px
+        dt: big S
+        dd width &lt; 639px
+        dt: big XS
+        dd width &lt; 479px
+
+    +content-sub-section('Mixins')
+
+      +demo(true)
+
+        +demo-code('scss')
+          :code
+            @include media-w-xl {
+              ... styles XL ...
+            }
+            @include media-w-l {
+              ... styles L ...
+            }
+            @include media-w-m {
+              ... styles M ...
+            }
+            @include media-w-s {
+              ... styles S ...
+            }
+            @include media-w-xs {
+              ... styles XS ...
+            }
+      //- end demo
+
+  //- end: section
+
+  //- WRAPPERS
+  +content-section(contents[1])
+
+    +p By default there are two wrapper classes <code class='l-code-inline'>.wrapper-main</code> and <code class='l-code-inline'>.wrapper-full</code>.
+
+    +dl
+      dt: big wrapper-main
+      dd width: 960px
+      dt: big wrapper-full
+      dd width: 100%
+
+    +demo(true)
+
+      +demo-code
+        :code
+          <div class='wrapper-main'>
+            ...
+          </div>
+
+          <div class='wrapper-full'>
+            ...
+          </div>
+      //- end demo
+
+  //- end: section
+
+  //- GRID 12
+  +content-section(contents[2])
+
+    +p Grid 12 consists of 12 columns and 5 different media layouts <code class='l-code-inline'>XL / L / M / S / XS</code>.
+
+    +note
+      +p Start by creating horizontal container with a class of <code class='l-code-inline'>.row</code>. Now you can add elements with a class of <code class='l-code-inline'>.col</code> and specify width of each with <code class='l-code-inline'>.col-[xs/s/m/l/xl]-[1-12]</code>.
+
+    +warning
+      +p Media queries for layouts are set by max width, so for example stuff for layout M inherit also in S and XS.
+
+    +content-sub-section('Basic')
+
+      +demo
+        +demo-example
+          .row.row-space
+            .col.col-l-3.col-xl-4.col-m-5.col-s-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-m.hide-xl-only L3
+                span.hide-s.hide-l-only.hide-xl-only M5
+                span.hide-m-only.hide-l-only.hide-xl-only S12
+            .col.col-l-6.col-xl-4.col-m-7.col-s-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-m.hide-xl-only L6
+                span.hide-s.hide-l-only.hide-xl-only M7
+                span.hide-m-only.hide-l-only.hide-xl-only S12
+            .col.col-l-3.col-xl-4.col-m-12.col-s-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-m.hide-xl-only L3
+                span.hide-s.hide-l-only.hide-xl-only M12
+                span.hide-m-only.hide-l-only.hide-xl-only S12
+
+          .row.row-space
+            .col.col-l-4.col-xl-4.col-m-5.col-s-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-m.hide-xl-only L3
+                span.hide-s.hide-l-only.hide-xl-only M5
+                span.hide-m-only.hide-l-only.hide-xl-only S12
+            .col.col-l-8.col-xl-8.col-m-7.col-s-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-m.hide-xl-only L6
+                span.hide-s.hide-l-only.hide-xl-only M7
+                span.hide-m-only.hide-l-only.hide-xl-only S12
+
+          .row.row-space
+            .col.col-l-6.col-xl-7.col-xs-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-s.hide-xl-only L6
+                span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S6
+                span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS12
+            .col.col-l-6.col-xl-5.col-xs-12
+              .l-debug
+                span.hide-l XL4
+                span.hide-s.hide-xl-only L6
+                span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S6
+                span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS12
+
+        +demo-code
+          :code
+            <div class="row">
+              <div class="col col-l-3 col-xl-4 col-m-5 col-s-12"> ... </div>
+              <div class="col col-l-6 col-xl-4 col-m-7 col-s-12"> ... </div>
+              <div class="col col-l-3 col-xl-4 col-m-12 col-s-12"> ... </div>
+            </div>
+
+            <div class="row">
+              <div class="col col-l-4 col-xl-4 col-m-5 col-s-12"> ... </div>
+              <div class="col col-l-8 col-xl-8 col-m-7 col-s-12"> ... </div>
+            </div>
+
+            <div class="row">
+              <div class="col col-l-6 col-xl-7 col-xs-12"> ... </div>
+              <div class="col col-l-6 col-xl-5 col-xs-12"> ... </div>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Nesting')
+
+      +p Rows and columns can be also nested.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-3.col-m-12
+              .l-debug
+                span.hide-m L3
+                span.hide-l-only.hide-xl-only M12
+            .col.col-l-9.col-m-12
+              .l-debug.l-debug-nopad
+                .row
+                  .col.col-l-6.col-xs-12
+                    .l-debug
+                      span.hide-xs Nested L6
+                      span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only Nested XS12
+                  .col.col-l-6.col-xs-12
+                    .l-debug
+                      span.hide-xs Nested L6
+                      span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only Nested XS12
+
+        +demo-code
+          :code
+            <div class="row">
+              <div class="col col-l-3 col-m-12"> ... </div>
+              <div class="col col-l-9 col-m-12">
+                <div class="row">
+                  <div class="col col-l-6 col-xs-12"> ... </div>
+                  <div class="col col-l-6 col-xs-12"> ... </div>
+                </div>
+              </div>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Offsets')
+
+      +p Colums can be moved to the right by using classes like <code class='l-code-inline'>.ofst-[xs/s/m/l/xl]-[0-11]</code>. You can also center column with class <code class='l-code-inline'>.ofst-[xs/s/m/l/xl]-center</code>.
+
+      +demo
+        +demo-example
+          .row.row-space
+            .col.col-l-3.col-m-4.col-s-5.ofst-s-1.col-xs-6.ofst-xs-0
+              .l-debug
+                span.hide-m L3
+                span.hide-s.hide-l-only.hide-xl-only M4
+                span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S5, ofst S1
+                span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS6, ofst XS0
+            .col.col-l-8.ofst-l-1.ofst-m-0.col-s-10.ofst-s-1.col-xs-12.ofst-xs-0
+              .l-debug
+                span.hide-m  L8, ofst L1
+                span.hide-s.hide-l-only.hide-xl-only L8, ofst M0
+                span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S10, ofst S1
+                span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS12, ofst XS0
+          .row.row-space
+            .col.col-l-8.ofst-l-center.col-m-10.col-xs-12
+              .l-debug
+                span.hide-m L8, center L
+                span.hide-xs.hide-l-only.hide-xl-only M10, center L
+                span.hide-m-only.hide-l-only.hide-xl-only XS 12, center L
+        +demo-code
+          :code
+            <div class="row">
+              <div class="col col-l-3 col-m-4 col-s-5 ofst-s-1 col-xs-6 ofst-xs-0">
+                ...
+              </div>
+              <div class="col col-l-8 ofst-l-1 ofst-m-0 col-s-10 ofst-s-1 col-xs-12 ofst-xs-0">
+                ...
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-l-8 ofst-l-center col-m-10 col-xs-12">
+                ...
+              </div>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Vertical space ')
+
+      +p Vertical space between rows can be created by using class <code class='l-code-inline'>.row-[xs/s/m/l/xl]-space</code> and vertical space between columns can be created by using class <code class='l-code-inline'>.col-[xs/s/m/l/xl]-space</code>.
+
+      +demo
+        +demo-example
+          .row.row-l-space.row-m-nospace
+            .col.col-l-12
+              .l-debug
+                span L12
+          .row.row-l-space.row-m-nospace
+            .col.col-l-6.col-m-12.col-m-space
+              .l-debug
+                span.hide-m L6
+                span.hide-l-only.hide-xl-only M12, col space
+            .col.col-l-6.col-m-12.col-m-space
+              .l-debug
+                span.hide-m L6
+                span.hide-l-only.hide-xl-only M12, col space
+        +demo-code
+          :code
+            <div class="row row-l-space row-m-nospace">
+              <div class="col col-l-12">
+                ...
+              </div>
+            </div>
+            <div class="row row-l-space row-m-nospace">
+              <div class="col col-l-6 col-m-12 col-m-space">
+                ...
+              </div>
+              <div class="col col-l-6 col-m-12 col-m-space">
+                ...
+              </div>
+            </div>
+      //- end: demo
+
+  //- end: section
+
+  //- UTILITIES
+  +content-section(contents[3], true)
+
+    +p Grid utilities contains basic classes for utility like pull right/left, clearfix, margin/padding resets, hide classes etc.
+
+    +p Some utilities can be set for specific layout by adding postfix representing layout. These postfixes are not needed in case you don't want target specific layout.
+
+    +warning
+      +p
+        | Layout L (Large), don't need postix.
+        br
+        | Use these classes wise and only if needed since they use <code class='l-code-inline'>!important</code> directive !
+
+    +demo
+      +demo-example
+        .clearfix
+          .pull-left.pull-right-m.inline-block-s.pull-center-xs
+            .l-debug
+              span.hide-m L: Pull left
+              span.hide-s.hide-l-only.hide-xl-only M: Pull right
+              span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S: Inline block
+              span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS: Pull center
+      +demo-code
+        :code
+          <div class="clearfix">
+            <div class="pull-left pull-right-m inline-block-s pull-center-xs">
+              ...
+            </div>
+          </div>
+    //- end: demo
+
+    +content-sub-section('Layout hacks')
+
+      +p These utilities provides hacks as clearfix or center-unknown.
+
+      +demo(true)
+        +demo-code
+          :code
+            <div class="clearfix">
+              ... floating elements ...
+            </div>
+
+            <div class="center-unknown">
+              ... unknown element to be centered ...
+            </div>
+
+            <div class="clear"> ... </div>
+      //- end: demo
+
+    +content-sub-section('Space resets')
+
+      +p Use classes like <code class='l-code-inline'>.no-pad</code> or <code class='l-code-inline'>.no-mrg</code> to reset margins or paddings. Target specific layout with <code class='l-code-inline'>.no-mrg-[xs/s/m/xl]</code> and <code class='l-code-inline'>.no-pad-[xs/s/m/xl]</code>.
+
+      +demo(true)
+        +demo-code
+          :code
+            <div class="no-mrg"> reset margins </div>
+            <div class="no-mrg-top"> reset top margin </div>
+            <div class="no-mrg-bottom"> reset bottom margin </div>
+            <div class="no-mrg-left"> reset left margin </div>
+            <div class="no-mrg-right"> reset right margin </div>
+            <div class="no-mrg-vertical"> reset top and bottom margin </div>
+            <div class="no-mrg-horizontal"> reset left and right margin </div>
+
+            <div class="no-pad"> reset padding </div>
+            <div class="no-pad-top"> reset padding-top </div>
+            <div class="no-pad-bottom"> reset padding-bottom </div>
+            <div class="no-pad-left"> reset left padding </div>
+            <div class="no-pad-right"> reset right padding </div>
+            <div class="no-pad-vertical"> reset top and bottom padding </div>
+            <div class="no-pad-horizontal"> reset left and right padding </div>
+      //- end: demo
+
+    +content-sub-section('Hide')
+
+      +p You can hide elements for specific layout by using classes like <code class='l-code-inline'>.hide-[xs/s/m/l/xl]-only</code> or for all layouts lower including specified by classes like <code class='l-code-inline'>.hide-[xs/s/m/l/xl]</code>.
+
+      +note
+        +p Hide for 'XL and lower' and 'XS and lower' are worthless. In first case you hide for all layouts and in second case there is no lower than XS.
+
+      +demo()
+        +demo-example(true)
+          .row.row-space
+            .col.col-12
+              .l-debug Active layout:
+                span.hide-l XL
+                span.hide-m.hide-xl-only L
+                span.hide-s.hide-l-only.hide-xl-only M
+                span.hide-xs.hide-m-only.hide-l-only.hide-xl-only S
+                span.hide-s-only.hide-m-only.hide-l-only.hide-xl-only XS
+          .row.row-space
+            .col.col-l-2
+              .l-debug XL
+            .col.col-l-5
+              .l-debug &nbsp;
+            .col.col-l-5
+              .l-debug.hide-xl-only Hide for XL only
+          .row.row-space
+            .col.col-l-2
+              .l-debug L
+            .col.col-l-5
+              .l-debug.hide-l Hide for L and lower
+            .col.col-l-5
+              .l-debug.hide-l-only Hide for L only
+          .row.row-space
+            .col.col-l-2
+              .l-debug M
+            .col.col-l-5
+              .l-debug.hide-m Hide for M and lower
+            .col.col-l-5
+              .l-debug.hide-m-only Hide for M only
+          .row.row-space
+            .col.col-l-2
+              .l-debug S
+            .col.col-l-5
+              .l-debug.hide-s Hide for S and lower
+            .col.col-l-5
+              .l-debug.hide-s-only Hide for S only
+          .row.row-space
+            .col.col-l-2
+              .l-debug XS
+            .col.col-l-5
+              .l-debug &nbsp;
+            .col.col-l-5
+              .l-debug.hide-xs-only Hide for XS only

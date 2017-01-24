@@ -1,0 +1,106 @@
+// ---------------------------------------------
+// TABLES
+// ---------------------------------------------
+
+// CONTENTS
+// Table
+// Bordered
+// Striped
+// Clean
+
+// ----------------------------
+// TABLE
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: $table-margin;
+    background-color: $table-bg-color;
+
+    & > thead,
+    & > tbody,
+    & > tfoot {
+      & > tr {
+        & > th,
+        & > td {
+          padding: $table-cell-padding;
+          border-top: $table-cell-border;
+          vertical-align: $table-cell-vertical-align;
+        }
+
+        & > th {
+          text-align: left;
+        }
+      }
+    }
+
+    & > thead > tr > th {
+      border-bottom: $table-head-cell-border;
+      vertical-align: bottom;
+    }
+
+    & > caption + thead,
+    & > colgroup + thead,
+    & > thead:first-child {
+      & > tr:first-child {
+        & > th,
+        & > td {
+          border-top: 0;
+        }
+      }
+    }
+
+    & > tbody + tbody {
+      border-top: $table-head-cell-border;
+    }
+  }
+
+// ----------------------------
+// BORDERED
+
+  .table-bordered {
+    border: $table-cell-border;
+
+    & > thead,
+    & > tbody,
+    & > tfoot {
+      & > tr {
+        & > th,
+        & > td {
+          border: $table-cell-border;
+        }
+      }
+    }
+
+    & > thead > tr {
+      & > th,
+      & > td {
+        border-bottom: $table-head-cell-border;
+      }
+    }
+  }
+
+// ----------------------------
+// STRIPED
+
+  .table-striped {
+    & > tbody > tr:nth-of-type(odd) {
+      background-color: $table-cell-odd-bg-color;
+    }
+  }
+
+// ----------------------------
+// CLEAN
+
+  .table-clean {
+    & > thead,
+    & > tbody,
+    & > tfoot {
+      & > tr {
+        & > th,
+        & > td {
+          border-top: none;
+        }
+      }
+    }
+  }

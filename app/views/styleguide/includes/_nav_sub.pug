@@ -1,0 +1,7 @@
+aside.l-nav-contents.js-scrollspy
+  p.l-nav-contents_headline Contents
+  ul.l-nav-contents_list.nav
+    each section in contents
+      li.l-nav-contents_item(style=section.hide?'display:none;':'')
+        a.l-nav-contents_link(href='#' + section.href, data-smoothscroll='#' + section.href)= section.title
+

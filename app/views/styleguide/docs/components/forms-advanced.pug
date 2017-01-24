@@ -1,0 +1,340 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formAdvanced', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info([
+    'app/styles/components/_forms.scss',
+  ], contents)
+
+    +p-big Documentation of advanced ipnuts with extended functionality, such is inputs with icons, autocomplete inputs.
+  //- end: main info
+
+//- Content
+block append content
+
+  //- INNER ADDON
+  +content-section(contents[0])
+
+    +p Text input with inner addon is just extended basic input. To create input with inner (text) addon you need to wrap <code class='l-code-inline'>&lt;input&gt;</code> and addon element <code class='l-code-inline'>.input-addon</code> into element with class <code class='l-code-inline'>.input-addon-wrap</code> as shown in example below. With additional class <code class='l-code-inline'>.input-addon-wrap-[left/right]</code> you should specify on with side should addon appear.
+
+    +warning
+      +p You need to specify space left in input for addon with class <code class='l-code-inline'>.input-addon-size-[number]</code> on <code class='l-code-inline'>.input</code> where number is count of characters in addon from 1 to 15.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  .input-addon-wrap.input-addon-wrap-left
+                    input.input.input-addon-size-2(type='text', placeholder='Input')
+                    span.input-addon: i.icon search
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  .input-addon-wrap.input-addon-wrap-left
+                    input.input.input-addon-size-3(type='text', placeholder='Disabled', disabled)
+                    span.input-addon Mr.
+          .col.col-l-6
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  .input-addon-wrap.input-addon-wrap-right
+                    input.input.input-addon-size-2(type='text', placeholder='Readonly', readonly)
+                    span.input-addon: a.icon close
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  .input-addon-wrap.input-addon-wrap-right
+                    input.input.error.input-addon-size-4(type='text', placeholder='Error')
+                    span.input-addon days
+      +demo-code
+        :code
+          <!-- default -->
+          <div class="input-addon-wrap input-addon-wrap-left">
+            <input placeholder="Input" class="input input-addon-size-2" type="text">
+            <span class="input-addon">
+              <i class="icon">search</i>
+            </span>
+          </div>
+
+          <!-- disabled -->
+          <div class="input-addon-wrap input-addon-wrap-left">
+            <input placeholder="Input" disabled="" class="input input-addon-size-6" type="text">
+            <span class="input-addon">Mr.</span>
+          </div>
+
+          <!-- readonly -->
+          <div class="input-addon-wrap input-addon-wrap-right">
+            <input placeholder="Input" readonly="" class="input input-addon-size-2" type="text">
+            <span class="input-addon">
+              <a class="icon">close</a>
+            </span>
+            </span>
+          </div>
+
+          <!-- error -->
+          <div class="input-addon-wrap input-addon-wrap-right">
+            <input placeholder="Input" class="input error input-addon-size-4" type="text">
+            <span class="input-addon">days</span>
+          </div>
+    //- end: demo
+
+    +content-sub-section('Sizes')
+
+      +p You can combine inner addon with different input sizes.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    .input-addon-wrap.input-addon-wrap-left
+                      input.input.input-small.input-addon-size-2(type='text', placeholder='Small')
+                      span.input-addon: i.icon search
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    .input-addon-wrap.input-addon-wrap-left
+                      input.input.input-small.input-addon-size-3(type='text', placeholder='Small')
+                      span.input-addon Mr.
+            .col.col-l-6
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    .input-addon-wrap.input-addon-wrap-right
+                      input.input.input-large.input-addon-size-2(type='text', placeholder='Large')
+                      span.input-addon: a.icon close
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    .input-addon-wrap.input-addon-wrap-right
+                      input.input.input-large.input-addon-size-4(type='text', placeholder='Large')
+                      span.input-addon days
+        +demo-code
+          :code
+            <!-- small -->
+            <div class="input-addon-wrap input-addon-wrap-left">
+              <input placeholder="Small" class="input input-small input-addon-size-2" type="text">
+              <span class="input-addon">
+                <i class="icon">search</i>
+              </span>
+            </div>
+
+            <!-- small -->
+            <div class="input-addon-wrap input-addon-wrap-left">
+              <input placeholder="Small" class="input input-small input-addon-size-6" type="text">
+              <span class="input-addon">Mr.</span>
+            </div>
+
+            <!-- large -->
+            <div class="input-addon-wrap input-addon-wrap-right">
+              <input placeholder="Large" class="input large input-addon-size-2" type="text">
+              <span class="input-addon">
+                <a class="icon">close</a>Large
+              </span>
+              </span>
+            </div>
+
+            <!-- large -->
+            <div class="input-addon-wrap input-addon-wrap-right">
+              <input placeholder="Large" class="input large input-addon-size-4" type="text">
+              <span class="input-addon">days</span>
+            </div>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section
+
+  +content-section(contents[1], true)
+
+    +p Autocomplete can be bind to input element. Examples below show initialization as simple autocomplete, autocomplete with groups, autocomplete with custom row format and timepicker.
+
+    +dependency('Javascript')
+      +p Datepicker component requires
+        a.l-a(href="https://github.com/devbridge/jQuery-Autocomplete", target='_blank') Ajax Autocomplete for jQuery
+        |  plugin.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            h4.text-nospace Input with autocomplete
+            p.no-mrg-top (test with 'ap')
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  input#autocomplete-example.input(type='text', placeholder='Fruits')
+
+          .col.col-l-6.col-s-12
+            h4.text-nospace Input with autocomplete groups
+            p.no-mrg-top (test with 'ba')
+            .row.form-row
+              .form-controls.col
+                .form-control
+                  input#autocomplete-groups-example.input(type='text', placeholder='Vegetables & Fruits')
+      +demo-code
+        :code
+            <input class="input" id="autocomplete-example" placeholder="Fruits" type="text">
+
+            <script>
+              // basic autocomplete
+              $('#autocomplete-example').autocomplete({
+                orientation: 'auto',
+                minChars: 2,
+                lookup: function lookup(query, done) {
+                  var result = { suggestions: [] };
+
+                  var entries = ['Bannana', 'Apple', 'Pinnapple', 'Orange', 'Plum', 'Cherry', 'Strawberry', 'Blackberry', 'Blueberry', 'Lemon'].map(function(item) {
+                    return {
+                      value: item,
+                      data: item,
+                    }
+                  })
+
+                  result.suggestions = entries.reduce(function (acc, item) {
+                    if (item.value.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+                      acc.push(item);
+                    }
+                    return acc;
+                  }, []);
+
+                  done(result);
+                }
+              });
+            </script>
+
+            <input class="input" id="autocomplete-groups-example" placeholder="Vegetables & Fruits" type="text">
+            <script>
+              // autocomplete groups
+              $('#autocomplete-groups-example').autocomplete({
+                orientation: 'auto',
+                minChars: 2,
+                groupBy: 'category',
+                lookup: function lookup(query, done) {
+                  var result = { suggestions: [] };
+
+                  var entriesVegetables = ['Garlic', 'Potatoes', 'Onion', 'Tomatoes', 'Beans', 'Broccoli', 'Cabbage', 'Carrot', 'Corn', 'Leek'].map(function(item) {
+                    return {
+                      value: item,
+                      data: { category: 'Vegetables' },
+                    }
+                  });
+
+                  var entriesFruits = ['Bannana', 'Apple', 'Pinnapple', 'Orange', 'Plum', 'Cherry', 'Strawberry', 'Blackberry', 'Blueberry', 'Lemon'].map(function(item) {
+                    return {
+                      value: item,
+                      data: { category: 'Fruits' },
+                    }
+                  });
+
+                  result.suggestions = [].concat(entriesVegetables, entriesFruits).reduce(function (acc, item) {
+                    if (item.value.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+                      acc.push(item);
+                    }
+                    return acc;
+                  }, []);
+
+                  done(result);
+                }
+              });
+            </script>
+  //- end: section
+
+block append scripts
+
+  script.
+    $('#autocomplete-example').autocomplete({
+      orientation: 'auto',
+      minChars: 2,
+      lookup: function lookup(query, done) {
+        var result = { suggestions: [] };
+
+        var entries = ['Bannana', 'Apple', 'Pinnapple', 'Orange', 'Plum', 'Cherry', 'Strawberry', 'Blackberry', 'Blueberry', 'Lemon'].map(function(item) {
+          return {
+            value: item,
+            data: item,
+          }
+        })
+
+        result.suggestions = entries.reduce(function (acc, item) {
+          if (item.value.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+            acc.push(item);
+          }
+          return acc;
+        }, []);
+
+        done(result);
+      }
+    });
+
+    $('#autocomplete-groups-example').autocomplete({
+      orientation: 'auto',
+      minChars: 2,
+      groupBy: 'category',
+      lookup: function lookup(query, done) {
+        var result = { suggestions: [] };
+
+        var entriesVegetables = ['Garlic', 'Potatoes', 'Onion', 'Tomatoes', 'Beans', 'Broccoli', 'Cabbage', 'Carrot', 'Corn', 'Leek'].map(function(item) {
+          return {
+            value: item,
+            data: { category: 'Vegetables' },
+          }
+        });
+
+        var entriesFruits = ['Bannana', 'Apple', 'Pinnapple', 'Orange', 'Plum', 'Cherry', 'Strawberry', 'Blackberry', 'Blueberry', 'Lemon'].map(function(item) {
+          return {
+            value: item,
+            data: { category: 'Fruits' },
+          }
+        });
+
+        result.suggestions = [].concat(entriesVegetables, entriesFruits).reduce(function (acc, item) {
+          if (item.value.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+            acc.push(item);
+          }
+          return acc;
+        }, []);
+
+        done(result);
+      }
+    });
+
+    $('#timepicker-example').autocomplete({
+      orientation: 'auto',
+      minChars: 0,
+      lookup: function lookup(query, done) {
+        var entries = [];
+        var result = { suggestions: [] };
+
+        for (var i = 0; i < 24; i++) {
+          for (var j = 0; j < 4; j++) {
+            entries.push({
+              value: ('0' + i).slice(-2) + ':' + ('0' + j * 15).slice(-2),
+              data: ('0' + i).slice(-2) + ':' + ('0' + j * 15).slice(-2)
+            });
+          }
+        }
+
+        result.suggestions = entries.reduce(function (acc, item) {
+          if (item.value.startsWith(query)) {
+            acc.push(item);
+          }
+          return acc;
+        }, []);
+
+        done(result);
+      }
+    });

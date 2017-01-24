@@ -1,0 +1,498 @@
+extends ../../templates/_layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formLabels', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_forms.scss'], contents)
+
+    +p-big Documentation of labels, help and error texts in forms.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- LABELS
+  +content-section(contents[0])
+
+    +p Form labels can be created by wrapping <code class='l-code-inline'>&lt;label&gt;</code> into element with class <code class='l-code-inline'>.form-label</code>. Form label can be also placed beside inputs or stack as shown in form <a href='form-layouts.html' class='l-a'>layouts</a>.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label(for='input-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-01')
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label(for='textarea-01') Form label:
+              .form-controls.col
+                .form-control
+                  textarea.input(type='text', placeholder='Textarea', id='textarea-01')
+
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label Form label:
+              .form-controls.col
+                .checkbox
+                  input.checkbox-input(type='checkbox', id='checkbox-withlabel', name='checkbox-withlabel')
+                  label.checkbox-custom(for='checkbox-withlabel')
+                  label.checkbox-label(for='checkbox-withlabel') Checkbox
+
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label Form label:
+              .form-controls.col
+                .radio-group
+                  .radio
+                    input.radio-input(type='radio', id='radio-group-withlabel-01', name='radio-group-withlabel')
+                    label.radio-custom(for='radio-group-withlabel-01')
+                    label.radio-label(for='radio-group-withlabel-01') Radio 1
+                  .radio
+                    input.radio-input(type='radio', id='radio-group-withlabel-02', name='radio-group-withlabel')
+                    label.radio-custom(for='radio-group-withlabel-02')
+                    label.radio-label(for='radio-group-withlabel-02') Radio 2
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label Form label:
+              .form-controls.col
+                .form-control
+                  select.js-select
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+      +demo-code
+        :code
+          <!-- input -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label for="...">Form label:</label>
+            </div>
+            <div class="form-controls col">
+              <div class="form-control">
+                <input placeholder="Input" id="..." class="input" type="text">
+              </div>
+            </div>
+          </div>
+
+          <!-- textarea -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label for="...">Form label:</label>
+            </div>
+            <div class="form-controls col">
+              <div class="form-control">
+                <textarea placeholder="..." id="..." class="input"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- checkbox -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label>Form label:</label>
+            </div>
+            <div class="form-controls col">
+              <div class="checkbox">
+                ...
+              </div>
+            </div>
+          </div>
+
+          <!-- radiogroup -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label>Form label:</label>
+            </div>
+            <div class="form-controls col">
+              <div class="radio-group">
+                <div class="radio">
+                  ...
+                </div>
+                <div class="radio">
+                  ...
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- select -->
+          <div class="row form-row">
+            <div class="form-label col">
+              <label>Form label:</label>
+            </div>
+            <div class="form-controls col">
+              <div class="form-control">
+                <select style="display: none;" class="js-select">
+                  ...
+                </select>
+              </div>
+            </div>
+          </div>
+    //- end: demo
+
+    +content-sub-section('Form label states')
+
+      +p Form labels can have two state: default and error state. Error state can be set by using class <code class='l-code-inline'>.error</code> on <code class='l-code-inline'>.form-label</code> element.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-label.col
+                  label(for='input-fls-01') Form label:
+                .form-controls.col
+                  .form-control
+                    input.input(type='text', placeholder='Input', id='input-fls-01')
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-label.error.col
+                  label(for='textarea-fls-02') Form label error:
+                .form-controls.col
+                  .form-control
+                    input.input.error(type='text', placeholder='Input', id='input-fls-02')
+        +demo-code
+          :code
+            <!-- default -->
+            ...
+              <div class="form-label col">
+                <label for="...">Form label:</label>
+              </div>
+            ...
+
+            <!-- error -->
+            ...
+              <div class="form-label error col">
+                <label for="...">Form label:</label>
+              </div>
+            ...
+      //- end: demo
+
+    +content-sub-section('Form label sizes')
+
+      +p There are three default sizes of form labels: medium (default), small and large. These can be set by using classes <code class='l-code-inline'>.form-label-[large/small]</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col.col-l-6.col-s-12
+              .row.form-row
+                .form-label.form-label-large.col
+                  label(for='input-flsz-01') Form label large:
+                .form-controls.col
+                  .form-control
+                    input.input.input-large(type='text', placeholder='Input', id='input-flsz-01')
+              .row.form-row
+                .form-label.col
+                  label(for='input-flsz-02') Form label medium:
+                .form-controls.col
+                  .form-control
+                    input.input(type='text', placeholder='Input', id='input-flsz-02')
+              .row.form-row
+                .form-label.form-label-small.col
+                  label(for='input-flsz-03') Form label small:
+                .form-controls.col
+                  .form-control
+                    input.input.input-small(type='text', placeholder='Input', id='input-flsz-03')
+        +demo-code
+          :code
+            <!-- large -->
+            ...
+              <div class="form-label form-label-large col">
+                <label for="...">Form label large:</label>
+              </div>
+            ...
+
+            <!-- medium -->
+            ...
+              <div class="form-label col">
+                <label for="...">Form label medium:</label>
+              </div>
+            ...
+
+            <!-- small -->
+            ...
+              <div class="form-label form-label-small col">
+                <label for="...">Form label small:</label>
+              </div>
+            ...
+      //- end: demo
+
+  //- end: section
+
+  //- FORM HELP
+  +content-section(contents[1])
+
+    +p In case you need to show additional help text for form components you can use form help component. Help text will be then shown under form component. To create form help component you can use <code class='l-code-inline'>&lt;label&gt;</code> tag with class <code class='l-code-inline'>.form-help</code> as shown in example below.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label(for='input-withhelp-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input(type='text', placeholder='Input', id='input-withhelp-01')
+                  label.form-help Lorem ipsum Elit anim tempor aliquip tempor mollit.
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label(for='textarea-withhelp-01') Form label:
+              .form-controls.col
+                .form-control
+                  textarea.input(placeholder='Textarea', id='textarea-withhelp-01')
+                  label.form-help Lorem ipsum Sit eu velit.
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label Form label:
+              .form-controls.col
+                .checkbox
+                  input.checkbox-input(type='checkbox', id='checkbox-withhelp', name='checkbox-withhelp')
+                  label.checkbox-custom(for='checkbox-withhelp')
+                  label.checkbox-label(for='checkbox-withhelp') Checkbox
+                  label.form-help Lorem ipsum Sit eu velit.
+
+
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label Form label:
+              .form-controls.col
+                .radio-group
+                  .radio
+                    input.radio-input(type='radio', id='radio-group-withhelp-01', name='radio-group-withhelp')
+                    label.radio-custom(for='radio-group-withhelp-01')
+                    label.radio-label(for='radio-group-withhelp-01') Radio 1
+                  .radio
+                    input.radio-input(type='radio', id='radio-group-withhelp-02', name='radio-group-withhelp')
+                    label.radio-custom(for='radio-group-withhelp-02')
+                    label.radio-label(for='radio-group-withhelp-02') Radio 2
+                  label.form-help Lorem ipsum Anim nisi et in dolor.
+
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col
+                label(for='select-withhelp') Form label:
+              .form-controls.col
+                .form-control
+                  select(id='select-withhelp').js-select
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+                  label.form-help Lorem ipsum Sed est culpa nulla sit laboris sed aliqua aute nostrud dolore consectetur dolor sed dolore dolore et dolor tempor laboris.
+      +demo-code
+        :code
+          <!-- input with help -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <input placeholder="..." id="..." class="input" type="text">
+                <label class="form-help">Lorem ipsum Elit anim tempor aliquip tempor mollit.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- textarea with help -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <textarea placeholder="..." id="..." class="input"></textarea>
+                <label class="form-help">Lorem ipsum Sit eu velit.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- checkbox with help -->
+          ...
+            <div class="form-controls col">
+              <div class="checkbox">
+                <input id="..." name="..." class="checkbox-input" type="checkbox">
+                <label for="..." class="checkbox-custom"></label>
+                <label for="..." class="checkbox-label">Checkbox</label>
+                <label class="form-help">...</label>
+              </div>
+            </div>
+          ...
+
+          <!-- radio with help -->
+          ...
+            <div class="form-controls col">
+              <div class="radio-group">
+                <div class="radio">
+                  <input id="..." name="radio-group-withhelp" class="radio-input" type="radio">
+                  <label for="..." class="radio-custom"></label>
+                  <label for="..." class="radio-label">Radio 1</label>
+                </div>
+                <div class="radio">
+                  ...
+                </div>
+                <label class="form-help">Lorem ipsum Anim nisi et in dolor.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- select with help -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <select style="display: none;" id="..." class="js-select">
+                  ...
+                </select>
+                <label class="form-help">...</label>
+              </div>
+            </div>
+          ...
+    //- end: demo
+
+  //- end: section
+
+  //- FORM ERROR
+  +content-section(contents[2], true)
+
+    +p In case you need to show additional error text for form components you can use form error component. Error text will be then shown under form component. To create form error component you can use <code class='l-code-inline'>&lt;label&gt;</code> tag with class <code class='l-code-inline'>.form-error</code> as shown in example below.
+
+    +demo
+      +demo-example
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col.error
+                label(for='input-withhelp-01') Form label:
+              .form-controls.col
+                .form-control
+                  input.input.error(type='text', placeholder='Input', id='input-withhelp-01')
+                  label.form-error Lorem ipsum Elit anim tempor aliquip tempor mollit.
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col.error
+                label(for='textarea-withhelp-01') Form label:
+              .form-controls.col
+                .form-control
+                  textarea.input.error(placeholder='Textarea', id='textarea-withhelp-01')
+                  label.form-error Lorem ipsum Sit eu velit.
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col.error
+                label Form label:
+              .form-controls.col
+                .checkbox
+                  input.checkbox-input.error(type='checkbox', id='checkbox-withhelp', name='checkbox-withhelp')
+                  label.checkbox-custom(for='checkbox-withhelp')
+                  label.checkbox-label(for='checkbox-withhelp') Checkbox
+                  label.form-error Lorem ipsum Sit eu velit.
+
+
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col.error
+                label Form label:
+              .form-controls.col
+                .radio-group
+                  .radio
+                    input.radio-input.error(type='radio', id='radio-group-withhelp-01', name='radio-group-withhelp')
+                    label.radio-custom(for='radio-group-withhelp-01')
+                    label.radio-label(for='radio-group-withhelp-01') Radio 1
+                  .radio
+                    input.radio-input.error(type='radio', id='radio-group-withhelp-02', name='radio-group-withhelp')
+                    label.radio-custom(for='radio-group-withhelp-02')
+                    label.radio-label(for='radio-group-withhelp-02') Radio 2
+                  label.form-error Lorem ipsum Anim nisi et in dolor.
+
+        .row
+          .col.col-l-6.col-s-12
+            .row.form-row
+              .form-label.col.error
+                label(for='select-withhelp') Form label:
+              .form-controls.col
+                .form-control
+                  select(id='select-withhelp').error.js-select
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+                  label.form-error Lorem ipsum Sed est culpa nulla sit laboris sed aliqua aute nostrud dolore consectetur dolor sed dolore dolore et dolor tempor laboris.
+      +demo-code
+        :code
+          <!-- input with error -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <input placeholder="..." id="..." class="input error" type="text">
+                <label class="form-error">Lorem ipsum Elit anim tempor aliquip tempor mollit.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- textarea with error -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <textarea placeholder="..." id="..." class="input error"></textarea>
+                <label class="form-error">Lorem ipsum Sit eu velit.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- checkbox with error -->
+          ...
+            <div class="form-controls col">
+              <div class="checkbox">
+                <input id="..." name="..." class="checkbox-input error" type="checkbox">
+                <label for="..." class="checkbox-custom"></label>
+                <label for="..." class="checkbox-label">Checkbox</label>
+                <label class="form-error">...</label>
+              </div>
+            </div>
+          ...
+
+          <!-- radio with error -->
+          ...
+            <div class="form-controls col">
+              <div class="radio-group">
+                <div class="radio">
+                  <input id="..." name="radio-group-withhelp" class="radio-input error" type="radio">
+                  <label for="..." class="radio-custom"></label>
+                  <label for="..." class="radio-label">Radio 1</label>
+                </div>
+                <div class="radio">
+                  ...
+                </div>
+                <label class="form-error">Lorem ipsum Anim nisi et in dolor.</label>
+              </div>
+            </div>
+          ...
+
+          <!-- select with error -->
+          ...
+            <div class="form-controls col">
+              <div class="form-control">
+                <select style="display: none;" id="..." class="error js-select">
+                  ...
+                </select>
+                <label class="form-error">...</label>
+              </div>
+            </div>
+          ...
+    //- end: demo
+
+  //- end: section

@@ -1,0 +1,155 @@
+/* Tomorrow Theme */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* Pretty printing styles. Used with prettify.js. */
+/* SPAN elements with the classes below are added by prettyprint. */
+/* plain text */
+.pln {
+  color: #666;
+}
+
+@media screen {
+  /* string content */
+  .str {
+    color: #d98c8c;
+  }
+
+  /* a keyword */
+  .kwd {
+    color: #1abc9c;
+  }
+
+  /* a comment */
+  .com {
+    color: #8e908c;
+  }
+
+  /* a type name */
+  .typ {
+    color: #4271ae;
+  }
+
+  /* a literal value */
+  .lit {
+    color: #d98c8c;
+  }
+
+  /* punctuation */
+  .pun {
+    color: #4d4d4c;
+  }
+
+  /* lisp open bracket */
+  .opn {
+    color: #4d4d4c;
+  }
+
+  /* lisp close bracket */
+  .clo {
+    color: #4d4d4c;
+  }
+
+  /* a markup tag name */
+  .tag {
+    color: #1abc9c;
+  }
+
+  /* a markup attribute name */
+  .atn {
+    color: #2ACAFA;
+  }
+
+  /* a markup attribute value */
+  .atv {
+    color: #d98c8c;
+  }
+
+  /* a declaration */
+  .dec {
+    color: #f5871f;
+  }
+
+  /* a variable name */
+  .var {
+    color: #d98c8c;
+  }
+
+  /* a function name */
+  .fun {
+    color: #F87A50;
+  }
+}
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str {
+    color: #006600;
+  }
+
+  .kwd {
+    color: #006;
+    font-weight: bold;
+  }
+
+  .com {
+    color: #600;
+    font-style: italic;
+  }
+
+  .typ {
+    color: #404;
+    font-weight: bold;
+  }
+
+  .lit {
+    color: #FF9673;
+  }
+
+  .pun, .opn, .clo {
+    color: #444400;
+  }
+
+  .tag {
+    color: #006;
+    font-weight: bold;
+  }
+
+  .atn {
+    color: #440044;
+  }
+
+  .atv {
+    color: #006600;
+  }
+}
+/* Style */
+pre.prettyprint {
+  line-height: 1.5;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 {
+  /* */
+}
+
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+  /* */
+}

@@ -1,0 +1,37 @@
+// ---------------------------------------------
+// MAIN
+// ---------------------------------------------
+
+html {
+  font-size: _get-em($default-fs, 16px);
+}
+
+html, body {
+  padding: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  background: $default-bgc;
+  font-family: $default-ff;
+  line-height: $default-lh, $default-fs;
+  color: $default-c;
+}
+
+* { box-sizing: border-box; }
+*:after { box-sizing: border-box; }
+*:before { box-sizing: border-box; }
+
+
+::selection {
+  background-color: fade-out($selection-bgc, 0.1);
+  color: $selection-c;
+}
+
+::-moz-selection {
+  background-color: fade-out($selection-bgc, 0.1);
+  color: $selection-c;
+}

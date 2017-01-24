@@ -1,0 +1,72 @@
+// ---------------------------------------------
+// CARDS
+// ---------------------------------------------
+
+// CONTENTS
+// Card
+// Card header
+// Card footer
+
+// ----------------------------
+// CARD
+
+  .card {
+    background-color: $card-background;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    box-shadow: $card-box-shadow;
+  }
+
+  .card_content {
+    padding: $card_content-padding;
+
+    & + & {
+      border-top: $card_content-border;
+    }
+  }
+
+// ----------------------------
+// CARD HEADER
+
+  .card_header {
+    padding: $card_header-padding;
+    background-color: $card_header-bgc;
+    border-bottom: $card_header-border;
+    @include border-top-radius($card-border-radius);
+  }
+
+  .card_header-split {
+    width: 100%;
+    display: table;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  %card_header_section {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .card_header_primary {
+    @extend %card_header_section;
+
+    padding: $card_header_section-v-padding 0;
+  }
+
+  .card_header_secondary {
+    @extend %card_header_section;
+
+    text-align: right;
+    .card_header_primary + & {
+      padding-left: $card_header_section-h-padding;
+    }
+  }
+
+// ----------------------------
+// CARD FOOTER
+
+  .card_footer {
+    padding: $card_footer-padding;
+    border-top: $card_footer-border;
+    text-align: right;
+  }

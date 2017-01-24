@@ -1,0 +1,13 @@
+{
+  "generator-lb": {
+    "name": "Light",
+    "features": [
+      "includeModernizr",
+      "includejQuery",
+      "includeLightingFly"
+    ],
+    "jQuery": "includejQuery2",
+    "sassCompilator": "rubySass",
+    "multiLanguage": false
+  }
+}

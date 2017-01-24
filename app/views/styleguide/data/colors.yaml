@@ -1,0 +1,38 @@
+l_colors:
+  -
+    "#12B886": "$color-theme-500"
+    "#087f5b": "$color-theme-800"
+    "#099268": "$color-theme-700"
+    "#0ca678": "$color-theme-600"
+    "#20c997": "$color-theme-400"
+    "#63e6be": "$color-theme-300"
+    "#96f2d7": "$color-theme-200"
+    "#c3fae8": "$color-theme-100"
+  -
+    "#adb5bd": "$color-grey-500"
+    "#212529": "$color-grey-900"
+    "#343a40": "$color-grey-800"
+    "#495057": "$color-grey-700"
+    "#868e96": "$color-grey-600"
+    "#ced4da": "$color-grey-400"
+    "#dee2e6": "$color-grey-300"
+    "#e9ecef": "$color-grey-200"
+    "#f1f3f5": "$color-grey-100"
+    "#f8f9fa": "$color-grey-50"
+  -
+    "#fa5252": "$color-error-500"
+    "#ff6b6b": "$color-error-300"
+    "#ffe3e3": "$color-error-100"
+    "#fff5f5": "$color-error-50"
+
+l_textcolors:
+  - theme-500
+  - theme-400
+  - theme-100
+  - black
+  - semiblack
+  - grey
+  - grey-800
+  - white
+  - semiwhite
+  - error
